@@ -158,6 +158,91 @@
   </footer>
 
 </body>
+  const API_URL = 'https://api.pushinpay.com.br/api/pix/cashIn'; // Produção
+  // const API_URL = 'https://api-sandbox.pushinpay.com.br/api/pix/cashIn'; // Use sandbox para testes (sem custo real)
+  
+  const TOKEN = 'SEU_BEARER_TOKEN_AQUI'; // Cole aqui sua API Key do dashboard PushinPay (em Configurações > API Keys)
 
+  async function gerarPix(valorCentavos, produto) {
+    const modal = document.getElementById('pixModal');
+    const valueEl = document.getElementById('pixValue');
+    const qrEl = document.getElementById('qrImage');
+    const codeEl = document.getElementById('pixCode');
+
+    valueEl.textContent = `Valor: R$${(valorCentavos / 100).toFixed(2)} - ${produto}`;
+    qrEl.src = ''; // Limpa anterior
+    codeEl.value = 'Gerando...';
+
+    modal.style.display = 'flex';
+
+    try {
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${TOKEN}`,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          value: valorCentavos,
+          webhook_url: '' // Adicione seu webhook se tiver (ex: para auto-confirmação)
+        })
+      });
+
+      if (!response.ok) throw new Error(`Erro: ${response.status}`);
+
+      const data = await response.json();
+
+      if (data.qr_code_base64 && data.qr_code) {
+        qrEl.src = data.qr_code_base64.includes('data:') ? data.qr_code_base64 : `data:image/png;base64,${data.qr_code_base64}`;
+        codeEl.value = data.qr_code;
+      } else {
+        codeEl.value = 'Erro ao gerar PIX. Tente novamente.';
+      }
+    } catch (error) {
+      codeEl.value = `Falha: ${error.message}. Verifique token ou tente depois.`;
+      console.error(error);
+    }
+  }
+
+  function copyPixCode() {
+    const code = document.getElementById('pixCode');
+    code.select();
+    document.execCommand('copy');
+    alert('Código copiado! Cole no app do banco.');
+  }
+
+  function closePixModal() {
+    document.getElementById('pixModal').style.display = 'none';
+  }
+</script>
+<div id="pixModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center; flex-direction:column;">
+  <div style="background:#111; padding:25px; border-radius:12px; border:2px solid #39ff14; max-width:380px; width:90%; text-align:center; color:#e0e0e0;">
+    <h2 style="color:#39ff14; margin-bottom:15px;">Pague via PIX</h2>
+    <p id="pixValue" style="font-size:1.2rem; margin-bottom:15px;"></p>
+    
+    <img id="qrImage" src="" alt="QR Code PIX" style="width:220px; height:220px; margin:15px auto; border:3px solid #39ff14; border-radius:8px;">
+    
+    <p style="margin:10px 0;">Código Copia e Cola:</p>
+    <input id="pixCode" readonly value="" style="width:100%; padding:12px; background:#222; color:#39ff14; border:1px solid #444; border-radius:8px; font-family:monospace; text-align:center;">
+    
+    <button onclick="copyPixCode()" style="background:#25D366; color:#fff; padding:12px 20px; border:none; border-radius:50px; font-weight:600; margin:15px 0; cursor:pointer;">Copiar Código</button>
+    
+    <div style="font-size:0.95rem; color:#ccc; margin:20px 0;">
+      <strong>Como pagar:</strong><br>
+      1. Abra o app do seu banco.<br>
+      2. Vá em PIX > Copiar e Colar ou Ler QR.<br>
+      3. Cole o código ou escaneie o QR.<br>
+      4. Confirme o valor e pague.
+    </div>
+    
+    <div style="background:#222; padding:12px; border-radius:8px; font-size:0.9rem; color:#ffcc00; margin:15px 0;">
+      AVISO: Transação processada pela PushinPay. A processadora não é responsável pelo produto/entrega. Consulte termos.
+    </div>
+    
+    <button onclick="closePixModal()" style="background:#ff3366; color:#fff; padding:12px 25px; border:none; border-radius:50px; font-weight:600; cursor:pointer;">Fechar</button>
+  </div>
+</div>
 </html>
+
 
