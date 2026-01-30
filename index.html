@@ -26,7 +26,7 @@
     h1 { font-size: 3.2rem; color: #39ff14; margin-bottom: 0.6rem; }
     h2 { font-size: 2.4rem; color: #39ff14; margin: 3.5rem 0 1.5rem; text-align: center; }
     main { 
-      max-width: 1600px; /* Mais largo no PC */
+      max-width: 1600px;
       margin: 4rem auto; 
       padding: 0 8%; 
     }
@@ -143,7 +143,7 @@
     .remove-btn { color: #ff3366; cursor: pointer; font-size: 1.1rem; font-weight: bold; margin-left: 10px; }
     #cart-total { font-size: 1rem; color: #39ff14; text-align: right; margin-top: 10px; font-weight: bold; }
 
-    /* Modal Compra */
+    /* Modal Compra corrigido */
     #buyModal input {
       width: 100%;
       padding: 14px;
@@ -188,11 +188,11 @@
   </header>
 
   <main>
-    <!-- O que a Sibutramina faz (logo embaixo do header, objetivo) -->
+    <!-- O que a Sibutramina faz (objetivo e direto) -->
     <section class="what-it-does">
       <h2>O que a Sibutramina faz?</h2>
-      <p style="font-size:1.2rem; text-align:center; max-width:800px; margin:0 auto;">
-        A Sibutramina 15mg é um medicamento que age no cérebro para reduzir o apetite e aumentar a saciedade, ajudando você a comer menos sem passar fome. Acelera o metabolismo, mantém a queima de calorias alta e evita o efeito platô das dietas. Resultado: perda real de peso (5-10% do peso inicial em poucas semanas) quando associada a dieta e exercício – sempre com orientação médica.
+      <p style="font-size:1.3rem; text-align:center; max-width:900px; margin:0 auto;">
+        A Sibutramina 15mg reduz o apetite e aumenta a saciedade, fazendo você comer menos sem passar fome. Acelera o metabolismo, mantém a queima de calorias alta e evita o efeito platô das dietas. Resultado: perda real de 5-10% do peso em poucas semanas (com dieta e exercício) – sempre com orientação médica.
       </p>
     </section>
 
@@ -329,4 +329,103 @@
 
   <script>
     const API_URL = 'https://api.pushinpay.com.br/api/pix/cashIn';
-    const TOKEN = '61376|erZ9RwizmybWyqdLeI4BIsoayVGMcioh8XLtUNGaabcaf
+    const TOKEN = '61376|erZ9RwizmybWyqdLeI4BIsoayVGMcioh8XLtUNGaabcaf67f';
+
+    async function gerarPix(valorCentavos, produto) {
+      const modal = document.getElementById('pixModal');
+      const valueEl = document.getElementById('pixValue');
+      const qrEl = document.getElementById('qrImage');
+      const codeEl = document.getElementById('pixCode');
+      const timerEl = document.getElementById('timeLeft');
+
+      valueEl.textContent = `Valor: R$${(valorCentavos / 100).toFixed(2)} - ${produto}`;
+      qrEl.src = '';
+      codeEl.value = 'Gerando PIX... Aguarde';
+
+      modal.style.display = 'flex';
+
+      try {
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${TOKEN}`,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            value: valorCentavos,
+            webhook_url: ''
+          })
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.qr_code_base64 && data.qr_code) {
+          qrEl.src = data.qr_code_base64.includes('data:') ? data.qr_code_base64 : `data:image/png;base64,${data.qr_code_base64}`;
+          codeEl.value = data.qr_code;
+
+          // Timer de 15 minutos
+          let time = 900;
+          const interval = setInterval(() => {
+            time--;
+            const min = Math.floor(time / 60);
+            const sec = time % 60;
+            timerEl.textContent = `${min}:${sec < 10 ? '0' : ''}${sec}`;
+            if (time <= 0) {
+              clearInterval(interval);
+              timerEl.textContent = 'Tempo esgotado';
+            }
+          }, 1000);
+        } else {
+          codeEl.value = `Erro: ${response.status} - ${data.message || 'Verifique token ou IP'}`;
+        }
+      } catch (error) {
+        codeEl.value = `Falha: ${error.message}`;
+        console.error(error);
+      }
+    }
+
+    function copyPixCode() {
+      const code = document.getElementById('pixCode');
+      code.select();
+      document.execCommand('copy');
+      alert('Código PIX copiado!');
+    }
+
+    function closePixModal() {
+      document.getElementById('pixModal').style.display = 'none';
+    }
+
+    // Carrinho discreto
+    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+
+    function atualizarCarrinho() {
+      const badge = document.getElementById('cart-badge');
+      badge.textContent = carrinho.length;
+      badge.style.display = carrinho.length > 0 ? 'flex' : 'none';
+
+      const items = document.getElementById('cart-items');
+      items.innerHTML = '';
+      let total = 0;
+      carrinho.forEach((item, index) => {
+        total += item.valor * item.quantidade;
+        const li = document.createElement('li');
+        li.innerHTML = `${item.produto} x${item.quantidade} - R$${(item.valor * item.quantidade).toFixed(2)} <span class="remove-btn" onclick="removerItem(${index})">X</span>`;
+        items.appendChild(li);
+      });
+      document.getElementById('cart-total').textContent = `Total: R$${total.toFixed(2)}`;
+    }
+
+    function removerItem(index) {
+      carrinho.splice(index, 1);
+      localStorage.setItem('carrinho', JSON.stringify(carrinho));
+      atualizarCarrinho();
+    }
+
+    document.getElementById('cart-icon').addEventListener('click', () => {
+      const dropdown = document.getElementById('cart-dropdown');
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    });
+
+    function adicionarAoCarrinho(produto, valor) {
+      const item = carrinho
