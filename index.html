@@ -1,15 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sibutramina 15mg Genérico - Emagreça de Verdade Agora</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+    header {
+      background: #111;
+      padding: 4rem 8%;
+      text-align: center;
+      border-bottom: 1px solid #222;
+    }
+    h1 { font-size: 3.2rem; color: #39ff14; margin-bottom: 0.6rem; }
+    h2 { font-size: 2.4rem; color: #39ff14; margin: 3.5rem 0 1.5rem; text-align: center; }
+    main { 
+      max-width: 1600px;
+      margin: 4rem auto; 
+      padding: 0 8%; 
+    }
+    section { margin-bottom: 5rem; }
+    .promos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 4rem;
+    }
+    .promo-card {
+      background: #0f0f0f;
+      border: 1px solid #222;
+      border-radius: 16px;
+      padding: 2.8rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    .promo-card:hover {
+      border-color: #39ff14;
+      transform: translateY(-12px);
+      box-shadow: 0 20px 40px rgba(57,255,20,0.2);
+    }
+    .promo-card img {
+      width: 100%;
+      max-height: 340px;
+      object-fit: contain;
+      border-radius: 12px;
+      margin-bottom: 1.8rem;
+      background: #111;
+      border: 1px solid #333;
+    }
+    .promo-card h3 { font-size: 2.2rem; color: #39ff14; margin-bottom: 1rem; }
+    .promo-card .price { font-size: 3.2rem; font-weight: 700; color: #ff3366; margin: 1rem 0; }
+    .promo-card .frete { color: #39ff14; font-size: 1.4rem; font-weight: 600; margin-bottom: 1.8rem; }
+    .btn {
+      padding: 1.2rem 2.8rem;
+      background: #39ff14;
+      color: #000;
+      font-weight: 700;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 1.2rem;
+      margin: 0.8rem 0.5rem;
+    }
+    .btn:hover { background: #2ecc10; transform: scale(1.05); }
+    .whatsapp-btn { background: #25D366; color: white; }
+    footer {
+      text-align: center;
+      padding: 4rem;
+      color: #777;
+      border-top: 1px solid #222;
+      margin-top: 6rem;
+    }
+
+    /* Modais com transição suave */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-y;
+      padding: 20px;
+      transition: opacity 0.3s ease;
+    }
+    .modal.show { display: flex; opacity: 1; }
+    .modal-content {
+      background: #0f0f0f;
+      padding: 35px 25px;
+      border-radius: 24px;
+      border: 3px solid #39ff14;
+      max-width: 450px;
+      width: 94%;
+      text-align: center;
+      color: #e0e0e0;
+      box-shadow: 0 15px 50px rgba(57,255,20,0.2);
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+      transform: scale(0.95);
+      transition: transform 0.3s ease;
+    }
+    .modal.show .modal-content { transform: scale(1); }
+    .close-x {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      color: #ff3366;
+      font-size: 3.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      line-height: 1;
+      z-index: 10;
+    }
+    .close-x:hover { color: #ff6b6b; transform: scale(1.2); }
+    .btn-green {
+      width: 100%;
+      margin: 15px 0;
+      padding: 18px;
+      font-size: 1.3rem;
+      border-radius: 50px;
+      background: #39ff14;
+      color: #000;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn-green:hover { background: #2ecc10; }
+    .btn-cancel {
+      width: 100%;
+      margin: 15px 0;
+      padding: 16px;
+      background: #444;
+      color: #ccc;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
 <body>
 
   <!-- Carrinho discreto -->
   <div id="cart-icon">🛒 <span id="cart-badge">0</span></div>
-  <div id="cart-dropdown" style="display:none; position:absolute; right:20px; top:60px; background:#0f0f0f; border:1px solid #222; border-radius:12px; padding:15px; width:320px; box-shadow:0 10px 30px rgba(0,0,0,0.6); z-index:1000;">
-    <h4 style="color:#39ff14; margin-bottom:10px; font-size:1rem;">Seu Carrinho</h4>
-    <ul id="cart-items" style="list-style:none; max-height:200px; overflow-y:auto; margin-bottom:10px; padding:0;"></ul>
-    <p id="cart-total" style="font-weight:600; color:#e0e0e0; margin:10px 0;">Total: R$0,00</p>
-    <button class="btn" onclick="prosseguirParaPagamento()" style="width:100%; font-size:0.95rem; padding:10px 0; margin-top:5px;">Ir para Compra</button>
-    <p style="text-align:center; margin-top:12px; font-size:0.85rem; color:#777;">
-      <a href="#" onclick="limparCarrinho(); return false;" style="color:#777; text-decoration:underline;">Limpar carrinho</a>
-    </p>
+  <div id="cart-dropdown">
+    <h4 style="color:#39ff14; margin-bottom:8px; font-size:0.95rem;">Carrinho</h4>
+    <ul id="cart-items"></ul>
+    <p id="cart-total">Total: R$0,00</p>
+    <button class="btn" onclick="finalizarCarrinho()" style="width:100%; margin-top:8px; font-size:0.9rem;">Finalizar Pedido</button>
   </div>
 
   <header>
@@ -26,7 +179,7 @@
           <h3>1 Caixa (30 cápsulas)</h3>
           <div class="price">R$ 90</div>
           <p>Inicie sua transformação agora mesmo.</p>
-          <button class="btn" onclick="adicionarEMostrar('1 Caixa (30 cápsulas)', 90)">Comprar Agora</button>
+          <button class="btn" onclick="abrirModalCompra('1 Caixa (30 cápsulas)', 90)">Comprar Agora</button>
           <a href="https://wa.me/+5516988767617?text=Quero+1+caixa+de+sibutramina+15mg" class="btn whatsapp-btn">Falar no WhatsApp</a>
         </div>
 
@@ -36,7 +189,7 @@
           <div class="price">R$ 170</div>
           <div class="frete">+ Frete Grátis</div>
           <p>Economize e acelere os resultados.</p>
-          <button class="btn" onclick="adicionarEMostrar('2 Caixas (60 cápsulas)', 170)">Comprar Agora</button>
+          <button class="btn" onclick="abrirModalCompra('2 Caixas (60 cápsulas)', 170)">Comprar Agora</button>
           <a href="https://wa.me/+5516988767617?text=Quero+2+caixas+de+sibutramina+15mg" class="btn whatsapp-btn">Falar no WhatsApp</a>
         </div>
 
@@ -46,7 +199,7 @@
           <div class="price">R$ 220</div>
           <div class="frete">+ Frete Grátis</div>
           <p>Melhor custo-benefício para resultados duradouros.</p>
-          <button class="btn" onclick="adicionarEMostrar('3 Caixas (90 cápsulas)', 220)">Comprar Agora</button>
+          <button class="btn" onclick="abrirModalCompra('3 Caixas (90 cápsulas)', 220)">Comprar Agora</button>
           <a href="https://wa.me/+5516988767617?text=Quero+3+caixas+de+sibutramina+15mg" class="btn whatsapp-btn">Falar no WhatsApp</a>
         </div>
       </div>
@@ -68,11 +221,11 @@
     © 2026 - Venda sob prescrição médica. Consulte um profissional de saúde antes de usar. Contato: +55 16 98876-7617
   </footer>
 
-  <!-- Modal de preenchimento (exatamente igual) -->
-  <div id="buyModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:9999; justify-content:center; align-items:center; overflow-y:auto; -webkit-overflow-scrolling:touch; touch-action:pan-y; padding:20px;">
-    <div style="background:#0f0f0f; padding:35px 25px; border-radius:24px; border:3px solid #39ff14; max-width:450px; width:94%; text-align:center; color:#e0e0e0; box-shadow:0 15px 50px rgba(57,255,20,0.2); position:relative; max-height:90vh; overflow-y:auto;">
-      <span onclick="fecharModal()" style="position:absolute; top:15px; right:20px; color:#ff3366; font-size:3.5rem; font-weight:bold; cursor:pointer; line-height:1;">X</span>
-      <h2 style="color:#39ff14; font-size:2.4rem; margin-bottom:25px;">Preencha seus dados</h2>
+  <!-- Modal 1: Preenchimento de dados -->
+  <div id="buyModal" class="modal">
+    <div class="modal-content">
+      <span class="close-x" onclick="fecharModal('buyModal')">X</span>
+      <h2>Preencha seus dados</h2>
       
       <p style="font-size:1.1rem; margin-bottom:30px; color:#bbb;">
         Vamos calcular o frete e gerar seu PIX.
@@ -92,19 +245,32 @@
         <input id="complemento" type="text" placeholder="Apto 101, Bloco B">
       </div>
 
-      <div id="freteResult" style="margin:30px 0; font-size:1.4rem; font-weight:700; color:#39ff14; min-height:60px;"></div>
+      <div id="freteResult" style="margin:30px 0; font-size:1.4rem; font-weight:700; color:#39ff14;"></div>
 
       <button class="btn-green" onclick="calcularFrete()">Calcular Frete</button>
-      <button class="btn-green" onclick="prosseguirCompra()">Prosseguir para PIX</button>
-      <button onclick="fecharModal()" class="btn-cancel">Cancelar</button>
+      <button class="btn-green" onclick="irParaConfirmacao()">Prosseguir</button>
+      <button onclick="fecharModal('buyModal')" class="btn-cancel">Cancelar</button>
     </div>
   </div>
 
-  <!-- Modal PIX (exatamente igual ao original) -->
-  <div id="pixModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center; flex-direction:column;">
-    <div style="background:#111; padding:30px; border-radius:16px; border:3px solid #39ff14; max-width:420px; width:94%; text-align:center; color:#e0e0e0; position:relative;">
-      <span onclick="fecharModal('pixModal')" style="position:absolute; top:15px; right:20px; color:#ff3366; font-size:3.5rem; font-weight:bold; cursor:pointer; line-height:1;">X</span>
-      <h2 style="color:#39ff14; margin-bottom:20px;">Pague via PIX</h2>
+  <!-- Modal 2: Confirmação -->
+  <div id="confirmModal" class="modal">
+    <div class="modal-content">
+      <span class="close-x" onclick="fecharModal('confirmModal')">X</span>
+      <h2>Confirme seus dados</h2>
+      
+      <div id="dataSummary" style="text-align:left; font-size:1.1rem; margin:2rem 0; line-height:1.8; color:#ccc;"></div>
+
+      <button class="btn-green" onclick="gerarPixFinal()">Confirmar e Gerar PIX</button>
+      <button onclick="fecharModal('confirmModal')" class="btn-cancel">Voltar</button>
+    </div>
+  </div>
+
+  <!-- Modal PIX -->
+  <div id="pixModal" class="modal">
+    <div class="modal-content">
+      <span class="close-x" onclick="fecharModal('pixModal')">X</span>
+      <h2>Pague via PIX</h2>
       <p id="pixValue" style="font-size:1.3rem; margin-bottom:20px;"></p>
       
       <img id="qrImage" src="" alt="QR Code PIX" style="width:240px; height:240px; margin:20px auto; border:4px solid #39ff14; border-radius:12px;">
@@ -147,7 +313,7 @@
       qrEl.src = '';
       codeEl.value = 'Gerando PIX... Aguarde';
 
-      modal.style.display = 'flex';
+      modal.classList.add('show');
 
       try {
         const response = await fetch(API_URL, {
@@ -196,28 +362,14 @@
       alert('Código PIX copiado!');
     }
 
+    // Fluxo de modais
     let itemAtual = {};
-    let freteAtual = 0;
-
-    function adicionarEMostrar(produto, valor) {
-      adicionarAoCarrinho(produto, valor);
-      document.getElementById('cart-dropdown').style.display = 'block';
-    }
-
-    function prosseguirParaPagamento() {
-      const total = carrinho.reduce((sum, item) => sum + (item.valor * item.quantidade), 0);
-      if (total === 0) {
-        alert('Seu carrinho está vazio!');
-        return;
-      }
-      itemAtual = { produto: 'Pedido de Sibutramina', valor: total };
-      document.getElementById('buyModal').style.display = 'flex';
-      document.getElementById('email').focus();
-    }
+    let dadosCliente = {};
 
     function abrirModalCompra(produto, valor) {
       itemAtual = { produto, valor };
-      document.getElementById('buyModal').style.display = 'flex';
+      document.getElementById('buyModal').classList.add('show');
+      document.getElementById('email').focus();
     }
 
     function calcularFrete() {
@@ -230,70 +382,68 @@
       }
 
       let frete = 0;
-      const totalSemFrete = carrinho.reduce((sum, item) => sum + item.valor * item.quantidade, 0);
-      if (totalSemFrete >= 170) frete = 0; // grátis acima de 170 como nas promos
-      else frete = 15;
+      if (itemAtual.valor === 90) frete = 15;
+      else frete = 10;
 
-      freteAtual = frete;
-      freteEl.innerHTML = `Frete estimado: R$${frete.toFixed(2)}<br>Total: R$${(totalSemFrete + frete).toFixed(2)}`;
+      freteEl.innerHTML = `Frete estimado: R$${frete.toFixed(2)}<br>Total: R$${(itemAtual.valor + frete).toFixed(2)}`;
+      window.freteAtual = frete;
     }
 
-    function prosseguirCompra() {
+    function irParaConfirmacao() {
       const email = document.getElementById('email').value.trim();
       const cep = document.getElementById('cep').value.trim();
       const numero = document.getElementById('numero').value.trim();
+      const complemento = document.getElementById('complemento').value.trim();
 
       if (!email || !cep || !numero) {
         alert('Preencha Email, CEP e Número da casa!');
         return;
       }
 
-      const total = carrinho.reduce((sum, item) => sum + item.valor * item.quantidade, 0) + freteAtual;
+      dadosCliente = { email, cep, numero, complemento, frete: window.freteAtual || 0 };
 
+      const summary = `
+        <strong>Email:</strong> ${email}<br>
+        <strong>CEP:</strong> ${cep}<br>
+        <strong>Número:</strong> ${numero}<br>
+        ${complemento ? `<strong>Complemento:</strong> ${complemento}<br>` : ''}
+        <strong>Frete estimado:</strong> R$${dadosCliente.frete.toFixed(2)}<br>
+        <strong>Total a pagar:</strong> R$${(itemAtual.valor + dadosCliente.frete).toFixed(2)}
+      `;
+
+      document.getElementById('dataSummary').innerHTML = summary;
+      fecharModal('buyModal');
+      document.getElementById('confirmModal').classList.add('show');
+    }
+
+    function gerarPixFinal() {
+      const total = itemAtual.valor + dadosCliente.frete;
       gerarPix(total * 100, itemAtual.produto + ' + Frete');
-
-      alert(`PIX gerado com sucesso para R$${total.toFixed(2)} (inclui frete)!\nAguarde confirmação do pagamento. Em breve você receberá email automático com instruções e link do grupo.`);
-
-      fecharModal();
-      carrinho = []; // limpa após prosseguir (opcional – pode remover se quiser manter)
-      localStorage.setItem('carrinho', JSON.stringify(carrinho));
-      atualizarCarrinho();
+      fecharModal('confirmModal');
     }
 
-    function fecharModal(modalId = 'buyModal') {
-      document.getElementById(modalId).style.display = 'none';
+    function fecharModal(modalId) {
+      document.getElementById(modalId).classList.remove('show');
     }
 
+    // Carrinho discreto
     let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 
     function atualizarCarrinho() {
       const badge = document.getElementById('cart-badge');
-      const totalItens = carrinho.reduce((acc, item) => acc + item.quantidade, 0);
-      badge.textContent = totalItens;
-      badge.style.display = totalItens > 0 ? 'flex' : 'none';
+      badge.textContent = carrinho.length;
+      badge.style.display = carrinho.length > 0 ? 'flex' : 'none';
 
-      const itemsList = document.getElementById('cart-items');
-      itemsList.innerHTML = '';
+      const items = document.getElementById('cart-items');
+      items.innerHTML = '';
       let total = 0;
       carrinho.forEach((item, index) => {
         total += item.valor * item.quantidade;
         const li = document.createElement('li');
-        li.style = 'display:flex; justify-content:space-between; margin:8px 0; font-size:0.95rem;';
-        li.innerHTML = `
-          <span>${item.produto} ×${item.quantidade}</span>
-          <span>R$${(item.valor * item.quantidade).toFixed(2)} <small onclick="removerItem(${index})" style="color:#ff3366; cursor:pointer; margin-left:8px;">×</small></span>
-        `;
-        itemsList.appendChild(li);
+        li.innerHTML = `${item.produto} x${item.quantidade} - R$${(item.valor * item.quantidade).toFixed(2)} <span class="remove-btn" onclick="removerItem(${index})">X</span>`;
+        items.appendChild(li);
       });
       document.getElementById('cart-total').textContent = `Total: R$${total.toFixed(2)}`;
-    }
-
-    function adicionarAoCarrinho(produto, valor) {
-      let item = carrinho.find(i => i.produto === produto);
-      if (item) item.quantidade += 1;
-      else carrinho.push({ produto, valor, quantidade: 1 });
-      localStorage.setItem('carrinho', JSON.stringify(carrinho));
-      atualizarCarrinho();
     }
 
     function removerItem(index) {
@@ -302,30 +452,21 @@
       atualizarCarrinho();
     }
 
-    function limparCarrinho() {
-      if (confirm('Limpar todo o carrinho?')) {
-        carrinho = [];
-        localStorage.setItem('carrinho', JSON.stringify(carrinho));
-        atualizarCarrinho();
-      }
-    }
-
-    // Fecha dropdown ao clicar fora
-    document.addEventListener('click', e => {
-      const dropdown = document.getElementById('cart-dropdown');
-      const icon = document.getElementById('cart-icon');
-      if (!dropdown.contains(e.target) && !icon.contains(e.target)) {
-        dropdown.style.display = 'none';
-      }
-    });
-
-    document.getElementById('cart-icon').addEventListener('click', e => {
-      e.stopPropagation();
+    document.getElementById('cart-icon').addEventListener('click', () => {
       const dropdown = document.getElementById('cart-dropdown');
       dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
     });
+
+    function adicionarAoCarrinho(produto, valor) {
+      const item = carrinho.find(i => i.produto === produto);
+      if (item) item.quantidade += 1;
+      else carrinho.push({ produto, valor, quantidade: 1 });
+      localStorage.setItem('carrinho', JSON.stringify(carrinho));
+      atualizarCarrinho();
+    }
 
     atualizarCarrinho();
   </script>
 
 </body>
+</html>
