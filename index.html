@@ -2,106 +2,93 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <meta name="description" content="Sibutramina 15mg genérica Eurofarma – emagreça de verdade com controle de apetite potente."/>
-  <meta name="theme-color" content="#000000"/>
-  <title>Sibutramina 15mg Genérica – Emagreça Agora</title>
-
-  <!-- Favicon e ícones para iOS/Android/PC -->
-  <link rel="icon" href="https://img.icons8.com/fluency/48/000000/medicine.png" type="image/png"/>
-  <link rel="apple-touch-icon" href="https://img.icons8.com/fluency/180/000000/medicine.png"/>
-  <link rel="manifest" href="/manifest.json"/>
-
-  <!-- Google Fonts -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sibutramina 15mg Genérico - Emagreça de Verdade Agora</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
   <style>
-    :root {
-      --bg: #000;
-      --card: #0f0f0f;
-      --text: #e0e0e0;
-      --green: #39ff14;
-      --green-dark: #2ecc10;
-      --pink: #ff3366;
-      --pink-dark: #e02e5c;
-      --gray: #222;
-      --gray-light: #444;
-      --shadow: rgba(57, 255, 20, 0.15);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin:0; padding:0; box-sizing:border-box; }
     body {
       font-family: 'Poppins', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
+      background: #000;
+      color: #e0e0e0;
       line-height: 1.6;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
-
     header {
-      background: linear-gradient(to bottom, #111, #000);
-      padding: 5rem 8%;
+      background: #111;
+      padding: 4rem 8%;
       text-align: center;
       border-bottom: 1px solid #222;
-      position: relative;
     }
-
-    h1 {
-      font-size: clamp(2.2rem, 8vw, 3.8rem);
-      color: var(--green);
-      margin-bottom: 1rem;
-      letter-spacing: -1px;
-      text-shadow: 0 0 20px rgba(57, 255, 20, 0.4);
-    }
-
-    header p {
-      font-size: clamp(1rem, 4vw, 1.4rem);
-      color: #bbb;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    main {
+    h1 { font-size: 3.2rem; color: #39ff14; margin-bottom: 0.6rem; }
+    h2 { font-size: 2.4rem; color: #39ff14; margin: 3.5rem 0 1.5rem; text-align: center; }
+    main { 
       max-width: 1600px;
-      margin: 0 auto;
-      padding: 0 5%;
+      margin: 4rem auto; 
+      padding: 0 8%; 
     }
-
-    section {
-      margin: 6rem 0;
+    section { margin-bottom: 5rem; }
+    .promos {
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
     }
-
-    h2 {
-      font-size: clamp(1.8rem, 6vw, 2.8rem);
-      color: var(--green);
+    .promo-card {
+      background: #0f0f0f;
+      border: 1px solid #222;
+      border-radius: 16px;
+      padding: 2.8rem;
       text-align: center;
-      margin-bottom: 3rem;
-      position: relative;
+      transition: all 0.3s;
+    }
+    .promo-card:hover {
+      border-color: #39ff14;
+      transform: translateY(-12px);
+      box-shadow: 0 20px 40px rgba(57,255,20,0.2);
+    }
+    .promo-card img {
+      width: 100%;
+      max-height: 340px;
+      object-fit: contain;
+      border-radius: 12px;
+      margin-bottom: 1.8rem;
+      background: #111;
+      border: 1px solid #333;
+    }
+    .promo-card h3 { font-size: 2.2rem; color: #39ff14; margin-bottom: 1rem; }
+    .promo-card .price { font-size: 3.2rem; font-weight: 700; color: #ff3366; margin: 1rem 0; }
+    .promo-card .frete { color: #39ff14; font-size: 1.4rem; font-weight: 600; margin-bottom: 1.8rem; }
+    .btn {
+      padding: 1.2rem 2.8rem;
+      background: #39ff14;
+      color: #000;
+      font-weight: 700;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 1.2rem;
+      margin: 0.8rem 0.5rem;
+    }
+    .btn:hover { background: #2ecc10; transform: scale(1.05); }
+    .whatsapp-btn { 
+      background: #25D366; 
+      color: white; 
+      padding: 1.2rem 2.8rem; 
+      font-size: 1.2rem; 
+    }
+    footer {
+      text-align: center;
+      padding: 4rem;
+      color: #777;
+      border-top: 1px solid #222;
+      margin-top: 6rem;
     }
 
-    h2::after {
-      content: '';
-      width: 120px;
-      height: 4px;
-      background: var(--green);
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      border-radius: 2px;
-    }
-
-    /* Carrinho discreto pequeno (só ícone + badge) */
+    /* Carrinho pequenininho branco no topo direito */
     #cart-icon {
       position: fixed;
       top: 15px;
@@ -120,22 +107,20 @@
       cursor: pointer;
       transition: all 0.3s;
     }
-
     #cart-icon:hover {
       transform: scale(1.1);
       box-shadow: 0 6px 20px rgba(57,255,20,0.3);
     }
-
     #cart-badge {
       position: absolute;
-      top: -4px;
-      right: -4px;
-      background: var(--pink);
+      top: -6px;
+      right: -6px;
+      background: #ff3366;
       color: white;
       font-size: 0.75rem;
       font-weight: bold;
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -143,114 +128,7 @@
       box-shadow: 0 0 10px rgba(255,51,102,0.6);
     }
 
-    /* Promoções empilhadas verticalmente */
-    .promos {
-      display: flex;
-      flex-direction: column;
-      gap: 3.5rem;
-    }
-
-    .promo-card {
-      background: #0f0f0f;
-      border: 1px solid #222;
-      border-radius: 20px;
-      padding: 2.5rem;
-      text-align: center;
-      transition: all 0.4s ease;
-    }
-
-    .promo-card:hover {
-      transform: translateY(-10px);
-      border-color: var(--green);
-      box-shadow: 0 20px 60px var(--shadow);
-    }
-
-    .promo-card img {
-      width: 100%;
-      max-height: 340px;
-      object-fit: contain;
-      border-radius: 12px;
-      margin-bottom: 1.8rem;
-      background: #111;
-      border: 1px solid #333;
-    }
-
-    .promo-card h3 {
-      font-size: 2.2rem;
-      color: var(--green);
-      margin-bottom: 0.8rem;
-    }
-
-    .promo-card .price {
-      font-size: 3.5rem;
-      font-weight: 800;
-      color: var(--pink);
-      margin: 0.5rem 0 1rem;
-      line-height: 1;
-    }
-
-    .promo-card .frete {
-      font-size: 1.3rem;
-      color: var(--green);
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-    }
-
-    .btn {
-      padding: 1rem 2.5rem;
-      background: var(--green);
-      color: #000;
-      font-weight: 700;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s;
-      font-size: 1.1rem;
-      margin: 0.6rem 0.4rem;
-    }
-
-    .btn:hover {
-      background: var(--green-dark);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px var(--shadow);
-    }
-
-    .whatsapp-btn {
-      background: #25D366;
-      color: white;
-    }
-
-    /* Benefícios */
-    ul {
-      list-style: none;
-      max-width: 900px;
-      margin: 0 auto;
-      font-size: 1.2rem;
-    }
-
-    ul li {
-      margin: 1.2rem 0;
-      padding-left: 2.5rem;
-      position: relative;
-    }
-
-    ul li::before {
-      content: '✔';
-      color: var(--green);
-      position: absolute;
-      left: 0;
-      font-size: 1.4rem;
-    }
-
-    footer {
-      text-align: center;
-      padding: 4rem 5%;
-      color: #555;
-      border-top: 1px solid #222;
-      font-size: 0.95rem;
-    }
-
-    /* Modal de compra */
+    /* Modal de preenchimento */
     #buyModal {
       display: none;
       position: fixed;
@@ -264,108 +142,95 @@
       touch-action: pan-y;
       padding: 20px;
     }
-
     #buyModal .modal-content {
       background: #0f0f0f;
-      padding: 2.5rem 1.8rem;
-      border-radius: 20px;
-      border: 2px solid #39ff14;
-      max-width: 420px;
+      padding: 35px 25px;
+      border-radius: 24px;
+      border: 3px solid #39ff14;
+      max-width: 450px;
       width: 94%;
       text-align: center;
       color: #e0e0e0;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+      box-shadow: 0 15px 50px rgba(57,255,20,0.2);
       position: relative;
       max-height: 90vh;
       overflow-y: auto;
     }
-
     #buyModal .close-x {
       position: absolute;
-      top: 12px;
-      right: 18px;
+      top: 15px;
+      right: 20px;
       color: #ff3366;
       font-size: 3.5rem;
       font-weight: bold;
       cursor: pointer;
       line-height: 1;
     }
-
     #buyModal .close-x:hover { color: #ff6b6b; transform: scale(1.2); }
-
     #buyModal h2 {
       color: #39ff14;
-      font-size: 2.2rem;
-      margin-bottom: 1.5rem;
+      font-size: 2.4rem;
+      margin-bottom: 25px;
     }
-
     #buyModal p {
-      font-size: 1rem;
-      color: #aaa;
-      margin-bottom: 2rem;
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      color: #bbb;
     }
-
     #buyModal label {
       display: block;
       text-align: left;
-      margin-bottom: 0.5rem;
+      margin-bottom: 8px;
       font-weight: 600;
-      font-size: 0.95rem;
-      color: #ccc;
+      font-size: 1rem;
+      color: #ddd;
     }
-
     #buyModal input {
       width: 100%;
-      padding: 14px 16px;
+      padding: 16px;
       background: #1a1a1a;
       color: #fff;
-      border: 1px solid #333;
-      border-radius: 10px;
-      margin-bottom: 1.5rem;
-      font-size: 1rem;
+      border: 1px solid #444;
+      border-radius: 12px;
+      margin-bottom: 22px;
+      font-size: 1.1rem;
     }
-
     #freteResult {
-      margin: 1.5rem 0;
-      font-size: 1.2rem;
-      font-weight: 600;
+      margin: 30px 0;
+      font-size: 1.4rem;
+      font-weight: 700;
       color: #39ff14;
-      min-height: 40px;
+      min-height: 60px;
     }
-
-    .btn-green, .btn-cancel {
+    .btn-green {
       width: 100%;
-      padding: 1.2rem;
-      font-size: 1.2rem;
-      margin: 1rem 0;
+      margin: 15px 0;
+      padding: 18px;
+      font-size: 1.3rem;
       border-radius: 50px;
+      background: #39ff14;
+      color: #000;
+      border: none;
       cursor: pointer;
+      transition: background 0.3s;
     }
-
-    .btn-green { background: #39ff14; color: black; }
-    .btn-cancel { background: #444; color: #ccc; }
-
-    @media (max-width: 480px) {
-      header { padding: 3rem 5%; }
-      h1 { font-size: 2.4rem; }
-      .promo-card { padding: 2rem; }
-      .btn { padding: 1rem 2rem; font-size: 1rem; }
-    }
-
-    @media (min-width: 768px) {
-      .promos { flex-direction: row; flex-wrap: wrap; justify-content: center; }
-      .promo-card { flex: 1 1 45%; max-width: 45%; }
-    }
-
-    @media (min-width: 1200px) {
-      .promo-card { max-width: 380px; }
-      main { padding: 0 5%; }
+    .btn-green:hover { background: #2ecc10; }
+    .btn-cancel {
+      width: 100%;
+      margin: 15px 0;
+      padding: 16px;
+      background: #444;
+      color: #ccc;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-  <!-- Carrinho discreto pequeno (ícone branco com número pequeno) -->
+  <!-- Carrinho pequenininho branco com número discreto -->
   <div id="cart-icon">
     🛒 <span id="cart-badge">0</span>
   </div>
@@ -380,7 +245,7 @@
       <h2>Promoções Imperdíveis</h2>
       <div class="promos">
         <div class="promo-card">
-          <img src="caixas-sibutramina.jpg" loading="lazy" alt="1 Caixa Sibutramina">
+          <img src="caixas-sibutramina.jpg" loading="lazy" alt="Caixas empilhadas de Sibutramina 15mg Eurofarma Genérico">
           <h3>1 Caixa (30 cápsulas)</h3>
           <div class="price">R$ 90</div>
           <p>Inicie sua transformação agora mesmo.</p>
@@ -389,22 +254,20 @@
         </div>
 
         <div class="promo-card">
-          <img src="caixas-sibutramina.jpg" loading="lazy" alt="2 Caixas Sibutramina">
+          <img src="caixas-sibutramina.jpg" loading="lazy" alt="Caixas de Sibutramina 15mg Genérico Eurofarma">
           <h3>2 Caixas (60 cápsulas)</h3>
           <div class="price">R$ 170</div>
           <div class="frete">+ Frete Grátis</div>
           <p>Economize e acelere os resultados.</p>
-          <button class="btn" onclick="abrirModalCompra('2 Caixas (60 cápsulas)', 170)">Comprar Agora</button>
           <a href="https://wa.me/+5516988767617?text=Quero+2+caixas+de+sibutramina+15mg" class="btn whatsapp-btn">Falar no WhatsApp</a>
         </div>
 
         <div class="promo-card">
-          <img src="caixas-sibutramina.jpg" loading="lazy" alt="3 Caixas Sibutramina">
+          <img src="caixas-sibutramina.jpg" loading="lazy" alt="Caixas de Sibutramina 15mg Genérico Eurofarma">
           <h3>3 Caixas (90 cápsulas)</h3>
           <div class="price">R$ 220</div>
           <div class="frete">+ Frete Grátis</div>
           <p>Melhor custo-benefício para resultados duradouros.</p>
-          <button class="btn" onclick="abrirModalCompra('3 Caixas (90 cápsulas)', 220)">Comprar Agora</button>
           <a href="https://wa.me/+5516988767617?text=Quero+3+caixas+de+sibutramina+15mg" class="btn whatsapp-btn">Falar no WhatsApp</a>
         </div>
       </div>
@@ -430,27 +293,27 @@
   <div id="buyModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:9999; justify-content:center; align-items:center; overflow-y:auto; -webkit-overflow-scrolling:touch; touch-action:pan-y; padding:20px;">
     <div style="background:#0f0f0f; padding:35px 25px; border-radius:24px; border:3px solid #39ff14; max-width:450px; width:94%; text-align:center; color:#e0e0e0; box-shadow:0 15px 50px rgba(57,255,20,0.2); position:relative;">
       <span onclick="fecharModal()" style="position:absolute; top:15px; right:20px; color:#ff3366; font-size:3.5rem; font-weight:bold; cursor:pointer; line-height:1;">X</span>
-      <h2 style="color:#39ff14; font-size:2.4rem; margin-bottom:25px;">Finalizar Compra</h2>
+      <h2 style="color:#39ff14; font-size:2.4rem; margin-bottom:25px;">Preencha seus dados</h2>
       
-      <p style="font-size:1.1rem; margin-bottom:30px; color:#bbb; line-height:1.5;">
-        Preencha os dados abaixo para calcular o frete e prosseguir com o pagamento.
+      <p style="font-size:1.1rem; margin-bottom:30px; color:#bbb;">
+        Vamos calcular o frete e gerar seu PIX.
       </p>
 
       <div style="text-align:left;">
-        <label for="email" style="display:block; margin-bottom:6px; font-weight:600; font-size:0.95rem; color:#ddd;">Email (obrigatório)</label>
-        <input id="email" type="email" placeholder="seu@email.com" required style="width:100%; padding:14px; background:#1a1a1a; color:#fff; border:1px solid #444; border-radius:10px; margin-bottom:20px; font-size:1rem;">
+        <label for="email">Email (obrigatório)</label>
+        <input id="email" type="email" placeholder="seu@email.com" required autofocus>
 
-        <label for="cep" style="display:block; margin-bottom:6px; font-weight:600; font-size:0.95rem; color:#ddd;">CEP (obrigatório)</label>
-        <input id="cep" type="text" maxlength="8" placeholder="00000000" required oninput="this.value = this.value.replace(/\D/g,'')" style="width:100%; padding:14px; background:#1a1a1a; color:#fff; border:1px solid #444; border-radius:10px; margin-bottom:20px; font-size:1rem;">
+        <label for="cep">CEP (obrigatório)</label>
+        <input id="cep" type="text" maxlength="8" placeholder="00000000" required oninput="this.value = this.value.replace(/\D/g,'')">
 
-        <label for="numero" style="display:block; margin-bottom:6px; font-weight:600; font-size:0.95rem; color:#ddd;">Número da casa (obrigatório)</label>
-        <input id="numero" type="text" placeholder="123" required style="width:100%; padding:14px; background:#1a1a1a; color:#fff; border:1px solid #444; border-radius:10px; margin-bottom:20px; font-size:1rem;">
+        <label for="numero">Número da casa (obrigatório)</label>
+        <input id="numero" type="text" placeholder="123" required>
 
-        <label for="complemento" style="display:block; margin-bottom:6px; font-weight:600; font-size:0.95rem; color:#ddd;">Complemento (opcional)</label>
-        <input id="complemento" type="text" placeholder="Apto 101, Bloco B" style="width:100%; padding:14px; background:#1a1a1a; color:#fff; border:1px solid #444; border-radius:10px; margin-bottom:25px; font-size:1rem;">
+        <label for="complemento">Complemento (opcional)</label>
+        <input id="complemento" type="text" placeholder="Apto 101, Bloco B">
       </div>
 
-      <div id="freteResult" style="margin:30px 0; font-size:1.4rem; font-weight:700; color:#39ff14; min-height:60px;"></div>
+      <div id="freteResult" style="margin:30px 0; font-size:1.4rem; font-weight:700; color:#39ff14;"></div>
 
       <button class="btn-green" onclick="calcularFrete()">Calcular Frete</button>
       <button class="btn-green" onclick="prosseguirCompra()">Prosseguir para PIX</button>
