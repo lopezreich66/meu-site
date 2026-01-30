@@ -4,208 +4,47 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sibutramina 15mg Genérica - Eurofarma</title>
-  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #000;
-      color: #e0e0e0;
-      line-height: 1.6;
-    }
-    header {
-      background: #111;
-      padding: 4rem 8%;
-      text-align: center;
-      border-bottom: 1px solid #222;
-    }
-    h1 { font-size: 3.2rem; color: #39ff14; margin-bottom: 0.6rem; }
-    h2 { font-size: 2.4rem; color: #39ff14; margin: 3.5rem 0 1.5rem; text-align: center; }
-    main { 
-      max-width: 1600px;
-      margin: 4rem auto; 
-      padding: 0 8%; 
-    }
-    section { margin-bottom: 5rem; }
-    .promos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-      gap: 4rem;
-    }
-    .promo-card {
-      background: #0f0f0f;
-      border: 1px solid #222;
-      border-radius: 16px;
-      padding: 2.8rem;
-      text-align: center;
-      transition: all 0.3s;
-    }
-    .promo-card:hover {
-      border-color: #39ff14;
-      transform: translateY(-12px);
-      box-shadow: 0 20px 40px rgba(57,255,20,0.2);
-    }
-    .promo-card img {
-      width: 100%;
-      max-height: 340px;
-      object-fit: contain;
-      border-radius: 12px;
-      margin-bottom: 1.8rem;
-      background: #111;
-      border: 1px solid #333;
-    }
-    .promo-card h3 { font-size: 2.2rem; color: #39ff14; margin-bottom: 1rem; }
-    .promo-card .price { font-size: 3.2rem; font-weight: 700; color: #ff3366; margin: 1rem 0; }
-    .promo-card .frete { color: #39ff14; font-size: 1.4rem; font-weight: 600; margin-bottom: 1.8rem; }
-    .btn {
-      padding: 1.2rem 2.8rem;
-      background: #39ff14;
-      color: #000;
-      font-weight: 700;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s;
-      font-size: 1.2rem;
-      margin: 0.8rem 0.5rem;
-    }
-    .btn:hover { background: #2ecc10; transform: scale(1.05); }
-    .whatsapp-btn { background: #25D366; color: white; }
-
-    /* Carrinho */
-    #cart-icon {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #111;
-      color: #39ff14;
-      padding: 12px 16px;
-      border-radius: 50%;
-      font-size: 1.6rem;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(57,255,20,0.2);
-      z-index: 1000;
-    }
-    #cart-badge {
-      position: absolute;
-      top: -8px;
-      right: -8px;
-      background: #ff3366;
-      color: white;
-      font-size: 0.75rem;
-      font-weight: bold;
-      padding: 3px 7px;
-      border-radius: 50%;
-      min-width: 18px;
-      text-align: center;
-    }
-    #cart-dropdown {
-      display: none;
-      position: fixed;
-      top: 80px;
-      right: 20px;
-      background: #0f0f0f;
-      border: 1px solid #333;
-      border-radius: 12px;
-      padding: 15px;
-      width: 320px;
-      max-height: 70vh;
-      overflow-y: auto;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.7);
-      z-index: 999;
-    }
-
-    footer {
-      text-align: center;
-      padding: 4rem;
-      color: #777;
-      border-top: 1px solid #222;
-      margin-top: 6rem;
-    }
-
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.92);
-      z-index: 9999;
-      justify-content: center;
-      align-items: center;
-      overflow-y: auto;
-      padding: 20px;
-    }
-    .modal-content {
-      background: #0f0f0f;
-      padding: 35px 25px;
-      border-radius: 24px;
-      border: 3px solid #39ff14;
-      max-width: 450px;
-      width: 94%;
-      text-align: center;
-      color: #e0e0e0;
-      box-shadow: 0 15px 50px rgba(57,255,20,0.2);
-      position: relative;
-      max-height: 90vh;
-      overflow-y: auto;
-    }
-    .close-x {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      color: #ff3366;
-      font-size: 3.5rem;
-      font-weight: bold;
-      cursor: pointer;
-      line-height: 1;
-    }
-    label { display: block; text-align: left; margin-bottom: 8px; font-weight: 600; color: #ddd; }
-    input {
-      width: 100%;
-      padding: 16px;
-      background: #1a1a1a;
-      color: #fff;
-      border: 1px solid #444;
-      border-radius: 12px;
-      margin-bottom: 22px;
-      font-size: 1.1rem;
-    }
-    #freteResult { margin: 30px 0; font-size: 1.4rem; font-weight: 700; color: #39ff14; min-height: 60px; }
-    .btn-green {
-      width: 100%;
-      margin: 15px 0;
-      padding: 18px;
-      font-size: 1.3rem;
-      border-radius: 50px;
-      background: #39ff14;
-      color: #000;
-      border: none;
-      cursor: pointer;
-    }
-    .btn-green:hover { background: #2ecc10; }
-    .btn-cancel {
-      width: 100%;
-      margin: 15px 0;
-      padding: 16px;
-      background: #444;
-      color: #ccc;
-      border: none;
-      border-radius: 50px;
-      font-size: 1.1rem;
-      cursor: pointer;
-    }
+    body { font-family:'Poppins',sans-serif; background:#000; color:#e0e0e0; line-height:1.6; }
+    header { background:#111; padding:4rem 8%; text-align:center; border-bottom:1px solid #222; }
+    h1 { font-size:3.2rem; color:#39ff14; margin-bottom:0.6rem; }
+    h2 { font-size:2.4rem; color:#39ff14; margin:3.5rem 0 1.5rem; text-align:center; }
+    main { max-width:1600px; margin:4rem auto; padding:0 8%; }
+    section { margin-bottom:5rem; }
+    .promos { display:grid; grid-template-columns:repeat(auto-fit,minmax(380px,1fr)); gap:4rem; }
+    .promo-card { background:#0f0f0f; border:1px solid #222; border-radius:16px; padding:2.8rem; text-align:center; transition:all .3s; }
+    .promo-card:hover { border-color:#39ff14; transform:translateY(-12px); box-shadow:0 20px 40px rgba(57,255,20,.2); }
+    .promo-card img { width:100%; max-height:340px; object-fit:contain; border-radius:12px; margin-bottom:1.8rem; background:#111; border:1px solid #333; }
+    .promo-card h3 { font-size:2.2rem; color:#39ff14; margin-bottom:1rem; }
+    .promo-card .price { font-size:3.2rem; font-weight:700; color:#ff3366; margin:1rem 0; }
+    .promo-card .frete { color:#39ff14; font-size:1.4rem; font-weight:600; margin-bottom:1.8rem; }
+    .btn-wrapper { display:flex; flex-wrap:wrap; gap:0.6rem; justify-content:center; margin-top:1rem; }
+    .btn { padding:0.9rem 1.8rem; background:#39ff14; color:#000; font-weight:700; border:none; border-radius:50px; cursor:pointer; transition:all .3s; font-size:1.1rem; flex:1 1 auto; min-width:140px; }
+    .btn:hover { background:#2ecc10; transform:scale(1.03); }
+    .whatsapp-btn { background:#25D366; color:#fff; }
+    #cart-icon { position:fixed; top:20px; right:20px; background:#111; color:#39ff14; padding:12px 16px; border-radius:50%; font-size:1.6rem; cursor:pointer; box-shadow:0 4px 15px rgba(57,255,20,.2); z-index:1000; }
+    #cart-badge { position:absolute; top:-8px; right:-8px; background:#ff3366; color:#fff; font-size:0.75rem; font-weight:bold; padding:3px 7px; border-radius:50%; min-width:18px; text-align:center; }
+    #cart-dropdown { display:none; position:fixed; top:80px; right:20px; background:#0f0f0f; border:1px solid #333; border-radius:12px; padding:15px; width:320px; max-height:70vh; overflow-y:auto; box-shadow:0 10px 40px rgba(0,0,0,.7); z-index:999; }
+    footer { text-align:center; padding:4rem; color:#777; border-top:1px solid #222; margin-top:6rem; }
+    .modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:9999; justify-content:center; align-items:center; overflow-y:auto; padding:20px; }
+    .modal-content { background:#0f0f0f; padding:35px 25px; border-radius:24px; border:3px solid #39ff14; max-width:450px; width:94%; text-align:center; color:#e0e0e0; box-shadow:0 15px 50px rgba(57,255,20,0.2); position:relative; max-height:90vh; overflow-y:auto; }
+    .close-x { position:absolute; top:15px; right:20px; color:#ff3366; font-size:3.5rem; font-weight:bold; cursor:pointer; line-height:1; }
+    label { display:block; text-align:left; margin-bottom:8px; font-weight:600; color:#ddd; }
+    input { width:100%; padding:16px; background:#1a1a1a; color:#fff; border:1px solid #444; border-radius:12px; margin-bottom:22px; font-size:1.1rem; }
+    #freteResult { margin:30px 0; font-size:1.4rem; font-weight:700; color:#39ff14; min-height:60px; }
+    .btn-green { width:100%; margin:15px 0; padding:18px; font-size:1.3rem; border-radius:50px; background:#39ff14; color:#000; border:none; cursor:pointer; }
+    .btn-green:hover { background:#2ecc10; }
+    .btn-cancel { width:100%; margin:15px 0; padding:16px; background:#444; color:#ccc; border:none; border-radius:50px; font-size:1.1rem; cursor:pointer; }
   </style>
 </head>
 <body>
 
-  <!-- Ícone do carrinho -->
   <div id="cart-icon">🛒 <span id="cart-badge">0</span></div>
 
-  <!-- Dropdown do carrinho -->
   <div id="cart-dropdown">
     <h4 style="color:#39ff14; margin-bottom:10px; text-align:center;">Seu Carrinho</h4>
     <ul id="cart-items"></ul>
@@ -223,32 +62,38 @@
       <h2>Promoções Imperdíveis</h2>
       <div class="promos">
         <div class="promo-card">
-          <img src="https://via.placeholder.com/400x340/0f0f0f/39ff14?text=Sibutramina+15mg+1+Caixa" loading="lazy" alt="1 Caixa Sibutramina 15mg">
+          <img src="https://via.placeholder.com/400x340/0f0f0f/39ff14?text=Sibutramina+15mg+1+Caixa" loading="lazy" alt="1 Caixa">
           <h3>1 Caixa (30 cápsulas)</h3>
           <div class="price">R$ 90</div>
           <p>Inicie sua transformação agora mesmo.</p>
-          <button class="btn" onclick="confirmarAdicionar('1 Caixa (30 cápsulas)', 90)">Comprar Agora</button>
-          <a href="https://wa.me/+5516988767617?text=Quero+1+caixa+de+sibutramina+15mg" class="btn whatsapp-btn">Falar no WhatsApp</a>
+          <div class="btn-wrapper">
+            <button class="btn" onclick="confirmarAdicionar('1 Caixa (30 cápsulas)', 90)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+1+caixa+de+sibutramina+15mg" class="btn whatsapp-btn">Falar no WhatsApp</a>
+          </div>
         </div>
 
         <div class="promo-card">
-          <img src="https://via.placeholder.com/400x340/0f0f0f/39ff14?text=Sibutramina+15mg+2+Caixas" loading="lazy" alt="2 Caixas Sibutramina 15mg">
+          <img src="https://via.placeholder.com/400x340/0f0f0f/39ff14?text=Sibutramina+15mg+2+Caixas" loading="lazy" alt="2 Caixas">
           <h3>2 Caixas (60 cápsulas)</h3>
           <div class="price">R$ 170</div>
           <div class="frete">+ Frete Grátis</div>
           <p>Economize e acelere os resultados.</p>
-          <button class="btn" onclick="confirmarAdicionar('2 Caixas (60 cápsulas)', 170)">Comprar Agora</button>
-          <a href="https://wa.me/+5516988767617?text=Quero+2+caixas+de+sibutramina+15mg" class="btn whatsapp-btn">Falar no WhatsApp</a>
+          <div class="btn-wrapper">
+            <button class="btn" onclick="confirmarAdicionar('2 Caixas (60 cápsulas)', 170)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+2+caixas+de+sibutramina+15mg" class="btn whatsapp-btn">Falar no WhatsApp</a>
+          </div>
         </div>
 
         <div class="promo-card">
-          <img src="https://via.placeholder.com/400x340/0f0f0f/39ff14?text=Sibutramina+15mg+3+Caixas" loading="lazy" alt="3 Caixas Sibutramina 15mg">
+          <img src="https://via.placeholder.com/400x340/0f0f0f/39ff14?text=Sibutramina+15mg+3+Caixas" loading="lazy" alt="3 Caixas">
           <h3>3 Caixas (90 cápsulas)</h3>
           <div class="price">R$ 220</div>
           <div class="frete">+ Frete Grátis</div>
           <p>Melhor custo-benefício para resultados duradouros.</p>
-          <button class="btn" onclick="confirmarAdicionar('3 Caixas (90 cápsulas)', 220)">Comprar Agora</button>
-          <a href="https://wa.me/+5516988767617?text=Quero+3+caixas+de+sibutramina+15mg" class="btn whatsapp-btn">Falar no WhatsApp</a>
+          <div class="btn-wrapper">
+            <button class="btn" onclick="confirmarAdicionar('3 Caixas (90 cápsulas)', 220)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+3+caixas+de+sibutramina+15mg" class="btn whatsapp-btn">Falar no WhatsApp</a>
+          </div>
         </div>
       </div>
     </section>
@@ -269,56 +114,42 @@
     © 2026 - Copyright for Bernardo. Contato: +55 16 98876-7617
   </footer>
 
-  <!-- Modal de preenchimento -->
   <div id="buyModal" class="modal">
     <div class="modal-content">
       <span class="close-x" onclick="fecharModal('buyModal')">X</span>
       <h2>Preencha seus dados</h2>
       <p style="color:#bbb; margin:20px 0;">Vamos calcular o frete e gerar seu PIX.</p>
-
       <div style="text-align:left;">
         <label for="email">Email (obrigatório)</label>
         <input id="email" type="email" placeholder="seu@email.com" required autofocus>
-
         <label for="cep">CEP (obrigatório)</label>
         <input id="cep" type="text" maxlength="8" placeholder="00000000" required oninput="this.value = this.value.replace(/\D/g,'')">
-
         <label for="numero">Número da casa (obrigatório)</label>
         <input id="numero" type="text" placeholder="123" required>
-
         <label for="complemento">Complemento (opcional)</label>
         <input id="complemento" type="text" placeholder="Apto 101, Bloco B">
       </div>
-
       <div id="freteResult"></div>
-
       <button class="btn-green" onclick="calcularFrete()">Calcular Frete</button>
       <button class="btn-green" onclick="prosseguirCompra()">Prosseguir para PIX</button>
       <button class="btn-cancel" onclick="fecharModal('buyModal')">Cancelar</button>
     </div>
   </div>
 
-  <!-- Modal PIX -->
   <div id="pixModal" class="modal">
     <div class="modal-content" style="max-width:420px;">
       <span class="close-x" onclick="fecharModal('pixModal')">X</span>
       <h2>Pague via PIX</h2>
       <p id="pixValue" style="font-size:1.3rem; margin:20px 0;"></p>
-      
       <img id="qrImage" src="" alt="QR Code PIX" style="width:240px;height:240px;margin:20px auto;border:4px solid #39ff14;border-radius:12px;display:block;">
-      
       <p style="margin:15px 0;">Código Copia e Colar:</p>
-      <input id="pixCode" readonly value="" style="width:100%; padding:12px; background:#222; color:#39ff14; border:1px solid #444; border-radius:8px; font-family:monospace; text-align:center;">
-
-      <button onclick="copyPixCode()" style="background:#25D366; color:white; padding:12px 30px; border:none; border-radius:50px; font-weight:700; margin:20px 0; cursor:pointer; width:auto;">Copiar Código</button>
-      
-      <div id="timer" style="color:#ff3366; font-weight:700; margin:15px 0;">Tempo restante: <span id="timeLeft">15:00</span></div>
-      
-      <div style="font-size:0.95rem; color:#ccc; margin:20px 0; line-height:1.4;">
+      <input id="pixCode" readonly value="" style="width:100%;padding:12px;background:#222;color:#39ff14;border:1px solid #444;border-radius:8px;font-family:monospace;text-align:center;">
+      <button onclick="copyPixCode()" style="background:#25D366;color:white;padding:12px 30px;border:none;border-radius:50px;font-weight:700;margin:20px 0;cursor:pointer;">Copiar Código</button>
+      <div id="timer" style="color:#ff3366;font-weight:700;margin:15px 0;">Tempo restante: <span id="timeLeft">15:00</span></div>
+      <div style="font-size:0.95rem;color:#ccc;margin:20px 0;line-height:1.4;">
         <strong>Como pagar:</strong><br>1. Abra o app do banco<br>2. PIX → Copiar e Colar ou QR<br>3. Confirme e pague
       </div>
-      
-      <div style="background:#222; padding:12px; border-radius:8px; font-size:0.9rem; color:#ffcc00; margin-top:20px;">
+      <div style="background:#222;padding:12px;border-radius:8px;font-size:0.9rem;color:#ffcc00;margin-top:20px;">
         AVISO: Processado pela PushinPay. Não somos responsáveis pela entrega.
       </div>
     </div>
@@ -333,9 +164,9 @@
     let freteAtual = 0;
 
     function confirmarAdicionar(produto, valor) {
-      if (confirm(`Deseja adicionar 1 unidade de "${produto}" ao carrinho?`)) {
+      if (confirm(`Quer adicionar 1 unidade de "${produto}" ao carrinho?`)) {
         adicionarAoCarrinho(produto, valor);
-        alert('Adicionado ao carrinho! Clique no 🛒 para ver.');
+        alert('Adicionado! Clique no 🛒 pra ver o carrinho.');
       }
     }
 
@@ -348,6 +179,7 @@
       }
       localStorage.setItem('carrinho', JSON.stringify(carrinho));
       atualizarCarrinho();
+      console.log('Adicionado:', produto);
     }
 
     function removerItem(index) {
@@ -375,7 +207,7 @@
           <span>${item.produto} ×${qtd}</span>
           <span style="display:flex;align-items:center;gap:12px;">
             <strong>R$${(item.valor * qtd).toFixed(2)}</strong>
-            <span onclick="removerItem(${idx})" style="color:#ff3366;cursor:pointer;font-weight:bold;font-size:1.4rem;padding:0 4px;">×</span>
+            <span onclick="removerItem(${idx})" style="color:#ff3366;cursor:pointer;font-weight:bold;font-size:1.4rem;">×</span>
           </span>
         `;
         list.appendChild(li);
@@ -388,21 +220,19 @@
       const cep = document.getElementById('cep')?.value?.trim() || '';
       const el = document.getElementById('freteResult');
 
-      if (!el) return;
-
       if (cep.length !== 8 || !/^\d{8}$/.test(cep)) {
-        el.innerHTML = '<span style="color:#ff3366;">CEP inválido (digite 8 números)</span>';
+        el.innerHTML = '<span style="color:#ff3366;">CEP inválido (8 números)</span>';
         return;
       }
 
       const subtotal = carrinho.reduce((s, i) => s + i.valor * (i.quantidade || 1), 0);
       freteAtual = subtotal >= 170 ? 0 : 15;
 
-      el.innerHTML = `Frete estimado: R$${freteAtual.toFixed(2)}<br><strong>Total: R$${(subtotal + freteAtual).toFixed(2)}</strong>`;
+      el.innerHTML = `Frete: R$${freteAtual.toFixed(2)}<br>Total: R$${(subtotal + freteAtual).toFixed(2)}`;
     }
 
     async function gerarPix(valorCentavos, descricao) {
-      alert('Tentando gerar PIX...\nValor: R$' + (valorCentavos / 100).toFixed(2) + '\nDescrição: ' + descricao + '\nToken usado: ' + TOKEN.substring(0,10) + '...');
+      alert('Passo 1: Iniciando chamada à API PushinPay...\nValor: R$' + (valorCentavos/100).toFixed(2));
 
       const valueEl = document.getElementById('pixValue');
       const qrEl = document.getElementById('qrImage');
@@ -411,8 +241,104 @@
 
       valueEl.textContent = `Valor: R$${(valorCentavos / 100).toFixed(2)} - ${descricao}`;
       qrEl.src = '';
-      codeEl.value = 'Gerando... (aguarde)';
+      codeEl.value = 'Chamando API...';
 
       document.getElementById('pixModal').style.display = 'flex';
 
-      try
+      try {
+        console.log('Enviando POST para:', API_URL);
+        console.log('Token usado:', TOKEN);
+        console.log('Payload:', { value: valorCentavos, webhook_url: '' });
+
+        const res = await fetch(API_URL, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${TOKEN}`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({ value: valorCentavos, webhook_url: '' })
+        });
+
+        console.log('Status retornado:', res.status);
+        if (!res.ok) {
+          const errText = await res.text();
+          throw new Error(`Erro ${res.status}: ${errText}`);
+        }
+
+        const data = await res.json();
+        console.log('Resposta completa da API:', data);
+
+        if (data.qr_code_base64) {
+          qrEl.src = `data:image/png;base64,${data.qr_code_base64}`;
+          codeEl.value = data.qr_code || 'QR gerado, mas código não veio';
+          let time = 900;
+          const interval = setInterval(() => {
+            time--;
+            const m = Math.floor(time / 60);
+            const s = time % 60;
+            timerEl.textContent = `${m}:${s < 10 ? '0' + s : s}`;
+            if (time <= 0) clearInterval(interval);
+          }, 1000);
+          alert('PIX gerado com sucesso! Escaneie o QR ou copie o código.');
+        } else {
+          codeEl.value = 'API respondeu, mas sem QR Code';
+          alert('API OK, mas não retornou QR. Veja console (F12).');
+        }
+      } catch (err) {
+        console.error('Erro total na chamada da API:', err);
+        codeEl.value = 'Erro: ' + err.message;
+        alert('Falha ao chamar a API PushinPay:\n' + err.message + '\n\nAbra F12 → Console e copia o erro pra mim!');
+      }
+    }
+
+    function copyPixCode() {
+      const code = document.getElementById('pixCode');
+      code.select();
+      document.execCommand('copy');
+      alert('Código copiado!');
+    }
+
+    function prosseguirParaPagamento() {
+      if (carrinho.length === 0) return alert('Carrinho vazio!');
+      const subtotal = carrinho.reduce((s, i) => s + i.valor * (i.quantidade || 1), 0);
+      const total = subtotal + freteAtual;
+      itemAtual = { produto: 'Pedido Sibutramina', valor: total };
+      document.getElementById('buyModal').style.display = 'flex';
+      alert('Modal de dados aberto! Preencha e clique em Prosseguir.');
+    }
+
+    function prosseguirCompra() {
+      const email = document.getElementById('email')?.value?.trim();
+      const cep = document.getElementById('cep')?.value?.trim();
+      const numero = document.getElementById('numero')?.value?.trim();
+
+      if (!email || !cep || !numero) return alert('Preencha todos os campos obrigatórios!');
+
+      const subtotal = carrinho.reduce((s, i) => s + i.valor * (i.quantidade || 1), 0);
+      const total = subtotal + freteAtual;
+
+      alert('Passo 2: Chamando gerarPix agora...');
+      gerarPix(total * 100, itemAtual.produto + ' + Frete');
+      fecharModal('buyModal');
+    }
+
+    function fecharModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+
+    document.getElementById('cart-icon').addEventListener('click', e => {
+      e.stopPropagation();
+      document.getElementById('cart-dropdown').style.display = document.getElementById('cart-dropdown').style.display === 'block' ? 'none' : 'block';
+    });
+
+    document.addEventListener('click', e => {
+      const dd = document.getElementById('cart-dropdown');
+      const icon = document.getElementById('cart-icon');
+      if (!dd.contains(e.target) && !icon.contains(e.target)) dd.style.display = 'none';
+    });
+
+    atualizarCarrinho();
+  </script>
+</body>
+</html>
