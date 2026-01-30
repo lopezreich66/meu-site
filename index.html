@@ -227,7 +227,7 @@
           <h3>1 Caixa (30 cápsulas)</h3>
           <div class="price">R$ 90</div>
           <p>Inicie sua transformação agora mesmo.</p>
-          <button class="btn" onclick="adicionarAoCarrinho('1 Caixa (30 cápsulas)', 90)">Comprar Agora</button>
+          <button class="btn" onclick="confirmarAdicionar('1 Caixa (30 cápsulas)', 90)">Comprar Agora</button>
           <a href="https://wa.me/+5516988767617?text=Quero+1+caixa+de+sibutramina+15mg" class="btn whatsapp-btn">Falar no WhatsApp</a>
         </div>
 
@@ -237,7 +237,7 @@
           <div class="price">R$ 170</div>
           <div class="frete">+ Frete Grátis</div>
           <p>Economize e acelere os resultados.</p>
-          <button class="btn" onclick="adicionarAoCarrinho('2 Caixas (60 cápsulas)', 170)">Comprar Agora</button>
+          <button class="btn" onclick="confirmarAdicionar('2 Caixas (60 cápsulas)', 170)">Comprar Agora</button>
           <a href="https://wa.me/+5516988767617?text=Quero+2+caixas+de+sibutramina+15mg" class="btn whatsapp-btn">Falar no WhatsApp</a>
         </div>
 
@@ -247,7 +247,7 @@
           <div class="price">R$ 220</div>
           <div class="frete">+ Frete Grátis</div>
           <p>Melhor custo-benefício para resultados duradouros.</p>
-          <button class="btn" onclick="adicionarAoCarrinho('3 Caixas (90 cápsulas)', 220)">Comprar Agora</button>
+          <button class="btn" onclick="confirmarAdicionar('3 Caixas (90 cápsulas)', 220)">Comprar Agora</button>
           <a href="https://wa.me/+5516988767617?text=Quero+3+caixas+de+sibutramina+15mg" class="btn whatsapp-btn">Falar no WhatsApp</a>
         </div>
       </div>
@@ -332,66 +332,11 @@
     let itemAtual = {};
     let freteAtual = 0;
 
-    async function gerarPix(valorCentavos, descricao) {
-      const valueEl = document.getElementById('pixValue');
-      const qrEl = document.getElementById('qrImage');
-      const codeEl = document.getElementById('pixCode');
-      const timerEl = document.getElementById('timeLeft');
-
-      valueEl.textContent = `Valor: R$${(valorCentavos / 100).toFixed(2)} - ${descricao}`;
-      qrEl.src = '';
-      codeEl.value = 'Gerando...';
-
-      document.getElementById('pixModal').style.display = 'flex';
-
-      try {
-        const res = await fetch(API_URL, {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${TOKEN}`,
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify({ value: valorCentavos, webhook_url: '' })
-        });
-
-        if (!res.ok) {
-          const errText = await res.text();
-          throw new Error(`Erro HTTP ${res.status}: ${errText}`);
-        }
-
-        const data = await res.json();
-
-        if (data.qr_code_base64) {
-          qrEl.src = `data:image/png;base64,${data.qr_code_base64}`;
-          codeEl.value = data.qr_code || 'Código não retornado';
-
-          let time = 900;
-          const interval = setInterval(() => {
-            time--;
-            const m = Math.floor(time / 60);
-            const s = time % 60;
-            timerEl.textContent = `${m}:${s < 10 ? '0' + s : s}`;
-            if (time <= 0) {
-              clearInterval(interval);
-              timerEl.textContent = 'Expirado';
-            }
-          }, 1000);
-        } else {
-          codeEl.value = 'Erro: QR não gerado';
-        }
-      } catch (err) {
-        codeEl.value = 'Falha: ' + err.message;
-        console.error('Erro completo na API:', err);
-        alert('Erro ao gerar PIX: ' + err.message + '\nVerifique o console (F12) e me mande o erro!');
+    function confirmarAdicionar(produto, valor) {
+      if (confirm(`Deseja adicionar 1 unidade de "${produto}" ao carrinho?`)) {
+        adicionarAoCarrinho(produto, valor);
+        alert('Adicionado ao carrinho! Clique no 🛒 para ver.');
       }
-    }
-
-    function copyPixCode() {
-      const code = document.getElementById('pixCode');
-      code.select();
-      document.execCommand('copy');
-      alert('Código PIX copiado!');
     }
 
     function adicionarAoCarrinho(produto, valor) {
@@ -456,58 +401,18 @@
       el.innerHTML = `Frete estimado: R$${freteAtual.toFixed(2)}<br><strong>Total: R$${(subtotal + freteAtual).toFixed(2)}</strong>`;
     }
 
-    function prosseguirParaPagamento() {
-      if (carrinho.length === 0) {
-        alert('Seu carrinho está vazio!');
-        return;
-      }
-      const subtotal = carrinho.reduce((s, i) => s + i.valor * (i.quantidade || 1), 0);
-      const total = subtotal + freteAtual;
-      itemAtual = { produto: 'Pedido de Sibutramina', valor: total };
-      document.getElementById('buyModal').style.display = 'flex';
-    }
+    async function gerarPix(valorCentavos, descricao) {
+      alert('Tentando gerar PIX...\nValor: R$' + (valorCentavos / 100).toFixed(2) + '\nDescrição: ' + descricao + '\nToken usado: ' + TOKEN.substring(0,10) + '...');
 
-    function prosseguirCompra() {
-      const email = document.getElementById('email')?.value?.trim();
-      const cep   = document.getElementById('cep')?.value?.trim();
-      const numero = document.getElementById('numero')?.value?.trim();
+      const valueEl = document.getElementById('pixValue');
+      const qrEl = document.getElementById('qrImage');
+      const codeEl = document.getElementById('pixCode');
+      const timerEl = document.getElementById('timeLeft');
 
-      if (!email || !cep || !numero) {
-        alert('Preencha Email, CEP e Número da casa!');
-        return;
-      }
+      valueEl.textContent = `Valor: R$${(valorCentavos / 100).toFixed(2)} - ${descricao}`;
+      qrEl.src = '';
+      codeEl.value = 'Gerando... (aguarde)';
 
-      const subtotal = carrinho.reduce((s, i) => s + i.valor * (i.quantidade || 1), 0);
-      const total = subtotal + freteAtual;
+      document.getElementById('pixModal').style.display = 'flex';
 
-      gerarPix(total * 100, itemAtual.produto + ' + Frete');
-
-      alert(`PIX gerado com sucesso para R$${total.toFixed(2)}!\nAguarde a confirmação do pagamento.`);
-
-      fecharModal('buyModal');
-    }
-
-    function fecharModal(id) {
-      const modal = document.getElementById(id);
-      if (modal) modal.style.display = 'none';
-    }
-
-    document.getElementById('cart-icon').addEventListener('click', e => {
-      e.stopPropagation();
-      const dd = document.getElementById('cart-dropdown');
-      dd.style.display = dd.style.display === 'block' ? 'none' : 'block';
-    });
-
-    document.addEventListener('click', e => {
-      const dd = document.getElementById('cart-dropdown');
-      const icon = document.getElementById('cart-icon');
-      if (dd && icon && !dd.contains(e.target) && !icon.contains(e.target)) {
-        dd.style.display = 'none';
-      }
-    });
-
-    atualizarCarrinho();
-  </script>
-
-</body>
-</html>
+      try
