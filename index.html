@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sibutramina 15mg Genérico - Emagreça de Verdade Agora</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +19,7 @@
     }
     header {
       background: #111;
-      padding: 5rem 8%;
+      padding: 4rem 8%;
       text-align: center;
       border-bottom: 1px solid #222;
     }
@@ -32,15 +32,15 @@
     }
     section { margin-bottom: 5rem; }
     .promos {
-      display: flex;
-      flex-direction: column;
-      gap: 5rem; /* Mais espaço entre cards */
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 4rem;
     }
     .promo-card {
-      background: linear-gradient(to bottom, #0f0f0f, #0a0a0a);
+      background: #0f0f0f;
       border: 1px solid #222;
       border-radius: 16px;
-      padding: 3rem 2rem; /* Mais padding interno */
+      padding: 2.8rem;
       text-align: center;
       transition: all 0.3s;
     }
@@ -54,21 +54,15 @@
       max-height: 340px;
       object-fit: contain;
       border-radius: 12px;
-      margin-bottom: 2rem;
+      margin-bottom: 1.8rem;
       background: #111;
       border: 1px solid #333;
     }
     .promo-card h3 { font-size: 2.2rem; color: #39ff14; margin-bottom: 1rem; }
     .promo-card .price { font-size: 3.2rem; font-weight: 700; color: #ff3366; margin: 1rem 0; }
-    .promo-card .frete { color: #39ff14; font-size: 1.4rem; font-weight: 600; margin-bottom: 2rem; }
-    .btn-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem; /* Espaço maior entre botões */
-      margin-top: 1.5rem;
-    }
+    .promo-card .frete { color: #39ff14; font-size: 1.4rem; font-weight: 600; margin-bottom: 1.8rem; }
     .btn {
-      padding: 1.1rem 2.5rem;
+      padding: 1.2rem 2.8rem;
       background: #39ff14;
       color: #000;
       font-weight: 700;
@@ -76,9 +70,10 @@
       border-radius: 50px;
       cursor: pointer;
       transition: all 0.3s;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
+      margin: 0.8rem 0.5rem;
     }
-    .btn:hover { background: #2ecc10; transform: scale(1.03); }
+    .btn:hover { background: #2ecc10; transform: scale(1.05); }
     .whatsapp-btn { background: #25D366; color: white; }
     footer {
       text-align: center;
@@ -88,71 +83,8 @@
       margin-top: 6rem;
     }
 
-    /* Carrinho pequenininho branco no topo direito */
-    #cart-icon {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      z-index: 9999;
-      background: white;
-      color: black;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    #cart-icon:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 20px rgba(57,255,20,0.3);
-    }
-    #cart-badge {
-      position: absolute;
-      top: -6px;
-      right: -6px;
-      background: #ff3366;
-      color: white;
-      font-size: 0.75rem;
-      font-weight: bold;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 10px rgba(255,51,102,0.6);
-    }
-
-    /* Botão de música discreto no topo esquerdo */
-    #music-btn {
-      position: fixed;
-      top: 15px;
-      left: 15px;
-      z-index: 9999;
-      background: white;
-      color: black;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    #music-btn:hover {
-      transform: scale(1.1);
-    }
-
-    /* Modal de preenchimento */
-    #buyModal {
+    /* Modal styles (mantidos originais) */
+    .modal {
       display: none;
       position: fixed;
       inset: 0;
@@ -161,11 +93,9 @@
       justify-content: center;
       align-items: center;
       overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      touch-action: pan-y;
       padding: 20px;
     }
-    #buyModal .modal-content {
+    .modal-content {
       background: #0f0f0f;
       padding: 35px 25px;
       border-radius: 24px;
@@ -179,7 +109,7 @@
       max-height: 90vh;
       overflow-y: auto;
     }
-    #buyModal .close-x {
+    .close-x {
       position: absolute;
       top: 15px;
       right: 20px;
@@ -187,28 +117,9 @@
       font-size: 3.5rem;
       font-weight: bold;
       cursor: pointer;
-      line-height: 1;
     }
-    #buyModal .close-x:hover { color: #ff6b6b; transform: scale(1.2); }
-    #buyModal h2 {
-      color: #39ff14;
-      font-size: 2.4rem;
-      margin-bottom: 25px;
-    }
-    #buyModal p {
-      font-size: 1.1rem;
-      margin-bottom: 30px;
-      color: #bbb;
-    }
-    #buyModal label {
-      display: block;
-      text-align: left;
-      margin-bottom: 8px;
-      font-weight: 600;
-      font-size: 1rem;
-      color: #ddd;
-    }
-    #buyModal input {
+    label { display: block; text-align: left; margin-bottom: 8px; font-weight: 600; color: #ddd; }
+    input {
       width: 100%;
       padding: 16px;
       background: #1a1a1a;
@@ -218,13 +129,7 @@
       margin-bottom: 22px;
       font-size: 1.1rem;
     }
-    #freteResult {
-      margin: 30px 0;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #39ff14;
-      min-height: 60px;
-    }
+    #freteResult { margin: 30px 0; font-size: 1.4rem; font-weight: 700; color: #39ff14; min-height: 60px; }
     .btn-green {
       width: 100%;
       margin: 15px 0;
@@ -235,7 +140,6 @@
       color: #000;
       border: none;
       cursor: pointer;
-      transition: background 0.3s;
     }
     .btn-green:hover { background: #2ecc10; }
     .btn-cancel {
@@ -253,17 +157,15 @@
 </head>
 <body>
 
-  <!-- Botão de música discreto no topo esquerdo -->
-  <div id="music-btn">🎵</div>
+  <!-- Ícone do carrinho -->
+  <div id="cart-icon">🛒 <span id="cart-badge">0</span></div>
 
-  <!-- Áudio de fundo (lo-fi suave) -->
-  <audio id="bgMusic" loop volume="0.08">
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9f0c9e6c6c.mp3?filename=lofi-girl-2-2022-03-15.mp3" type="audio/mpeg">
-  </audio>
-
-  <!-- Carrinho pequenininho branco com número discreto -->
-  <div id="cart-icon">
-    🛒 <span id="cart-badge">0</span>
+  <!-- Dropdown do carrinho -->
+  <div id="cart-dropdown">
+    <h4 style="color:#39ff14; margin-bottom:10px; text-align:center;">Seu Carrinho</h4>
+    <ul id="cart-items"></ul>
+    <p id="cart-total" style="text-align:right; font-weight:700; color:#39ff14;">Total: R$0,00</p>
+    <button class="btn" onclick="prosseguirParaPagamento()" style="width:100%; margin-top:10px; font-size:1rem;">Ir para Compra</button>
   </div>
 
   <header>
@@ -276,36 +178,32 @@
       <h2>Promoções Imperdíveis</h2>
       <div class="promos">
         <div class="promo-card">
-          <img src="caixas-sibutramina.jpg" loading="lazy" alt="Caixas empilhadas de Sibutramina 15mg Eurofarma Genérico">
+          <img src="https://via.placeholder.com/400x340/0f0f0f/39ff14?text=Sibutramina+15mg+1+Caixa" loading="lazy" alt="1 Caixa Sibutramina 15mg">
           <h3>1 Caixa (30 cápsulas)</h3>
           <div class="price">R$ 90</div>
           <p>Inicie sua transformação agora mesmo.</p>
-          <div class="btn-wrapper">
-            <button class="btn" onclick="abrirModalCompra('1 Caixa (30 cápsulas)', 90)">Comprar Agora</button>
-            <a href="https://wa.me/+5516988767617?text=Quero+1+caixa+de+sibutramina+15mg" class="btn whatsapp-btn">Falar no WhatsApp</a>
-          </div>
+          <button class="btn" onclick="adicionarAoCarrinho('1 Caixa (30 cápsulas)', 90)">Comprar Agora</button>
+          <a href="https://wa.me/+5516988767617?text=Quero+1+caixa+de+sibutramina+15mg" class="btn whatsapp-btn">Falar no WhatsApp</a>
         </div>
 
         <div class="promo-card">
-          <img src="caixas-sibutramina.jpg" loading="lazy" alt="Caixas de Sibutramina 15mg Genérico Eurofarma">
+          <img src="https://via.placeholder.com/400x340/0f0f0f/39ff14?text=Sibutramina+15mg+2+Caixas" loading="lazy" alt="2 Caixas Sibutramina 15mg">
           <h3>2 Caixas (60 cápsulas)</h3>
           <div class="price">R$ 170</div>
           <div class="frete">+ Frete Grátis</div>
           <p>Economize e acelere os resultados.</p>
-          <div class="btn-wrapper">
-            <a href="https://wa.me/+5516988767617?text=Quero+2+caixas+de+sibutramina+15mg" class="btn whatsapp-btn">Comprar Agora</a>
-          </div>
+          <button class="btn" onclick="adicionarAoCarrinho('2 Caixas (60 cápsulas)', 170)">Comprar Agora</button>
+          <a href="https://wa.me/+5516988767617?text=Quero+2+caixas+de+sibutramina+15mg" class="btn whatsapp-btn">Falar no WhatsApp</a>
         </div>
 
         <div class="promo-card">
-          <img src="caixas-sibutramina.jpg" loading="lazy" alt="Caixas de Sibutramina 15mg Genérico Eurofarma">
+          <img src="https://via.placeholder.com/400x340/0f0f0f/39ff14?text=Sibutramina+15mg+3+Caixas" loading="lazy" alt="3 Caixas Sibutramina 15mg">
           <h3>3 Caixas (90 cápsulas)</h3>
           <div class="price">R$ 220</div>
           <div class="frete">+ Frete Grátis</div>
           <p>Melhor custo-benefício para resultados duradouros.</p>
-          <div class="btn-wrapper">
-            <a href="https://wa.me/+5516988767617?text=Quero+3+caixas+de+sibutramina+15mg" class="btn whatsapp-btn">Comprar Agora</a>
-          </div>
+          <button class="btn" onclick="adicionarAoCarrinho('3 Caixas (90 cápsulas)', 220)">Comprar Agora</button>
+          <a href="https://wa.me/+5516988767617?text=Quero+3+caixas+de+sibutramina+15mg" class="btn whatsapp-btn">Falar no WhatsApp</a>
         </div>
       </div>
     </section>
@@ -327,14 +225,11 @@
   </footer>
 
   <!-- Modal de preenchimento -->
-  <div id="buyModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:9999; justify-content:center; align-items:center; overflow-y:auto; -webkit-overflow-scrolling:touch; touch-action:pan-y; padding:20px;">
-    <div style="background:#0f0f0f; padding:35px 25px; border-radius:24px; border:3px solid #39ff14; max-width:450px; width:94%; text-align:center; color:#e0e0e0; box-shadow:0 15px 50px rgba(57,255,20,0.2); position:relative;">
-      <span onclick="fecharModal()" style="position:absolute; top:15px; right:20px; color:#ff3366; font-size:3.5rem; font-weight:bold; cursor:pointer; line-height:1;">X</span>
-      <h2 style="color:#39ff14; font-size:2.4rem; margin-bottom:25px;">Preencha seus dados</h2>
-      
-      <p style="font-size:1.1rem; margin-bottom:30px; color:#bbb;">
-        Vamos calcular o frete e gerar seu PIX.
-      </p>
+  <div id="buyModal" class="modal">
+    <div class="modal-content">
+      <span class="close-x" onclick="fecharModal('buyModal')">X</span>
+      <h2>Preencha seus dados</h2>
+      <p style="color:#bbb; margin:20px 0;">Vamos calcular o frete e gerar seu PIX.</p>
 
       <div style="text-align:left;">
         <label for="email">Email (obrigatório)</label>
@@ -350,43 +245,37 @@
         <input id="complemento" type="text" placeholder="Apto 101, Bloco B">
       </div>
 
-      <div id="freteResult" style="margin:30px 0; font-size:1.4rem; font-weight:700; color:#39ff14;"></div>
+      <div id="freteResult"></div>
 
       <button class="btn-green" onclick="calcularFrete()">Calcular Frete</button>
       <button class="btn-green" onclick="prosseguirCompra()">Prosseguir para PIX</button>
-      <button onclick="fecharModal()" class="btn-cancel">Cancelar</button>
+      <button class="btn-cancel" onclick="fecharModal('buyModal')">Cancelar</button>
     </div>
   </div>
 
   <!-- Modal PIX -->
-  <div id="pixModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center; flex-direction:column;">
-    <div style="background:#111; padding:30px; border-radius:16px; border:3px solid #39ff14; max-width:420px; width:94%; text-align:center; color:#e0e0e0;">
-      <span onclick="fecharModal('pixModal')" style="position:absolute; top:15px; right:20px; color:#ff3366; font-size:3.5rem; font-weight:bold; cursor:pointer; line-height:1;">X</span>
-      <h2 style="color:#39ff14; margin-bottom:20px;">Pague via PIX</h2>
-      <p id="pixValue" style="font-size:1.3rem; margin-bottom:20px;"></p>
+  <div id="pixModal" class="modal" style="flex-direction:column;">
+    <div class="modal-content" style="max-width:420px;">
+      <span class="close-x" onclick="fecharModal('pixModal')">X</span>
+      <h2>Pague via PIX</h2>
+      <p id="pixValue" style="font-size:1.3rem; margin:20px 0;"></p>
       
       <img id="qrImage" src="" alt="QR Code PIX" style="width:240px; height:240px; margin:20px auto; border:4px solid #39ff14; border-radius:12px;">
       
-      <p style="margin:15px 0; font-size:1.1rem;">Código Copia e Cola:</p>
-      <input id="pixCode" readonly value="" style="width:100%; padding:16px; background:#222; color:#39ff14; border:1px solid #444; border-radius:10px; font-family:monospace; text-align:center; font-size:1.1rem;">
+      <p style="margin:15px 0;">Código Copia e Cola:</p>
+      <input id="pixCode" readonly value="" style="width:100%; padding:12px; background:#222; color:#39ff14; border:1px solid #444; border-radius:8px; font-family:monospace; text-align:center;">
       
-      <button onclick="copyPixCode()" style="background:#25D366; color:#fff; padding:16px 30px; border:none; border-radius:50px; font-weight:700; margin:20px 0; cursor:pointer; font-size:1.2rem;">Copiar Código</button>
+      <button onclick="copyPixCode()" style="background:#25D366; color:white; padding:12px 30px; border:none; border-radius:50px; font-weight:700; margin:20px 0; cursor:pointer;">Copiar Código</button>
       
-      <div id="timer" style="margin:20px 0; font-size:1.3rem; color:#ff3366; font-weight:700;">Tempo restante: <span id="timeLeft">15:00</span></div>
+      <div id="timer" style="color:#ff3366; font-weight:700;">Tempo restante: <span id="timeLeft">15:00</span></div>
       
-      <div style="font-size:1rem; color:#ccc; margin:25px 0; line-height:1.5;">
-        <strong>Como pagar:</strong><br>
-        1. Abra o app do seu banco.<br>
-        2. Vá em PIX > Copiar e Colar ou Ler QR.<br>
-        3. Cole o código ou escaneie o QR.<br>
-        4. Confirme o valor e pague.
+      <div style="font-size:0.95rem; color:#ccc; margin:20px 0;">
+        <strong>Como pagar:</strong><br>1. Abra o app do banco<br>2. PIX → Copiar e Colar ou QR<br>3. Confirme e pague
       </div>
       
-      <div style="background:#222; padding:15px; border-radius:10px; font-size:0.95rem; color:#ffcc00; margin:20px 0;">
-        AVISO: Transação processada pela PushinPay. A processadora não é responsável pelo produto/entrega. Consulte termos.
+      <div style="background:#222; padding:12px; border-radius:8px; font-size:0.9rem; color:#ffcc00;">
+        AVISO: Processado pela PushinPay. Não somos responsáveis pela entrega.
       </div>
-      
-      <button onclick="fecharModal('pixModal')" style="background:#ff3366; color:#fff; padding:16px 40px; border:none; border-radius:50px; font-weight:700; cursor:pointer; font-size:1.2rem;">Fechar</button>
     </div>
   </div>
 
@@ -394,56 +283,50 @@
     const API_URL = 'https://api.pushinpay.com.br/api/pix/cashIn';
     const TOKEN = '61382|C0izZLKkR0LdwJQzSbKFqylrgNkMBePNwRYobLZledd4ee14';
 
-    async function gerarPix(valorCentavos, produto) {
-      const modal = document.getElementById('pixModal');
+    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+    let itemAtual = {};
+    let freteAtual = 0;
+
+    async function gerarPix(valorCentavos, descricao) {
       const valueEl = document.getElementById('pixValue');
       const qrEl = document.getElementById('qrImage');
       const codeEl = document.getElementById('pixCode');
       const timerEl = document.getElementById('timeLeft');
 
-      valueEl.textContent = `Valor: R$${(valorCentavos / 100).toFixed(2)} - ${produto}`;
+      valueEl.textContent = `Valor: R$${(valorCentavos / 100).toFixed(2)} - ${descricao}`;
       qrEl.src = '';
-      codeEl.value = 'Gerando PIX... Aguarde';
+      codeEl.value = 'Gerando...';
 
-      modal.style.display = 'flex';
+      document.getElementById('pixModal').style.display = 'flex';
 
       try {
-        const response = await fetch(API_URL, {
+        const res = await fetch(API_URL, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${TOKEN}`,
-            'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({
-            value: valorCentavos,
-            webhook_url: ''
-          })
+          body: JSON.stringify({ value: valorCentavos, webhook_url: '' })
         });
+        const data = await res.json();
 
-        const data = await response.json();
-
-        if (response.ok && data.qr_code_base64 && data.qr_code) {
-          qrEl.src = data.qr_code_base64.includes('data:') ? data.qr_code_base64 : `data:image/png;base64,${data.qr_code_base64}`;
+        if (data.qr_code_base64) {
+          qrEl.src = `data:image/png;base64,${data.qr_code_base64}`;
           codeEl.value = data.qr_code;
 
           let time = 900;
           const interval = setInterval(() => {
             time--;
-            const min = Math.floor(time / 60);
-            const sec = time % 60;
-            timerEl.textContent = `${min}:${sec < 10 ? '0' : ''}${sec}`;
-            if (time <= 0) {
-              clearInterval(interval);
-              timerEl.textContent = 'Tempo esgotado';
-            }
+            const m = Math.floor(time / 60);
+            const s = time % 60;
+            timerEl.textContent = `${m}:${s < 10 ? '0' : ''}${s}`;
+            if (time <= 0) clearInterval(interval);
           }, 1000);
         } else {
-          codeEl.value = `Erro: ${response.status} - ${data.message || 'Verifique token ou IP'}`;
+          codeEl.value = 'Erro ao gerar PIX';
         }
-      } catch (error) {
-        codeEl.value = `Falha: ${error.message}`;
-        console.error(error);
+      } catch (err) {
+        codeEl.value = 'Falha na conexão';
       }
     }
 
@@ -451,75 +334,12 @@
       const code = document.getElementById('pixCode');
       code.select();
       document.execCommand('copy');
-      alert('Código PIX copiado!');
-    }
-
-    // Fluxo de modais
-    let itemAtual = {};
-
-    function abrirModalCompra(produto, valor) {
-      itemAtual = { produto, valor };
-      document.getElementById('buyModal').style.display = 'flex';
-      document.getElementById('email').focus();
-    }
-
-    function calcularFrete() {
-      const cep = document.getElementById('cep').value.trim();
-      const freteEl = document.getElementById('freteResult');
-
-      if (cep.length !== 8 || isNaN(cep)) {
-        freteEl.innerHTML = '<span style="color:#ff3366;">CEP inválido! Digite 8 números.</span>';
-        return;
-      }
-
-      let frete = 0;
-      if (itemAtual.valor === 90) frete = 15;
-      else frete = 10;
-
-      freteEl.innerHTML = `Frete estimado: R$${frete.toFixed(2)}<br>Total: R$${(itemAtual.valor + frete).toFixed(2)}`;
-      window.freteAtual = frete;
-    }
-
-    function prosseguirCompra() {
-      const email = document.getElementById('email').value.trim();
-      const cep = document.getElementById('cep').value.trim();
-      const numero = document.getElementById('numero').value.trim();
-      const complemento = document.getElementById('complemento').value.trim();
-
-      if (!email || !cep || !numero) {
-        alert('Preencha Email, CEP e Número da casa!');
-        return;
-      }
-
-      const frete = window.freteAtual || 0;
-      const total = itemAtual.valor + frete;
-
-      adicionarAoCarrinho(itemAtual.produto, itemAtual.valor);
-
-      gerarPix(total * 100, itemAtual.produto + ' + Frete');
-
-      alert(`PIX gerado com sucesso para R$${total.toFixed(2)} (inclui frete)!\nAguarde confirmação do pagamento. Em breve você receberá email automático com instruções e link do grupo.`);
-
-      fecharModal();
-    }
-
-    function fecharModal() {
-      document.getElementById('buyModal').style.display = 'none';
-    }
-
-    // Carrinho discreto pequeno (só ícone + número)
-    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-
-    function atualizarCarrinho() {
-      const badge = document.getElementById('cart-badge');
-      const totalItens = carrinho.reduce((sum, item) => sum + item.quantidade, 0);
-      badge.textContent = totalItens;
-      badge.style.display = totalItens > 0 ? 'flex' : 'none';
+      alert('Código copiado!');
     }
 
     function adicionarAoCarrinho(produto, valor) {
-      const item = carrinho.find(i => i.produto === produto);
-      if (item) item.quantidade += 1;
+      let item = carrinho.find(i => i.produto === produto);
+      if (item) item.quantidade = (item.quantidade || 1) + 1;
       else carrinho.push({ produto, valor, quantidade: 1 });
       localStorage.setItem('carrinho', JSON.stringify(carrinho));
       atualizarCarrinho();
@@ -531,37 +351,94 @@
       atualizarCarrinho();
     }
 
-    document.getElementById('cart-icon').addEventListener('click', () => {
-      if (carrinho.length === 0) {
-        alert('Carrinho vazio');
-      } else {
-        let lista = carrinho.map(i => `${i.produto} x${i.quantidade} - R$${(i.valor * i.quantidade).toFixed(2)}`).join('\n');
-        let total = carrinho.reduce((sum, i) => sum + i.valor * i.quantidade, 0).toFixed(2);
-        alert(`Seu carrinho:\n\n${lista}\n\nTotal: R$${total}`);
+    function atualizarCarrinho() {
+      const badge = document.getElementById('cart-badge');
+      const totalItens = carrinho.reduce((acc, i) => acc + (i.quantidade || 1), 0);
+      badge.textContent = totalItens;
+      badge.style.display = totalItens > 0 ? 'inline-block' : 'none';
+
+      const list = document.getElementById('cart-items');
+      list.innerHTML = '';
+      let total = 0;
+
+      carrinho.forEach((item, idx) => {
+        const qtd = item.quantidade || 1;
+        total += item.valor * qtd;
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #222;';
+        li.innerHTML = `
+          <span>${item.produto} ×${qtd}</span>
+          <span style="display:flex; align-items:center; gap:10px;">
+            R$${(item.valor * qtd).toFixed(2)}
+            <span onclick="removerItem(${idx})" style="color:#ff3366; cursor:pointer; font-weight:bold; font-size:1.3rem;">×</span>
+          </span>
+        `;
+        list.appendChild(li);
+      });
+
+      document.getElementById('cart-total').textContent = `Total: R$${total.toFixed(2)}`;
+    }
+
+    function calcularFrete() {
+      const cep = document.getElementById('cep').value.trim();
+      const el = document.getElementById('freteResult');
+
+      if (cep.length !== 8 || isNaN(cep)) {
+        el.innerHTML = '<span style="color:#ff3366;">CEP inválido (8 números)</span>';
+        return;
+      }
+
+      const subtotal = carrinho.reduce((s, i) => s + i.valor * (i.quantidade || 1), 0);
+      freteAtual = subtotal >= 170 ? 0 : 15;
+
+      el.innerHTML = `Frete: R$${freteAtual.toFixed(2)}<br><strong>Total: R$${(subtotal + freteAtual).toFixed(2)}</strong>`;
+    }
+
+    function prosseguirParaPagamento() {
+      if (carrinho.length === 0) return alert('Carrinho vazio!');
+      const total = carrinho.reduce((s, i) => s + i.valor * (i.quantidade || 1), 0) + freteAtual;
+      itemAtual = { produto: 'Pedido Sibutramina', valor: total };
+      document.getElementById('buyModal').style.display = 'flex';
+    }
+
+    function prosseguirCompra() {
+      const email = document.getElementById('email').value.trim();
+      const cep = document.getElementById('cep').value.trim();
+      const numero = document.getElementById('numero').value.trim();
+
+      if (!email || !cep || !numero) return alert('Preencha Email, CEP e Número!');
+
+      const subtotal = carrinho.reduce((s, i) => s + i.valor * (i.quantidade || 1), 0);
+      const total = subtotal + freteAtual;
+
+      gerarPix(total * 100, itemAtual.produto);
+
+      alert(`PIX gerado para R$${total.toFixed(2)}!\nAguarde confirmação.`);
+      fecharModal('buyModal');
+      // Limpa carrinho após pagamento (opcional)
+      // carrinho = []; localStorage.setItem('carrinho', JSON.stringify(carrinho)); atualizarCarrinho();
+    }
+
+    function fecharModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+
+    // Controle do dropdown
+    document.getElementById('cart-icon').addEventListener('click', e => {
+      e.stopPropagation();
+      const dd = document.getElementById('cart-dropdown');
+      dd.style.display = dd.style.display === 'block' ? 'none' : 'block';
+    });
+
+    document.addEventListener('click', e => {
+      const dd = document.getElementById('cart-dropdown');
+      if (!dd.contains(e.target) && !document.getElementById('cart-icon').contains(e.target)) {
+        dd.style.display = 'none';
       }
     });
 
+    // Inicializa
     atualizarCarrinho();
-
-    // Música de fundo (ativa após interação)
-    const music = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_9f0c9e6c6c.mp3?filename=lofi-girl-2-2022-03-15.mp3');
-    music.loop = true;
-    music.volume = 0.08; // Bem baixo de começo
-
-    document.addEventListener('click', () => {
-      music.play().catch(() => console.log('Autoplay bloqueado'));
-    }, { once: true });
-
-    // Botão pra mutar / abaixar música (opcional)
-    document.getElementById('music-btn').addEventListener('click', () => {
-      if (music.volume > 0) {
-        music.volume = 0;
-        alert('Música mutada');
-      } else {
-        music.volume = 0.08;
-        alert('Música ativada (volume baixo)');
-      }
-    });
   </script>
 
 </body>
