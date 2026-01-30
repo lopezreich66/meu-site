@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title> Seja bem vindo ao site..</title>
+  <title>Sibutramina 15mg Genérica - Eurofarma</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -75,6 +75,50 @@
     }
     .btn:hover { background: #2ecc10; transform: scale(1.05); }
     .whatsapp-btn { background: #25D366; color: white; }
+
+    /* Carrinho */
+    #cart-icon {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #111;
+      color: #39ff14;
+      padding: 12px 16px;
+      border-radius: 50%;
+      font-size: 1.6rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(57,255,20,0.2);
+      z-index: 1000;
+    }
+    #cart-badge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #ff3366;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: bold;
+      padding: 3px 7px;
+      border-radius: 50%;
+      min-width: 18px;
+      text-align: center;
+    }
+    #cart-dropdown {
+      display: none;
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      background: #0f0f0f;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 15px;
+      width: 320px;
+      max-height: 70vh;
+      overflow-y: auto;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+      z-index: 999;
+    }
+
     footer {
       text-align: center;
       padding: 4rem;
@@ -83,7 +127,7 @@
       margin-top: 6rem;
     }
 
-    /* Modal styles (mantidos originais) */
+    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -117,6 +161,7 @@
       font-size: 3.5rem;
       font-weight: bold;
       cursor: pointer;
+      line-height: 1;
     }
     label { display: block; text-align: left; margin-bottom: 8px; font-weight: 600; color: #ddd; }
     input {
@@ -164,8 +209,8 @@
   <div id="cart-dropdown">
     <h4 style="color:#39ff14; margin-bottom:10px; text-align:center;">Seu Carrinho</h4>
     <ul id="cart-items"></ul>
-    <p id="cart-total" style="text-align:right; font-weight:700; color:#39ff14;">Total: R$0,00</p>
-    <button class="btn" onclick="prosseguirParaPagamento()" style="width:100%; margin-top:10px; font-size:1rem;">Ir para Compra</button>
+    <p id="cart-total" style="text-align:right; font-weight:700; color:#39ff14; margin:15px 0;">Total: R$0,00</p>
+    <button class="btn" onclick="prosseguirParaPagamento()" style="width:100%; font-size:1rem; padding:12px 0;">Ir para Compra</button>
   </div>
 
   <header>
@@ -254,26 +299,26 @@
   </div>
 
   <!-- Modal PIX -->
-  <div id="pixModal" class="modal" style="flex-direction:column;">
+  <div id="pixModal" class="modal">
     <div class="modal-content" style="max-width:420px;">
       <span class="close-x" onclick="fecharModal('pixModal')">X</span>
       <h2>Pague via PIX</h2>
       <p id="pixValue" style="font-size:1.3rem; margin:20px 0;"></p>
       
-      <img id="qrImage" src="" alt="QR Code PIX" style="width:240px; height:240px; margin:20px auto; border:4px solid #39ff14; border-radius:12px;">
+      <img id="qrImage" src="" alt="QR Code PIX" style="width:240px;height:240px;margin:20px auto;border:4px solid #39ff14;border-radius:12px;display:block;">
       
       <p style="margin:15px 0;">Código Copia e Cola:</p>
       <input id="pixCode" readonly value="" style="width:100%; padding:12px; background:#222; color:#39ff14; border:1px solid #444; border-radius:8px; font-family:monospace; text-align:center;">
+
+      <button onclick="copyPixCode()" style="background:#25D366; color:white; padding:12px 30px; border:none; border-radius:50px; font-weight:700; margin:20px 0; cursor:pointer; width:auto;">Copiar Código</button>
       
-      <button onclick="copyPixCode()" style="background:#25D366; color:white; padding:12px 30px; border:none; border-radius:50px; font-weight:700; margin:20px 0; cursor:pointer;">Copiar Código</button>
+      <div id="timer" style="color:#ff3366; font-weight:700; margin:15px 0;">Tempo restante: <span id="timeLeft">15:00</span></div>
       
-      <div id="timer" style="color:#ff3366; font-weight:700;">Tempo restante: <span id="timeLeft">15:00</span></div>
-      
-      <div style="font-size:0.95rem; color:#ccc; margin:20px 0;">
+      <div style="font-size:0.95rem; color:#ccc; margin:20px 0; line-height:1.4;">
         <strong>Como pagar:</strong><br>1. Abra o app do banco<br>2. PIX → Copiar e Colar ou QR<br>3. Confirme e pague
       </div>
       
-      <div style="background:#222; padding:12px; border-radius:8px; font-size:0.9rem; color:#ffcc00;">
+      <div style="background:#222; padding:12px; border-radius:8px; font-size:0.9rem; color:#ffcc00; margin-top:20px;">
         AVISO: Processado pela PushinPay. Não somos responsáveis pela entrega.
       </div>
     </div>
@@ -304,29 +349,37 @@
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${TOKEN}`,
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
           },
           body: JSON.stringify({ value: valorCentavos, webhook_url: '' })
         });
+
+        if (!res.ok) throw new Error('Erro na API');
+
         const data = await res.json();
 
         if (data.qr_code_base64) {
           qrEl.src = `data:image/png;base64,${data.qr_code_base64}`;
-          codeEl.value = data.qr_code;
+          codeEl.value = data.qr_code || 'Código não retornado';
 
           let time = 900;
           const interval = setInterval(() => {
             time--;
             const m = Math.floor(time / 60);
             const s = time % 60;
-            timerEl.textContent = `${m}:${s < 10 ? '0' : ''}${s}`;
-            if (time <= 0) clearInterval(interval);
+            timerEl.textContent = `${m}:${s < 10 ? '0' + s : s}`;
+            if (time <= 0) {
+              clearInterval(interval);
+              timerEl.textContent = 'Expirado';
+            }
           }, 1000);
         } else {
-          codeEl.value = 'Erro ao gerar PIX';
+          codeEl.value = 'Erro: QR não gerado';
         }
       } catch (err) {
-        codeEl.value = 'Falha na conexão';
+        codeEl.value = 'Falha: ' + err.message;
+        console.error(err);
       }
     }
 
@@ -334,13 +387,16 @@
       const code = document.getElementById('pixCode');
       code.select();
       document.execCommand('copy');
-      alert('Código copiado!');
+      alert('Código PIX copiado!');
     }
 
     function adicionarAoCarrinho(produto, valor) {
       let item = carrinho.find(i => i.produto === produto);
-      if (item) item.quantidade = (item.quantidade || 1) + 1;
-      else carrinho.push({ produto, valor, quantidade: 1 });
+      if (item) {
+        item.quantidade = (item.quantidade || 1) + 1;
+      } else {
+        carrinho.push({ produto, valor, quantidade: 1 });
+      }
       localStorage.setItem('carrinho', JSON.stringify(carrinho));
       atualizarCarrinho();
     }
@@ -354,7 +410,7 @@
     function atualizarCarrinho() {
       const badge = document.getElementById('cart-badge');
       const totalItens = carrinho.reduce((acc, i) => acc + (i.quantidade || 1), 0);
-      badge.textContent = totalItens;
+      badge.textContent = totalItens || '';
       badge.style.display = totalItens > 0 ? 'inline-block' : 'none';
 
       const list = document.getElementById('cart-items');
@@ -365,12 +421,12 @@
         const qtd = item.quantidade || 1;
         total += item.valor * qtd;
         const li = document.createElement('li');
-        li.style.cssText = 'display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #222;';
+        li.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #222;';
         li.innerHTML = `
           <span>${item.produto} ×${qtd}</span>
-          <span style="display:flex; align-items:center; gap:10px;">
-            R$${(item.valor * qtd).toFixed(2)}
-            <span onclick="removerItem(${idx})" style="color:#ff3366; cursor:pointer; font-weight:bold; font-size:1.3rem;">×</span>
+          <span style="display:flex;align-items:center;gap:12px;">
+            <strong>R$${(item.valor * qtd).toFixed(2)}</strong>
+            <span onclick="removerItem(${idx})" style="color:#ff3366;cursor:pointer;font-weight:bold;font-size:1.4rem;padding:0 4px;">×</span>
           </span>
         `;
         list.appendChild(li);
@@ -380,50 +436,63 @@
     }
 
     function calcularFrete() {
-      const cep = document.getElementById('cep').value.trim();
+      const cep = document.getElementById('cep')?.value?.trim() || '';
       const el = document.getElementById('freteResult');
 
-      if (cep.length !== 8 || isNaN(cep)) {
-        el.innerHTML = '<span style="color:#ff3366;">CEP inválido (8 números)</span>';
+      if (!el) return;
+
+      if (cep.length !== 8 || !/^\d{8}$/.test(cep)) {
+        el.innerHTML = '<span style="color:#ff3366;">CEP inválido (digite 8 números)</span>';
         return;
       }
 
       const subtotal = carrinho.reduce((s, i) => s + i.valor * (i.quantidade || 1), 0);
       freteAtual = subtotal >= 170 ? 0 : 15;
 
-      el.innerHTML = `Frete: R$${freteAtual.toFixed(2)}<br><strong>Total: R$${(subtotal + freteAtual).toFixed(2)}</strong>`;
+      el.innerHTML = `Frete estimado: R$${freteAtual.toFixed(2)}<br><strong>Total: R$${(subtotal + freteAtual).toFixed(2)}</strong>`;
     }
 
     function prosseguirParaPagamento() {
-      if (carrinho.length === 0) return alert('Carrinho vazio!');
-      const total = carrinho.reduce((s, i) => s + i.valor * (i.quantidade || 1), 0) + freteAtual;
-      itemAtual = { produto: 'Pedido Sibutramina', valor: total };
+      if (carrinho.length === 0) {
+        alert('Seu carrinho está vazio!');
+        return;
+      }
+      const subtotal = carrinho.reduce((s, i) => s + i.valor * (i.quantidade || 1), 0);
+      const total = subtotal + freteAtual;
+      itemAtual = { produto: 'Pedido de Sibutramina', valor: total };
       document.getElementById('buyModal').style.display = 'flex';
     }
 
     function prosseguirCompra() {
-      const email = document.getElementById('email').value.trim();
-      const cep = document.getElementById('cep').value.trim();
-      const numero = document.getElementById('numero').value.trim();
+      const email = document.getElementById('email')?.value?.trim();
+      const cep   = document.getElementById('cep')?.value?.trim();
+      const numero = document.getElementById('numero')?.value?.trim();
 
-      if (!email || !cep || !numero) return alert('Preencha Email, CEP e Número!');
+      if (!email || !cep || !numero) {
+        alert('Preencha Email, CEP e Número da casa!');
+        return;
+      }
 
       const subtotal = carrinho.reduce((s, i) => s + i.valor * (i.quantidade || 1), 0);
       const total = subtotal + freteAtual;
 
-      gerarPix(total * 100, itemAtual.produto);
+      gerarPix(total * 100, itemAtual.produto + ' + Frete');
 
-      alert(`PIX gerado para R$${total.toFixed(2)}!\nAguarde confirmação.`);
+      alert(`PIX gerado com sucesso para R$${total.toFixed(2)}!\nAguarde a confirmação do pagamento.`);
+
       fecharModal('buyModal');
-      // Limpa carrinho após pagamento (opcional)
-      // carrinho = []; localStorage.setItem('carrinho', JSON.stringify(carrinho)); atualizarCarrinho();
+      // Opcional: limpar carrinho após gerar PIX
+      // carrinho = [];
+      // localStorage.setItem('carrinho', JSON.stringify(carrinho));
+      // atualizarCarrinho();
     }
 
     function fecharModal(id) {
-      document.getElementById(id).style.display = 'none';
+      const modal = document.getElementById(id);
+      if (modal) modal.style.display = 'none';
     }
 
-    // Controle do dropdown
+    // Eventos do carrinho
     document.getElementById('cart-icon').addEventListener('click', e => {
       e.stopPropagation();
       const dd = document.getElementById('cart-dropdown');
@@ -432,7 +501,8 @@
 
     document.addEventListener('click', e => {
       const dd = document.getElementById('cart-dropdown');
-      if (!dd.contains(e.target) && !document.getElementById('cart-icon').contains(e.target)) {
+      const icon = document.getElementById('cart-icon');
+      if (dd && icon && !dd.contains(e.target) && !icon.contains(e.target)) {
         dd.style.display = 'none';
       }
     });
@@ -443,5 +513,3 @@
 
 </body>
 </html>
-
-
