@@ -32,8 +32,8 @@
     }
     section { margin-bottom: 5rem; }
     .promos {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
       gap: 4rem;
     }
     .promo-card {
@@ -83,8 +83,8 @@
       margin-top: 6rem;
     }
 
-    /* Modal de preenchimento com X grande e zoom suave */
-    #buyModal {
+    /* Modal */
+    .modal {
       display: none;
       position: fixed;
       inset: 0;
@@ -97,7 +97,7 @@
       touch-action: pan-y;
       padding: 20px;
     }
-    #buyModal .modal-content {
+    .modal-content {
       background: #0f0f0f;
       padding: 35px 25px;
       border-radius: 24px;
@@ -110,11 +110,8 @@
       position: relative;
       max-height: 90vh;
       overflow-y: auto;
-      transform: scale(1);
-      transition: transform 0.3s ease;
     }
-    #buyModal.show .modal-content { transform: scale(1.05); }
-    #buyModal .close-x {
+    .close-x {
       position: absolute;
       top: 15px;
       right: 20px;
@@ -123,29 +120,9 @@
       font-weight: bold;
       cursor: pointer;
       line-height: 1;
-      z-index: 10;
-      background: rgba(255,51,102,0.1);
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
-    #buyModal .close-x:hover { color: #ff6b6b; background: rgba(255,51,102,0.3); transform: scale(1.2); }
-    #buyModal h2 {
-      color: #39ff14;
-      font-size: 2.4rem;
-      margin-bottom: 25px;
-      line-height: 1.1;
-    }
-    #buyModal p {
-      font-size: 1.1rem;
-      margin-bottom: 30px;
-      color: #bbb;
-      line-height: 1.5;
-    }
-    #buyModal label {
+    .close-x:hover { color: #ff6b6b; transform: scale(1.2); }
+    label {
       display: block;
       text-align: left;
       margin-bottom: 8px;
@@ -153,7 +130,7 @@
       font-size: 1rem;
       color: #ddd;
     }
-    #buyModal input {
+    input {
       width: 100%;
       padding: 16px;
       background: #1a1a1a;
@@ -264,10 +241,10 @@
   </footer>
 
   <!-- Modal de preenchimento -->
-  <div id="buyModal" class="modal">
-    <div class="modal-content">
-      <span class="close-x" onclick="fecharModal('buyModal')">X</span>
-      <h2>Preencha seus dados</h2>
+  <div id="buyModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:9999; justify-content:center; align-items:center; overflow-y:auto; -webkit-overflow-scrolling:touch; touch-action:pan-y; padding:20px;">
+    <div style="background:#0f0f0f; padding:35px 25px; border-radius:24px; border:3px solid #39ff14; max-width:450px; width:94%; text-align:center; color:#e0e0e0; box-shadow:0 15px 50px rgba(57,255,20,0.2); position:relative;">
+      <span onclick="fecharModal()" style="position:absolute; top:15px; right:20px; color:#ff3366; font-size:3.5rem; font-weight:bold; cursor:pointer; line-height:1;">X</span>
+      <h2 style="color:#39ff14; font-size:2.4rem; margin-bottom:25px;">Preencha seus dados</h2>
       
       <p style="font-size:1.1rem; margin-bottom:30px; color:#bbb;">
         Vamos calcular o frete e gerar seu PIX.
@@ -291,15 +268,15 @@
 
       <button class="btn-green" onclick="calcularFrete()">Calcular Frete</button>
       <button class="btn-green" onclick="prosseguirCompra()">Prosseguir para PIX</button>
-      <button onclick="fecharModal('buyModal')" class="btn-cancel">Cancelar</button>
+      <button onclick="fecharModal()" class="btn-cancel">Cancelar</button>
     </div>
   </div>
 
   <!-- Modal PIX -->
-  <div id="pixModal" class="modal">
-    <div class="modal-content">
-      <span class="close-x" onclick="fecharModal('pixModal')">X</span>
-      <h2>Pague via PIX</h2>
+  <div id="pixModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center; flex-direction:column;">
+    <div style="background:#111; padding:30px; border-radius:16px; border:3px solid #39ff14; max-width:420px; width:94%; text-align:center; color:#e0e0e0;">
+      <span onclick="fecharModal('pixModal')" style="position:absolute; top:15px; right:20px; color:#ff3366; font-size:3.5rem; font-weight:bold; cursor:pointer; line-height:1;">X</span>
+      <h2 style="color:#39ff14; margin-bottom:20px;">Pague via PIX</h2>
       <p id="pixValue" style="font-size:1.3rem; margin-bottom:20px;"></p>
       
       <img id="qrImage" src="" alt="QR Code PIX" style="width:240px; height:240px; margin:20px auto; border:4px solid #39ff14; border-radius:12px;">
@@ -342,7 +319,7 @@
       qrEl.src = '';
       codeEl.value = 'Gerando PIX... Aguarde';
 
-      modal.classList.add('show');
+      modal.style.display = 'flex';
 
       try {
         const response = await fetch(API_URL, {
@@ -391,12 +368,16 @@
       alert('Código PIX copiado!');
     }
 
+    function closePixModal() {
+      document.getElementById('pixModal').style.display = 'none';
+    }
+
     // Fluxo de modais
     let itemAtual = {};
 
     function abrirModalCompra(produto, valor) {
       itemAtual = { produto, valor };
-      document.getElementById('buyModal').classList.add('show');
+      document.getElementById('buyModal').style.display = 'flex';
       document.getElementById('email').focus();
     }
 
@@ -437,11 +418,11 @@
 
       alert(`PIX gerado com sucesso para R$${total.toFixed(2)} (inclui frete)!\nAguarde confirmação do pagamento. Em breve você receberá email automático com instruções e link do grupo.`);
 
-      fecharModal('buyModal');
+      fecharModal();
     }
 
-    function fecharModal(modalId) {
-      document.getElementById(modalId).classList.remove('show');
+    function fecharModal() {
+      document.getElementById('buyModal').style.display = 'none';
     }
 
     // Carrinho discreto
@@ -468,6 +449,13 @@
       carrinho.splice(index, 1);
       localStorage.setItem('carrinho', JSON.stringify(carrinho));
       atualizarCarrinho();
+    }
+
+    function finalizarCarrinho() {
+      carrinho = [];
+      localStorage.setItem('carrinho', JSON.stringify(carrinho));
+      atualizarCarrinho();
+      alert('Carrinho limpo!');
     }
 
     document.getElementById('cart-icon').addEventListener('click', () => {
