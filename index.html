@@ -45,7 +45,11 @@
     #cart-icon:hover { transform:scale(1.15); }
     #cart-badge { position:absolute; top:-12px; right:-12px; background:#ff3366; color:white; font-size:1rem; font-weight:bold; padding:5px 10px; border-radius:50%; min-width:25px; text-align:center; }
     
-    #cart-dropdown { display:none; position:fixed; top:100px; right:25px; background:#0f0f0f; border:2px solid #333; border-radius:20px; padding:25px; width:380px; max-height:80vh; overflow-y:auto; box-shadow:0 20px 60px rgba(0,0,0,0.9); z-index:2900; }
+    #cart-dropdown { 
+      display:none; position:fixed; top:100px; right:25px; background:#0f0f0f; 
+      border:1px solid #333; border-radius:16px; padding:24px; width:380px; 
+      max-height:80vh; overflow-y:auto; box-shadow:0 20px 60px rgba(0,0,0,0.9); z-index:2900; 
+    }
     
     .modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.96); z-index:5000; justify-content:center; align-items:center; padding:25px; overflow-y:auto; }
     .modal-content { background:#0f0f0f; padding:45px 35px; border-radius:28px; border:4px solid #27ae60; max-width:520px; width:96%; text-align:center; box-shadow:0 25px 70px rgba(39,174,96,0.3); position:relative; max-height:94vh; overflow-y:auto; }
@@ -99,10 +103,19 @@
   </div>
 
   <div id="cart-dropdown">
-    <h4 style="color:#27ae60; margin-bottom:20px; text-align:center; font-size:1.5rem;">Seu Carrinho</h4>
+    <h4 style="color:#e0e0e0; margin-bottom:1.5rem; text-align:center; font-size:1.4rem; font-weight:600;">
+      Carrinho de Compras
+    </h4>
     <ul id="cart-items"></ul>
-    <p id="cart-total" style="text-align:right; font-weight:700; color:#27ae60; font-size:1.4rem; margin:25px 0;">Total: R$0,00</p>
-    <button class="btn" onclick="prosseguirParaPagamento()" style="width:100%;">Ir para Compra</button>
+    <div style="margin:1.8rem 0; padding-top:1rem; border-top:1px solid #333; text-align:right;">
+      <span style="font-size:1.25rem; color:#bbb;">Total:</span>
+      <span id="cart-total" style="font-size:1.55rem; font-weight:700; color:#27ae60; margin-left:0.6rem;">
+        R$0,00
+      </span>
+    </div>
+    <button class="btn" onclick="prosseguirParaPagamento()" style="width:100%; margin-top:1.2rem;">
+      Finalizar Pedido
+    </button>
   </div>
 
   <main>
@@ -141,7 +154,7 @@
           <h3>Sibutramina 15mg - 1 Caixa</h3>
           <div class="price">R$ 90</div>
           <div class="btn-wrapper">
-            <button class="btn" onclick="confirmarAdicionar('Sibutramina 15mg 1 Caixa',90)">Comprar Agora</button>
+            <button class="btn" onclick="adicionarAoCarrinhoSilent('Sibutramina 15mg 1 Caixa',90)">Comprar Agora</button>
             <a href="https://wa.me/+5516988767617?text=Quero+Sibutramina+1+caixa" class="btn whatsapp-btn">WhatsApp</a>
           </div>
         </div>
@@ -151,7 +164,7 @@
           <div class="price">R$ 170</div>
           <div class="frete">+ Frete Grátis</div>
           <div class="btn-wrapper">
-            <button class="btn" onclick="confirmarAdicionar('Sibutramina 15mg 2 Caixas',170)">Comprar Agora</button>
+            <button class="btn" onclick="adicionarAoCarrinhoSilent('Sibutramina 15mg 2 Caixas',170)">Comprar Agora</button>
             <a href="https://wa.me/+5516988767617?text=Quero+Sibutramina+2+caixas" class="btn whatsapp-btn">WhatsApp</a>
           </div>
         </div>
@@ -161,7 +174,7 @@
           <div class="price">R$ 220</div>
           <div class="frete">+ Frete Grátis</div>
           <div class="btn-wrapper">
-            <button class="btn" onclick="confirmarAdicionar('Sibutramina 15mg 3 Caixas',220)">Comprar Agora</button>
+            <button class="btn" onclick="adicionarAoCarrinhoSilent('Sibutramina 15mg 3 Caixas',220)">Comprar Agora</button>
             <a href="https://wa.me/+5516988767617?text=Quero+Sibutramina+3+caixas" class="btn whatsapp-btn">WhatsApp</a>
           </div>
         </div>
@@ -176,7 +189,7 @@
           <h3>Zolpidem 10mg</h3>
           <div class="price">R$ 130</div>
           <div class="btn-wrapper">
-            <button class="btn" onclick="confirmarAdicionar('Zolpidem 10mg',130)">Comprar Agora</button>
+            <button class="btn" onclick="adicionarAoCarrinhoSilent('Zolpidem 10mg',130)">Comprar Agora</button>
             <a href="https://wa.me/+5516988767617?text=Quero+Zolpidem" class="btn whatsapp-btn">WhatsApp</a>
           </div>
         </div>
@@ -185,7 +198,7 @@
           <h3>Dimorf 10mg</h3>
           <div class="price">R$ 350</div>
           <div class="btn-wrapper">
-            <button class="btn" onclick="confirmarAdicionar('Dimorf 10mg',350)">Comprar Agora</button>
+            <button class="btn" onclick="adicionarAoCarrinhoSilent('Dimorf 10mg',350)">Comprar Agora</button>
             <a href="https://wa.me/+5516988767617?text=Quero+Dimorf+10mg" class="btn whatsapp-btn">WhatsApp</a>
           </div>
         </div>
@@ -194,7 +207,7 @@
           <h3>Dimorf 30mg</h3>
           <div class="price">R$ 420</div>
           <div class="btn-wrapper">
-            <button class="btn" onclick="confirmarAdicionar('Dimorf 30mg',420)">Comprar Agora</button>
+            <button class="btn" onclick="adicionarAoCarrinhoSilent('Dimorf 30mg',420)">Comprar Agora</button>
             <a href="https://wa.me/+5516988767617?text=Quero+Dimorf+30mg" class="btn whatsapp-btn">WhatsApp</a>
           </div>
         </div>
@@ -209,7 +222,7 @@
           <h3>Alprazolam 2mg</h3>
           <div class="price">R$ 120</div>
           <div class="btn-wrapper">
-            <button class="btn" onclick="confirmarAdicionar('Alprazolam 2mg',120)">Comprar Agora</button>
+            <button class="btn" onclick="adicionarAoCarrinhoSilent('Alprazolam 2mg',120)">Comprar Agora</button>
             <a href="https://wa.me/+5516988767617?text=Quero+Alprazolam" class="btn whatsapp-btn">WhatsApp</a>
           </div>
         </div>
@@ -218,7 +231,7 @@
           <h3>Diazepam 10mg</h3>
           <div class="price">R$ 130</div>
           <div class="btn-wrapper">
-            <button class="btn" onclick="confirmarAdicionar('Diazepam 10mg',130)">Comprar Agora</button>
+            <button class="btn" onclick="adicionarAoCarrinhoSilent('Diazepam 10mg',130)">Comprar Agora</button>
             <a href="https://wa.me/+5516988767617?text=Quero+Diazepam" class="btn whatsapp-btn">WhatsApp</a>
           </div>
         </div>
@@ -227,7 +240,7 @@
           <h3>Lorazepam 2mg</h3>
           <div class="price">R$ 130</div>
           <div class="btn-wrapper">
-            <button class="btn" onclick="confirmarAdicionar('Lorazepam 2mg',130)">Comprar Agora</button>
+            <button class="btn" onclick="adicionarAoCarrinhoSilent('Lorazepam 2mg',130)">Comprar Agora</button>
             <a href="https://wa.me/+5516988767617?text=Quero+Lorazepam" class="btn whatsapp-btn">WhatsApp</a>
           </div>
         </div>
@@ -242,7 +255,7 @@
           <h3>QUETIAPINA</h3>
           <div class="price">R$ 160</div>
           <div class="btn-wrapper">
-            <button class="btn" onclick="confirmarAdicionar('Quetiapina',160)">Comprar Agora</button>
+            <button class="btn" onclick="adicionarAoCarrinhoSilent('Quetiapina',160)">Comprar Agora</button>
             <a href="https://wa.me/+5516988767617?text=Quero+Quetiapina" class="btn whatsapp-btn">WhatsApp</a>
           </div>
         </div>
@@ -251,7 +264,7 @@
           <h3>RISPERIDONA</h3>
           <div class="price">R$ 150</div>
           <div class="btn-wrapper">
-            <button class="btn" onclick="confirmarAdicionar('Risperidona',150)">Comprar Agora</button>
+            <button class="btn" onclick="adicionarAoCarrinhoSilent('Risperidona',150)">Comprar Agora</button>
             <a href="https://wa.me/+5516988767617?text=Quero+Risperidona" class="btn whatsapp-btn">WhatsApp</a>
           </div>
         </div>
@@ -260,7 +273,7 @@
           <h3>ARIPIPRAZOL</h3>
           <div class="price">R$ 170</div>
           <div class="btn-wrapper">
-            <button class="btn" onclick="confirmarAdicionar('Aripiprazol',170)">Comprar Agora</button>
+            <button class="btn" onclick="adicionarAoCarrinhoSilent('Aripiprazol',170)">Comprar Agora</button>
             <a href="https://wa.me/+5516988767617?text=Quero+Aripiprazol" class="btn whatsapp-btn">WhatsApp</a>
           </div>
         </div>
@@ -275,7 +288,7 @@
           <h3>BUSPIRONA 10mg</h3>
           <div class="price">R$ 130</div>
           <div class="btn-wrapper">
-            <button class="btn" onclick="confirmarAdicionar('Buspirona 10mg',130)">Comprar Agora</button>
+            <button class="btn" onclick="adicionarAoCarrinhoSilent('Buspirona 10mg',130)">Comprar Agora</button>
             <a href="https://wa.me/+5516988767617?text=Quero+Buspirona+10mg" class="btn whatsapp-btn">WhatsApp</a>
           </div>
         </div>
@@ -284,7 +297,7 @@
           <h3>HIDROXIZINA 25mg</h3>
           <div class="price">R$ 110</div>
           <div class="btn-wrapper">
-            <button class="btn" onclick="confirmarAdicionar('Hidroxizina 25mg',110)">Comprar Agora</button>
+            <button class="btn" onclick="adicionarAoCarrinhoSilent('Hidroxizina 25mg',110)">Comprar Agora</button>
             <a href="https://wa.me/+5516988767617?text=Quero+Hidroxizina+25mg" class="btn whatsapp-btn">WhatsApp</a>
           </div>
         </div>
@@ -293,7 +306,7 @@
           <h3>PROPRANOLOL 40mg</h3>
           <div class="price">R$ 90</div>
           <div class="btn-wrapper">
-            <button class="btn" onclick="confirmarAdicionar('Propranolol 40mg',90)">Comprar Agora</button>
+            <button class="btn" onclick="adicionarAoCarrinhoSilent('Propranolol 40mg',90)">Comprar Agora</button>
             <a href="https://wa.me/+5516988767617?text=Quero+Propranolol+40mg" class="btn whatsapp-btn">WhatsApp</a>
           </div>
         </div>
@@ -308,7 +321,7 @@
           <h3>RITALINA ORIGINAL 30 CP</h3>
           <div class="price">R$ 180</div>
           <div class="btn-wrapper">
-            <button class="btn" onclick="confirmarAdicionar('Ritalina Original 30 CP',180)">Comprar Agora</button>
+            <button class="btn" onclick="adicionarAoCarrinhoSilent('Ritalina Original 30 CP',180)">Comprar Agora</button>
             <a href="https://wa.me/+5516988767617?text=Quero+Ritalina+Original+30cp" class="btn whatsapp-btn">WhatsApp</a>
           </div>
         </div>
@@ -317,7 +330,7 @@
           <h3>RITALINA ORIGINAL 60 CP</h3>
           <div class="price">R$ 260</div>
           <div class="btn-wrapper">
-            <button class="btn" onclick="confirmarAdicionar('Ritalina Original 60 CP',260)">Comprar Agora</button>
+            <button class="btn" onclick="adicionarAoCarrinhoSilent('Ritalina Original 60 CP',260)">Comprar Agora</button>
             <a href="https://wa.me/+5516988767617?text=Quero+Ritalina+Original+60cp" class="btn whatsapp-btn">WhatsApp</a>
           </div>
         </div>
@@ -326,7 +339,7 @@
           <h3>RITALINA GENERICA</h3>
           <div class="price">R$ 140</div>
           <div class="btn-wrapper">
-            <button class="btn" onclick="confirmarAdicionar('Ritalina Generica',140)">Comprar Agora</button>
+            <button class="btn" onclick="adicionarAoCarrinhoSilent('Ritalina Generica',140)">Comprar Agora</button>
             <a href="https://wa.me/+5516988767617?text=Quero+Ritalina+Generica" class="btn whatsapp-btn">WhatsApp</a>
           </div>
         </div>
@@ -335,7 +348,7 @@
           <h3>VENVANSE ORIGINAL 30 MG</h3>
           <div class="price">R$ 600</div>
           <div class="btn-wrapper">
-            <button class="btn" onclick="confirmarAdicionar('Venvanse Original 30mg',600)">Comprar Agora</button>
+            <button class="btn" onclick="adicionarAoCarrinhoSilent('Venvanse Original 30mg',600)">Comprar Agora</button>
             <a href="https://wa.me/+5516988767617?text=Quero+Venvanse+Original+30mg" class="btn whatsapp-btn">WhatsApp</a>
           </div>
         </div>
@@ -344,7 +357,7 @@
           <h3>VENVANSE GENÉRICO - 30 MG</h3>
           <div class="price">R$ 550</div>
           <div class="btn-wrapper">
-            <button class="btn" onclick="confirmarAdicionar('Venvanse Genérico 30mg',550)">Comprar Agora</button>
+            <button class="btn" onclick="adicionarAoCarrinhoSilent('Venvanse Genérico 30mg',550)">Comprar Agora</button>
             <a href="https://wa.me/+5516988767617?text=Quero+Venvanse+Genérico+30mg" class="btn whatsapp-btn">WhatsApp</a>
           </div>
         </div>
@@ -353,7 +366,7 @@
           <h3>VENVANSE GENÉRICO - 50 MG</h3>
           <div class="price">R$ 650</div>
           <div class="btn-wrapper">
-            <button class="btn" onclick="confirmarAdicionar('Venvanse Genérico 50mg',650)">Comprar Agora</button>
+            <button class="btn" onclick="adicionarAoCarrinhoSilent('Venvanse Genérico 50mg',650)">Comprar Agora</button>
             <a href="https://wa.me/+5516988767617?text=Quero+Venvanse+Genérico+50mg" class="btn whatsapp-btn">WhatsApp</a>
           </div>
         </div>
@@ -362,7 +375,7 @@
           <h3>VENVANSE GENÉRICO - 70 MG</h3>
           <div class="price">R$ 720</div>
           <div class="btn-wrapper">
-            <button class="btn" onclick="confirmarAdicionar('Venvanse Genérico 70mg',720)">Comprar Agora</button>
+            <button class="btn" onclick="adicionarAoCarrinhoSilent('Venvanse Genérico 70mg',720)">Comprar Agora</button>
             <a href="https://wa.me/+5516988767617?text=Quero+Venvanse+Genérico+70mg" class="btn whatsapp-btn">WhatsApp</a>
           </div>
         </div>
@@ -454,19 +467,20 @@
       showSection('emagrecedores');
     });
 
-    function confirmarAdicionar(produto, valor) {
-      if (confirm(`Adicionar ${produto} (R$ ${valor})?`)) {
-        adicionarAoCarrinho(produto, valor);
-        alert('Adicionado!');
-      }
-    }
-
-    function adicionarAoCarrinho(produto, valor) {
+    function adicionarAoCarrinhoSilent(produto, valor) {
       let item = carrinho.find(i => i.produto === produto);
-      if (item) item.quantidade = (item.quantidade || 1) + 1;
-      else carrinho.push({ produto, valor, quantidade: 1 });
+      if (item) {
+        item.quantidade = (item.quantidade || 1) + 1;
+      } else {
+        carrinho.push({ produto, valor, quantidade: 1 });
+      }
       localStorage.setItem('carrinho', JSON.stringify(carrinho));
       atualizarCarrinho();
+
+      // Feedback visual sutil no badge
+      const badge = document.getElementById('cart-badge');
+      badge.style.transform = 'scale(1.3)';
+      setTimeout(() => { badge.style.transform = 'scale(1)'; }, 160);
     }
 
     function removerItem(index) {
@@ -484,22 +498,31 @@
       const list = document.getElementById('cart-items');
       list.innerHTML = '';
       let total = 0;
+
       carrinho.forEach((item, idx) => {
         const qtd = item.quantidade || 1;
         total += item.valor * qtd;
+
         const li = document.createElement('li');
-        li.style = 'display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #222;font-size:1.1rem;';
+        li.style = 'display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid #2a2a2a;font-size:1.05rem;color:#ddd;';
         li.innerHTML = `
-          <span>${item.produto} ×${qtd}</span>
-          <span style="display:flex;align-items:center;gap:15px;">
-            <strong>R$${(item.valor * qtd).toFixed(2)}</strong>
-            <span onclick="removerItem(${idx})" style="color:#ff3366;cursor:pointer;font-weight:bold;font-size:1.6rem;padding:0 6px;">×</span>
-          </span>
+          <div style="flex:1; padding-right:12px;">
+            <div style="font-weight:500;">${item.produto}</div>
+            <div style="font-size:0.92rem;color:#999;margin-top:4px;">
+              R$ ${item.valor.toFixed(2)} × ${qtd}
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px;white-space:nowrap;">
+            <strong style="color:#27ae60;min-width:80px;text-align:right;">
+              R$ ${(item.valor * qtd).toFixed(2)}
+            </strong>
+            <span onclick="removerItem(${idx})" style="color:#e74c3c;cursor:pointer;font-size:1.6rem;font-weight:bold;padding:0 6px;line-height:1;">×</span>
+          </div>
         `;
         list.appendChild(li);
       });
 
-      document.getElementById('cart-total').textContent = `Total: R$ ${total.toFixed(2)}`;
+      document.getElementById('cart-total').textContent = `R$ ${total.toFixed(2)}`;
     }
 
     function calcularFrete() {
@@ -581,7 +604,6 @@
       }
       const subtotal = carrinho.reduce((s, i) => s + i.valor * (i.quantidade || 1), 0);
       const total = subtotal + freteAtual;
-      itemAtual = { produto: 'Pedido de Medicamentos', valor: total };
       document.getElementById('buyModal').style.display = 'flex';
     }
 
@@ -598,7 +620,7 @@
       const subtotal = carrinho.reduce((s, i) => s + i.valor * (i.quantidade || 1), 0);
       const total = subtotal + freteAtual;
 
-      gerarPix(total * 100, itemAtual.produto + ' + Frete');
+      gerarPix(total * 100, 'Pedido de Medicamentos + Frete');
 
       fecharModal('buyModal');
     }
@@ -621,6 +643,7 @@
       }
     });
 
+    // Inicializa o carrinho
     atualizarCarrinho();
   </script>
 </body>
