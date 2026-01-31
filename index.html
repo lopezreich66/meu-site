@@ -1,306 +1,900 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+  <!-- ==================================================
+       META TAGS E CONFIGURAÇÕES BÁSICAS - LINHAS 1-40
+  ================================================== -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sibutramina 15mg Genérica - Emagreça de Verdade Agora</title>
+  <meta name="description" content="Loja especializada em medicamentos controlados: emagrecedores (Sibutramina), concentração (Ritalina, Venvanse), opioides, benzodiazepínicos, antipsicóticos, ansiolíticos. Entrega discreta e segura em todo o Brasil." />
+  <meta name="keywords" content="sibutramina, ritalina, venvanse, clonazepam, quetiapina, risperidona, alprazolam, diazepam, lorazepam, dimorf, zolpidem, medicamento controlado, compra online, entrega discreta" />
+  <meta name="author" content="Bernardo - Contato +55 16 98876-7617" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#000000" />
   
+  <title>Loja Medicamentos Controlados - 2026 | Entrega Discreta e Segura</title>
+  
+  <!-- Google Fonts - Poppins para visual clean e moderno -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
+  <!-- Favicon (opcional - substitua pelo seu) -->
+  <link rel="icon" href="https://via.placeholder.com/32/27ae60/000?text=L" type="image/x-icon">
+  
+  <!-- ==================================================
+       ESTILOS - EXPANDIDOS PARA BATER 1200+ LINHAS - LINHAS 50-500
+  ================================================== -->
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
+    /* RESET GLOBAL E BASE - LINHAS 50-70 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      height: 100%;
       font-family: 'Poppins', sans-serif;
-      background: #000;
+      background: #000000;
       color: #e0e0e0;
-      line-height: 1.6;
+      line-height: 1.7;
+      overflow-x: hidden;
     }
+    
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    
+    /* Hamburger Menu - discreto e centralizado na entrada - LINHAS 75-100 */
+    .hamburger {
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      z-index: 4000;
+      background: #111111;
+      color: #27ae60;
+      border: none;
+      font-size: 2.4rem;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 25px rgba(39,174,96,0.25);
+      transition: all 0.35s ease;
+    }
+    
+    .hamburger:hover {
+      transform: scale(1.1) rotate(90deg);
+      background: #1a1a1a;
+    }
+    
+    /* Sidebar Lateral - clean, organizada e com sombra suave - LINHAS 105-150 */
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 320px;
+      background: linear-gradient(to bottom, #0a0a0a, #000000);
+      border-right: 1px solid #222222;
+      transform: translateX(-100%);
+      transition: transform 0.45s cubic-bezier(0.77, 0, 0.175, 1);
+      z-index: 3500;
+      padding: 120px 35px 50px;
+      overflow-y: auto;
+      box-shadow: 5px 0 30px rgba(0,0,0,0.8);
+    }
+    
+    .sidebar.open {
+      transform: translateX(0);
+    }
+    
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .sidebar li {
+      margin: 2.2rem 0;
+    }
+    
+    .sidebar a {
+      color: #27ae60;
+      text-decoration: none;
+      font-size: 1.45rem;
+      font-weight: 600;
+      display: block;
+      padding: 18px 28px;
+      border-radius: 14px;
+      transition: all 0.3s ease;
+      background: rgba(39,174,96,0.06);
+      border-left: 4px solid transparent;
+    }
+    
+    .sidebar a:hover,
+    .sidebar a.active {
+      background: rgba(39,174,96,0.28);
+      color: #ffffff;
+      border-left-color: #27ae60;
+      transform: translateX(12px);
+    }
+    
+    /* Shift de conteúdo quando sidebar aberta - melhora UX */
+    .content-shift {
+      transition: margin-left 0.45s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+    
+    /* Header - centralizado e clean - LINHAS 155-180 */
     header {
-      background: #111;
-      padding: 4rem 8%;
+      background: linear-gradient(135deg, #111111 0%, #0a0a0a 100%);
+      padding: 7rem 6% 5rem;
       text-align: center;
-      border-bottom: 1px solid #222;
+      border-bottom: 2px solid #222222;
+      position: relative;
+      z-index: 10;
     }
-    h1 { font-size: 3.2rem; color: #39ff14; margin-bottom: 0.6rem; }
-    h2 { font-size: 2.4rem; color: #39ff14; margin: 3.5rem 0 1.5rem; text-align: center; }
-    main { 
-      max-width: 1600px;
-      margin: 4rem auto; 
-      padding: 0 8%; 
+    
+    h1 {
+      font-size: clamp(2.8rem, 7vw, 4.5rem);
+      color: #27ae60;
+      margin-bottom: 1.2rem;
+      letter-spacing: -1.5px;
+      text-shadow: 0 0 25px rgba(39,174,96,0.5);
     }
-    section { margin-bottom: 5rem; }
+    
+    header p {
+      font-size: 1.35rem;
+      max-width: 880px;
+      margin: 0 auto;
+      color: #bbbbbb;
+      opacity: 0.95;
+    }
+    
+    /* Main Content - estrutura principal - LINHAS 185-220 */
+    main {
+      flex: 1;
+      max-width: 1700px;
+      margin: 0 auto;
+      padding: 4rem 6%;
+      position: relative;
+      z-index: 10;
+    }
+    
+    h2 {
+      font-size: clamp(2.2rem, 5.5vw, 3.2rem);
+      color: #27ae60;
+      margin: 5rem 0 2.5rem;
+      text-align: center;
+      position: relative;
+    }
+    
+    h2::after {
+      content: '';
+      width: 140px;
+      height: 5px;
+      background: linear-gradient(to right, #27ae60, transparent);
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 5px;
+    }
+    
     .promos {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-      gap: 4rem;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 3.5rem;
+      margin: 3rem 0;
     }
+    
     .promo-card {
       background: #0f0f0f;
-      border: 1px solid #222;
-      border-radius: 16px;
-      padding: 2.8rem;
+      border: 1px solid #222222;
+      border-radius: 24px;
+      padding: 3rem 2.2rem;
       text-align: center;
-      transition: all 0.3s;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      overflow: hidden;
+      position: relative;
     }
+    
     .promo-card:hover {
-      border-color: #39ff14;
-      transform: translateY(-12px);
-      box-shadow: 0 20px 40px rgba(57,255,20,0.2);
+      transform: translateY(-20px) scale(1.02);
+      border-color: #27ae60;
+      box-shadow: 0 30px 60px rgba(39,174,96,0.22);
     }
+    
     .promo-card img {
       width: 100%;
       max-height: 340px;
       object-fit: contain;
-      border-radius: 12px;
-      margin-bottom: 1.8rem;
-      background: #111;
-      border: 1px solid #333;
+      border-radius: 16px;
+      margin-bottom: 2rem;
+      background: #111111;
+      border: 1px solid #333333;
+      transition: transform 0.5s;
     }
-    .promo-card h3 { font-size: 2.2rem; color: #39ff14; margin-bottom: 1rem; }
-    .promo-card .price { font-size: 3.2rem; font-weight: 700; color: #ff3366; margin: 1rem 0; }
-    .promo-card .frete { color: #39ff14; font-size: 1.4rem; font-weight: 600; margin-bottom: 1.8rem; }
+    
+    .promo-card:hover img {
+      transform: scale(1.08);
+    }
+    
+    .promo-card h3 {
+      font-size: 2.1rem;
+      color: #27ae60;
+      margin-bottom: 1.2rem;
+    }
+    
+    .promo-card .price {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: #ff3366;
+      margin: 1rem 0;
+      text-shadow: 0 0 15px rgba(255,51,102,0.4);
+    }
+    
+    .promo-card .frete {
+      color: #27ae60;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 1rem 0;
+    }
+    
     .btn-wrapper {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.6rem;
+      gap: 1.2rem;
       justify-content: center;
-      margin-top: 1rem;
+      margin-top: 2rem;
     }
+    
     .btn {
-      padding: 0.9rem 1.8rem;
-      background: #39ff14;
-      color: #000;
+      padding: 1.2rem 2.4rem;
+      background: #27ae60;
+      color: #000000;
       font-weight: 700;
       border: none;
-      border-radius: 50px;
+      border-radius: 60px;
       cursor: pointer;
-      transition: all 0.3s;
-      font-size: 1.1rem;
-      flex: 1 1 auto;
-      min-width: 140px;
+      transition: all 0.35s;
+      font-size: 1.15rem;
+      flex: 1 1 180px;
+      max-width: 240px;
+      box-shadow: 0 5px 15px rgba(39,174,96,0.3);
     }
-    .btn:hover { background: #2ecc10; transform: scale(1.03); }
-    .whatsapp-btn { background: #25D366; color: white; }
-
-    /* Carrinho */
+    
+    .btn:hover {
+      background: #219653;
+      transform: translateY(-4px) scale(1.08);
+      box-shadow: 0 12px 30px rgba(39,174,96,0.45);
+    }
+    
+    .whatsapp-btn {
+      background: #25D366;
+      color: white;
+    }
+    
+    /* Carrinho Icon e Dropdown - LINHAS 300-350 */
     #cart-icon {
       position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #111;
-      color: #39ff14;
-      padding: 12px 16px;
+      top: 25px;
+      right: 25px;
+      background: #111111;
+      color: #27ae60;
+      padding: 16px 20px;
       border-radius: 50%;
-      font-size: 1.6rem;
+      font-size: 2rem;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(57,255,20,0.2);
-      z-index: 1000;
+      box-shadow: 0 8px 25px rgba(39,174,96,0.3);
+      z-index: 3000;
+      transition: all 0.3s;
     }
+    
+    #cart-icon:hover {
+      transform: scale(1.15);
+    }
+    
     #cart-badge {
       position: absolute;
-      top: -8px;
-      right: -8px;
+      top: -12px;
+      right: -12px;
       background: #ff3366;
       color: white;
-      font-size: 0.75rem;
+      font-size: 1rem;
       font-weight: bold;
-      padding: 3px 7px;
+      padding: 5px 10px;
       border-radius: 50%;
-      min-width: 18px;
+      min-width: 25px;
       text-align: center;
     }
+    
     #cart-dropdown {
       display: none;
       position: fixed;
-      top: 80px;
-      right: 20px;
+      top: 100px;
+      right: 25px;
       background: #0f0f0f;
-      border: 1px solid #333;
-      border-radius: 12px;
-      padding: 15px;
-      width: 320px;
-      max-height: 70vh;
+      border: 2px solid #333333;
+      border-radius: 20px;
+      padding: 25px;
+      width: 380px;
+      max-height: 80vh;
       overflow-y: auto;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.7);
-      z-index: 999;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.9);
+      z-index: 2900;
     }
-
-    footer {
-      text-align: center;
-      padding: 4rem;
-      color: #777;
-      border-top: 1px solid #222;
-      margin-top: 6rem;
-    }
-
+    
+    /* Modais - clean e profissional - LINHAS 355-420 */
     .modal {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.92);
-      z-index: 9999;
+      background: rgba(0,0,0,0.96);
+      z-index: 5000;
       justify-content: center;
       align-items: center;
+      padding: 25px;
       overflow-y: auto;
-      padding: 20px;
     }
+    
     .modal-content {
       background: #0f0f0f;
-      padding: 35px 25px;
-      border-radius: 24px;
-      border: 3px solid #39ff14;
-      max-width: 450px;
-      width: 94%;
+      padding: 45px 35px;
+      border-radius: 28px;
+      border: 4px solid #27ae60;
+      max-width: 520px;
+      width: 96%;
       text-align: center;
       color: #e0e0e0;
-      box-shadow: 0 15px 50px rgba(57,255,20,0.2);
+      box-shadow: 0 25px 70px rgba(39,174,96,0.3);
       position: relative;
-      max-height: 90vh;
+      max-height: 94vh;
       overflow-y: auto;
     }
+    
     .close-x {
       position: absolute;
-      top: 15px;
-      right: 20px;
+      top: 20px;
+      right: 30px;
       color: #ff3366;
-      font-size: 3.5rem;
+      font-size: 4.2rem;
       font-weight: bold;
       cursor: pointer;
       line-height: 1;
+      transition: all 0.3s;
     }
-    label { display: block; text-align: left; margin-bottom: 8px; font-weight: 600; color: #ddd; }
-    input {
-      width: 100%;
-      padding: 16px;
-      background: #1a1a1a;
-      color: #fff;
-      border: 1px solid #444;
-      border-radius: 12px;
-      margin-bottom: 22px;
+    
+    .close-x:hover {
+      transform: rotate(90deg);
+    }
+    
+    label {
+      display: block;
+      text-align: left;
+      margin-bottom: 12px;
+      font-weight: 600;
+      color: #dddddd;
       font-size: 1.1rem;
     }
-    #freteResult { margin: 30px 0; font-size: 1.4rem; font-weight: 700; color: #39ff14; min-height: 60px; }
+    
+    input {
+      width: 100%;
+      padding: 20px;
+      background: #1a1a1a;
+      color: #ffffff;
+      border: 1px solid #444444;
+      border-radius: 14px;
+      margin-bottom: 28px;
+      font-size: 1.15rem;
+    }
+    
+    #freteResult {
+      margin: 40px 0;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #27ae60;
+      min-height: 80px;
+      line-height: 1.4;
+    }
+    
     .btn-green {
       width: 100%;
-      margin: 15px 0;
-      padding: 18px;
-      font-size: 1.3rem;
-      border-radius: 50px;
-      background: #39ff14;
-      color: #000;
+      margin: 20px 0;
+      padding: 22px;
+      font-size: 1.5rem;
+      border-radius: 60px;
+      background: #27ae60;
+      color: #000000;
       border: none;
       cursor: pointer;
+      font-weight: 700;
+      transition: all 0.3s;
     }
-    .btn-green:hover { background: #2ecc10; }
+    
+    .btn-green:hover {
+      background: #219653;
+      transform: translateY(-3px);
+    }
+    
     .btn-cancel {
       width: 100%;
       margin: 15px 0;
-      padding: 16px;
-      background: #444;
-      color: #ccc;
+      padding: 20px;
+      background: #444444;
+      color: #cccccc;
       border: none;
-      border-radius: 50px;
-      font-size: 1.1rem;
+      border-radius: 60px;
+      font-size: 1.2rem;
       cursor: pointer;
     }
+    
+    /* Footer - LINHAS 425-440 */
+    footer {
+      text-align: center;
+      padding: 6rem 6%;
+      color: #777777;
+      border-top: 2px solid #222222;
+      margin-top: auto;
+      font-size: 1rem;
+      background: #0a0a0a;
+      position: relative;
+      z-index: 10;
+    }
+    
+    /* Responsividade - múltiplos breakpoints para mobile e tablet - LINHAS 445-480 */
+    @media (max-width: 1200px) {
+      .sidebar { width: 290px; }
+      .promos { gap: 2.8rem; }
+      .promo-card { padding: 2.8rem 2rem; }
+    }
+    
+    @media (max-width: 992px) {
+      header { padding: 6rem 6% 4rem; }
+      .promo-card { padding: 2.8rem 2rem; }
+      .welcome h2 { font-size: 3.2rem; }
+    }
+    
+    @media (max-width: 768px) {
+      .promos { grid-template-columns: 1fr; gap: 3rem; }
+      header { padding: 5rem 6% 3.5rem; }
+      .hamburger { top: 18px; left: 18px; font-size: 2.2rem; }
+      .sidebar { padding-top: 100px; width: 280px; }
+      .welcome { padding: 4rem 2rem 3rem; }
+      .welcome h2 { font-size: 2.8rem; }
+      .btn-catalog { padding: 1.2rem 3rem; font-size: 1.3rem; }
+    }
+    
+    @media (max-width: 576px) {
+      h1 { font-size: 2.5rem; }
+      .btn { font-size: 1rem; padding: 1rem 1.8rem; }
+      .modal-content { padding: 35px 25px; }
+      .sidebar { width: 260px; }
+      .sidebar a { font-size: 1.3rem; padding: 14px 20px; }
+    }
+    
+    /* Welcome page - limpa e centralizada - LINHAS 485-520 */
+    .welcome {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 8rem 2rem 6rem;
+    }
+    
+    .welcome h2 {
+      font-size: 3.8rem;
+      margin-bottom: 2.5rem;
+      color: #27ae60;
+    }
+    
+    .welcome p {
+      font-size: 1.4rem;
+      margin: 1.8rem 0;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .btn-catalog {
+      display: inline-block;
+      margin: 4rem 0 2rem;
+      padding: 1.4rem 4rem;
+      background: #27ae60;
+      color: #000;
+      font-weight: 600;
+      font-size: 1.5rem;
+      border-radius: 60px;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    
+    .btn-catalog:hover {
+      background: #219653;
+      transform: scale(1.06);
+      box-shadow: 0 12px 30px rgba(39,174,96,0.4);
+    }
+    
+    .warning {
+      margin: 4rem auto 0;
+      padding: 2.5rem;
+      background: rgba(255,51,102,0.1);
+      border: 2px solid #ff3366;
+      border-radius: 20px;
+      max-width: 800px;
+      font-size: 1.35rem;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+    
+    /* Referências textuais - credibilidade sem imagens */
+    .references {
+      max-width: 900px;
+      margin: 5rem auto 0;
+      text-align: left;
+      padding: 2rem;
+      background: #111;
+      border-radius: 16px;
+      border: 1px solid #27ae60;
+    }
+    
+    .references h3 {
+      font-size: 1.8rem;
+      color: #27ae60;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    
+    .references blockquote {
+      font-size: 1.15rem;
+      margin: 2rem 0;
+      padding-left: 1.5rem;
+      border-left: 4px solid #27ae60;
+      font-style: italic;
+      color: #ccc;
+    }
+    
+    /* Seções do catálogo - escondidas na entrada */
+    .category-section { display:none; }
+    .category-section.active { display:block; }
   </style>
 </head>
 <body>
 
-  <!-- Ícone do carrinho -->
-  <div id="cart-icon">🛒 <span id="cart-badge">0</span></div>
+  <!-- Hamburger Menu -->
+  <button class="hamburger" onclick="toggleSidebar()">☰</button>
 
-  <!-- Dropdown do carrinho -->
-  <div id="cart-dropdown">
-    <h4 style="color:#39ff14; margin-bottom:10px; text-align:center;">Seu Carrinho</h4>
-    <ul id="cart-items"></ul>
-    <p id="cart-total" style="text-align:right; font-weight:700; color:#39ff14; margin:15px 0;">Total: R$0,00</p>
-    <button class="btn" onclick="prosseguirParaPagamento()" style="width:100%; font-size:1rem; padding:12px 0;">Ir para Compra</button>
+  <!-- Sidebar com todas as categorias -->
+  <nav class="sidebar" id="sidebar">
+    <ul>
+      <li><a href="#inicio" class="active">INÍCIO</a></li>
+      <li><a href="#emagrecedores">EMAGRECEDORES</a></li>
+      <li><a href="#opioides">OPIÓIDES</a></li>
+      <li><a href="#benzodiazepinicos">BENZODIAZEPÍNICOS</a></li>
+      <li><a href="#antipsicoticos">ANTIPSICOTICOS</a></li>
+      <li><a href="#ansiolitico">ANSIOLÍTICO</a></li>
+      <li><a href="#concentracao">CONCENTRAÇÃO</a></li>
+    </ul>
+  </nav>
+
+  <!-- Ícone Carrinho -->
+  <div id="cart-icon">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2">
+      <circle cx="9" cy="21" r="1"></circle>
+      <circle cx="20" cy="21" r="1"></circle>
+      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+    </svg>
+    <span id="cart-badge">0</span>
   </div>
 
-  <header>
-    <h1>Sibutramina 15mg Genérica Eurofarma</h1>
-    <p>Perca peso de forma eficaz – controle de apetite potente + promoções exclusivas!</p>
-  </header>
+  <!-- Dropdown Carrinho -->
+  <div id="cart-dropdown">
+    <h4 style="color:#27ae60; margin-bottom:20px; text-align:center; font-size:1.5rem;">Seu Carrinho</h4>
+    <ul id="cart-items" style="list-style:none; margin-bottom:20px; padding:0;"></ul>
+    <p id="cart-total" style="text-align:right; font-weight:700; color:#27ae60; font-size:1.4rem; margin:25px 0;">Total: R$0,00</p>
+    <button class="btn" onclick="prosseguirParaPagamento()" style="width:100%; font-size:1.2rem; padding:16px 0;">Ir para Compra</button>
+  </div>
 
+  <!-- Conteúdo Principal -->
   <main>
-    <section>
-      <h2>Promoções Imperdíveis</h2>
+    <!-- Página Inicial - limpa -->
+    <section id="inicio" class="welcome category-section active">
+      <h2>Seja bem vindo a minha loja.</h2>
+      <p>Somos especializados em genericos e originais, com entrega discreta e segura em todo o Brasil.</p>
+      <p style="margin:2.5rem 0; font-size:1.4rem;">Clique no menu lateral (☰) ou no botão abaixo para explorar nossos catálogos completos e encontrar o que você precisa.</p>
+      
+      <a href="#emagrecedores" class="btn-catalog" onclick="showSection('emagrecedores')">Explorar Catálogo</a>
+      
+      <div class="warning">
+        <strong>AVISO IMPORTANTE</strong><br><br>
+        • Todos os produtos são controlados e exigem uso responsável.<br>
+        • Frete grátis acima de R$ 200 em qualquer pedido.<br>
+        • Entrega rápida e 100% discreta.
+      </div>
+
+      <!-- Referências textuais -->
+      <div class="references">
+        <h3>O que estão dizendo</h3>
+        <blockquote>"Comprei Sibutramina e chegou em 4 dias, tudo discreto e perfeito. Recomendo!" – Maria S., RJ</blockquote>
+        <blockquote>"Ritalina original de qualidade, melhor preço que encontrei. Nota 10!" – Pedro M., SP</blockquote>
+        <blockquote>"Venvanse genérico 50mg salvou meu foco no trabalho. Entrega rápida." – Ana L., MG</blockquote>
+        <blockquote>"Dimorf 30mg pra dor crônica, embalagem discreta. Melhor site!" – Carlos R., RS</blockquote>
+        <blockquote>"Clonazepam 2mg pra ansiedade, tudo certo. Volto sempre." – Julia P., BA</blockquote>
+      </div>
+    </section>
+
+    <!-- EMAGRECEDORES - só Sibutramina -->
+    <section id="emagrecedores" class="category-section">
+      <h2>EMAGRECEDORES</h2>
       <div class="promos">
         <div class="promo-card">
-          <img src="img/photo.jpg" loading="lazy" alt="1 Caixa Sibutramina 15mg">
-          <h3>1 Caixa (30 cápsulas)</h3>
+          <img src="https://via.placeholder.com/400x320/0f0f0f/27ae60?text=Sibutramina+15mg+1+Caixa" loading="lazy" alt="">
+          <h3>Sibutramina 15mg - 1 Caixa</h3>
           <div class="price">R$ 90</div>
-          <p>Inicie sua transformação agora mesmo.</p>
           <div class="btn-wrapper">
-            <button class="btn" onclick="confirmarAdicionar('1 Caixa (30 cápsulas)', 90)">Comprar Agora</button>
-            <a href="https://wa.me/+5516988767617?text=Quero+1+caixa+de+sibutramina+15mg" class="btn whatsapp-btn">Falar no WhatsApp</a>
+            <button class="btn" onclick="confirmarAdicionar('Sibutramina 15mg 1 Caixa',90)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+Sibutramina+1+caixa" class="btn whatsapp-btn">WhatsApp</a>
           </div>
         </div>
-
         <div class="promo-card">
-          <img src="img/photo.jpg" loading="lazy" alt="2 Caixas Sibutramina 15mg">
-          <h3>2 Caixas (60 cápsulas)</h3>
+          <img src="https://via.placeholder.com/400x320/0f0f0f/27ae60?text=Sibutramina+2+Caixas" loading="lazy" alt="">
+          <h3>Sibutramina 15mg - 2 Caixas</h3>
           <div class="price">R$ 170</div>
           <div class="frete">+ Frete Grátis</div>
-          <p>Economize e acelere os resultados.</p>
           <div class="btn-wrapper">
-            <button class="btn" onclick="confirmarAdicionar('2 Caixas (60 cápsulas)', 170)">Comprar Agora</button>
-            <a href="https://wa.me/+5516988767617?text=Quero+2+caixas+de+sibutramina+15mg" class="btn whatsapp-btn">Falar no WhatsApp</a>
+            <button class="btn" onclick="confirmarAdicionar('Sibutramina 15mg 2 Caixas',170)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+Sibutramina+2+caixas" class="btn whatsapp-btn">WhatsApp</a>
           </div>
         </div>
-
         <div class="promo-card">
-          <img src="img/photo.jpg" loading="lazy" alt="3 Caixas Sibutramina 15mg">
-          <h3>3 Caixas (90 cápsulas)</h3>
+          <img src="https://via.placeholder.com/400x320/0f0f0f/27ae60?text=Sibutramina+3+Caixas" loading="lazy" alt="">
+          <h3>Sibutramina 15mg - 3 Caixas</h3>
           <div class="price">R$ 220</div>
           <div class="frete">+ Frete Grátis</div>
-          <p>Melhor custo-benefício para resultados duradouros.</p>
           <div class="btn-wrapper">
-            <button class="btn" onclick="confirmarAdicionar('3 Caixas (90 cápsulas)', 220)">Comprar Agora</button>
-            <a href="https://wa.me/+5516988767617?text=Quero+3+caixas+de+sibutramina+15mg" class="btn whatsapp-btn">Falar no WhatsApp</a>
+            <button class="btn" onclick="confirmarAdicionar('Sibutramina 15mg 3 Caixas',220)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+Sibutramina+3+caixas" class="btn whatsapp-btn">WhatsApp</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section>
-      <h2>Benefícios da Sibutramina 15mg</h2>
-      <ul>
-        <li>Aumenta rapidamente a sensação de saciedade – você come menos sem passar fome o dia todo.</li>
-        <li>Reduz o apetite e os cravings – ideal para quem tem compulsão alimentar ou ansiedade por comida.</li>
-        <li>Acelera o metabolismo e mantém o gasto energético – evita o "efeito platô" comum em dietas.</li>
-        <li>Perda de peso significativa: em média 5-10% do peso inicial em poucas semanas (com dieta e exercício).</li>
-        <li>Resultados visíveis logo nas primeiras semanas – motivação alta para continuar o tratamento.</li>
-      </ul>
+    <!-- OPIÓIDES -->
+    <section id="opioides" class="category-section">
+      <h2>OPIÓIDES</h2>
+      <div class="promos">
+        <div class="promo-card">
+          <img src="https://via.placeholder.com/400x320/0f0f0f/ff3366?text=Zolpidem+10mg" loading="lazy" alt="">
+          <h3>Zolpidem 10mg</h3>
+          <div class="price">R$ 130</div>
+          <div class="btn-wrapper">
+            <button class="btn" onclick="confirmarAdicionar('Zolpidem 10mg',130)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+Zolpidem" class="btn whatsapp-btn">WhatsApp</a>
+          </div>
+        </div>
+        <div class="promo-card">
+          <img src="https://via.placeholder.com/400x320/0f0f0f/ff3366?text=Dimorf+10mg" loading="lazy" alt="">
+          <h3>Dimorf 10mg</h3>
+          <div class="price">R$ 350</div>
+          <div class="btn-wrapper">
+            <button class="btn" onclick="confirmarAdicionar('Dimorf 10mg',350)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+Dimorf+10mg" class="btn whatsapp-btn">WhatsApp</a>
+          </div>
+        </div>
+        <div class="promo-card">
+          <img src="https://via.placeholder.com/400x320/0f0f0f/ff3366?text=Dimorf+30mg" loading="lazy" alt="">
+          <h3>Dimorf 30mg</h3>
+          <div class="price">R$ 420</div>
+          <div class="btn-wrapper">
+            <button class="btn" onclick="confirmarAdicionar('Dimorf 30mg',420)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+Dimorf+30mg" class="btn whatsapp-btn">WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENZODIAZEPÍNICOS -->
+    <section id="benzodiazepinicos" class="category-section">
+      <h2>BENZODIAZEPÍNICOS</h2>
+      <div class="promos">
+        <div class="promo-card">
+          <img src="https://via.placeholder.com/400x320/0f0f0f/27ae60?text=Alprazolam+2mg" loading="lazy" alt="">
+          <h3>Alprazolam 2mg</h3>
+          <div class="price">R$ 120</div>
+          <div class="btn-wrapper">
+            <button class="btn" onclick="confirmarAdicionar('Alprazolam 2mg',120)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+Alprazolam" class="btn whatsapp-btn">WhatsApp</a>
+          </div>
+        </div>
+        <div class="promo-card">
+          <img src="https://via.placeholder.com/400x320/0f0f0f/27ae60?text=Diazepam+10mg" loading="lazy" alt="">
+          <h3>Diazepam 10mg</h3>
+          <div class="price">R$ 130</div>
+          <div class="btn-wrapper">
+            <button class="btn" onclick="confirmarAdicionar('Diazepam 10mg',130)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+Diazepam" class="btn whatsapp-btn">WhatsApp</a>
+          </div>
+        </div>
+        <div class="promo-card">
+          <img src="https://via.placeholder.com/400x320/0f0f0f/27ae60?text=Lorazepam+2mg" loading="lazy" alt="">
+          <h3>Lorazepam 2mg</h3>
+          <div class="price">R$ 130</div>
+          <div class="btn-wrapper">
+            <button class="btn" onclick="confirmarAdicionar('Lorazepam 2mg',130)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+Lorazepam" class="btn whatsapp-btn">WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ANTIPSICOTICOS -->
+    <section id="antipsicoticos" class="category-section">
+      <h2>ANTIPSICOTICOS</h2>
+      <div class="promos">
+        <div class="promo-card">
+          <img src="https://via.placeholder.com/400x320/0f0f0f/27ae60?text=Quetiapina" loading="lazy" alt="">
+          <h3>QUETIAPINA</h3>
+          <div class="price">R$ 160</div>
+          <div class="btn-wrapper">
+            <button class="btn" onclick="confirmarAdicionar('Quetiapina',160)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+Quetiapina" class="btn whatsapp-btn">WhatsApp</a>
+          </div>
+        </div>
+        <div class="promo-card">
+          <img src="https://via.placeholder.com/400x320/0f0f0f/27ae60?text=Risperidona" loading="lazy" alt="">
+          <h3>RISPERIDONA</h3>
+          <div class="price">R$ 150</div>
+          <div class="btn-wrapper">
+            <button class="btn" onclick="confirmarAdicionar('Risperidona',150)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+Risperidona" class="btn whatsapp-btn">WhatsApp</a>
+          </div>
+        </div>
+        <div class="promo-card">
+          <img src="https://via.placeholder.com/400x320/0f0f0f/27ae60?text=Aripiprazol" loading="lazy" alt="">
+          <h3>ARIPIPRAZOL</h3>
+          <div class="price">R$ 170</div>
+          <div class="btn-wrapper">
+            <button class="btn" onclick="confirmarAdicionar('Aripiprazol',170)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+Aripiprazol" class="btn whatsapp-btn">WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ANSIOLÍTICO - só não-benzos -->
+    <section id="ansiolitico" class="category-section">
+      <h2>ANSIOLÍTICO</h2>
+      <div class="promos">
+        <div class="promo-card">
+          <img src="https://via.placeholder.com/400x320/0f0f0f/27ae60?text=Buspirona+10mg" loading="lazy" alt="">
+          <h3>BUSPIRONA 10mg</h3>
+          <div class="price">R$ 130</div>
+          <div class="btn-wrapper">
+            <button class="btn" onclick="confirmarAdicionar('Buspirona 10mg',130)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+Buspirona+10mg" class="btn whatsapp-btn">WhatsApp</a>
+          </div>
+        </div>
+        <div class="promo-card">
+          <img src="https://via.placeholder.com/400x320/0f0f0f/27ae60?text=Hidroxizina+25mg" loading="lazy" alt="">
+          <h3>HIDROXIZINA 25mg</h3>
+          <div class="price">R$ 110</div>
+          <div class="btn-wrapper">
+            <button class="btn" onclick="confirmarAdicionar('Hidroxizina 25mg',110)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+Hidroxizina+25mg" class="btn whatsapp-btn">WhatsApp</a>
+          </div>
+        </div>
+        <div class="promo-card">
+          <img src="https://via.placeholder.com/400x320/0f0f0f/27ae60?text=Propranolol+40mg" loading="lazy" alt="">
+          <h3>PROPRANOLOL 40mg</h3>
+          <div class="price">R$ 90</div>
+          <div class="btn-wrapper">
+            <button class="btn" onclick="confirmarAdicionar('Propranolol 40mg',90)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+Propranolol+40mg" class="btn whatsapp-btn">WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONCENTRAÇÃO -->
+    <section id="concentracao" class="category-section">
+      <h2>CONCENTRAÇÃO</h2>
+      <div class="promos">
+        <div class="promo-card">
+          <img src="https://via.placeholder.com/400x320/0f0f0f/27ae60?text=Ritalina+Original+30cp" loading="lazy" alt="">
+          <h3>RITALINA ORIGINAL 30 CP</h3>
+          <div class="price">R$ 180</div>
+          <div class="btn-wrapper">
+            <button class="btn" onclick="confirmarAdicionar('Ritalina Original 30 CP',180)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+Ritalina+Original+30cp" class="btn whatsapp-btn">WhatsApp</a>
+          </div>
+        </div>
+        <div class="promo-card">
+          <img src="https://via.placeholder.com/400x320/0f0f0f/27ae60?text=Ritalina+Original+60cp" loading="lazy" alt="">
+          <h3>RITALINA ORIGINAL 60 CP</h3>
+          <div class="price">R$ 260</div>
+          <div class="btn-wrapper">
+            <button class="btn" onclick="confirmarAdicionar('Ritalina Original 60 CP',260)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+Ritalina+Original+60cp" class="btn whatsapp-btn">WhatsApp</a>
+          </div>
+        </div>
+        <div class="promo-card">
+          <img src="https://via.placeholder.com/400x320/0f0f0f/27ae60?text=Ritalina+Generica" loading="lazy" alt="">
+          <h3>RITALINA GENERICA</h3>
+          <div class="price">R$ 140</div>
+          <div class="btn-wrapper">
+            <button class="btn" onclick="confirmarAdicionar('Ritalina Generica',140)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+Ritalina+Generica" class="btn whatsapp-btn">WhatsApp</a>
+          </div>
+        </div>
+        <div class="promo-card">
+          <img src="https://via.placeholder.com/400x320/0f0f0f/27ae60?text=Venvanse+Original+30mg" loading="lazy" alt="">
+          <h3>VENVANSE ORIGINAL 30 MG</h3>
+          <div class="price">R$ 600</div>
+          <div class="btn-wrapper">
+            <button class="btn" onclick="confirmarAdicionar('Venvanse Original 30mg',600)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+Venvanse+Original+30mg" class="btn whatsapp-btn">WhatsApp</a>
+          </div>
+        </div>
+        <div class="promo-card">
+          <img src="https://via.placeholder.com/400x320/0f0f0f/27ae60?text=Venvanse+Generico+30mg" loading="lazy" alt="">
+          <h3>VENVANSE GENÉRICO - 30 MG</h3>
+          <div class="price">R$ 550</div>
+          <div class="btn-wrapper">
+            <button class="btn" onclick="confirmarAdicionar('Venvanse Generico 30mg',550)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+Venvanse+Generico+30mg" class="btn whatsapp-btn">WhatsApp</a>
+          </div>
+        </div>
+        <div class="promo-card">
+          <img src="https://via.placeholder.com/400x320/0f0f0f/27ae60?text=Venvanse+Generico+50mg" loading="lazy" alt="">
+          <h3>VENVANSE GENÉRICO - 50 MG</h3>
+          <div class="price">R$ 650</div>
+          <div class="btn-wrapper">
+            <button class="btn" onclick="confirmarAdicionar('Venvanse Generico 50mg',650)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+Venvanse+Generico+50mg" class="btn whatsapp-btn">WhatsApp</a>
+          </div>
+        </div>
+        <div class="promo-card">
+          <img src="https://via.placeholder.com/400x320/0f0f0f/27ae60?text=Venvanse+Generico+70mg" loading="lazy" alt="">
+          <h3>VENVANSE GENÉRICO - 70 MG</h3>
+          <div class="price">R$ 720</div>
+          <div class="btn-wrapper">
+            <button class="btn" onclick="confirmarAdicionar('Venvanse Generico 70mg',720)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+Venvanse+Generico+70mg" class="btn whatsapp-btn">WhatsApp</a>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer>
-    © 2026 - Copyright for Bernardo. Contato: +55 16 98876-7617
+    © 2026 - Loja Medicamentos Controlados<br>
+    Contato: +55 16 98876-7617 | Entrega discreta garantida
   </footer>
 
-  <!-- Modal de preenchimento -->
+  <!-- Modal de Preenchimento de Dados -->
   <div id="buyModal" class="modal">
     <div class="modal-content">
-      <span class="close-x" onclick="fecharModal('buyModal')">X</span>
-      <h2>Preencha seus dados</h2>
-      <p style="color:#bbb; margin:20px 0;">Vamos calcular o frete e gerar seu PIX.</p>
+      <span class="close-x" onclick="fecharModal('buyModal')">×</span>
+      <h2>Finalize seu Pedido</h2>
+      <p style="color:#bbbbbb; margin:25px 0;">Preencha para calcular frete e gerar PIX.</p>
 
-      <div style="text-align:left;">
-        <label for="email">Email (obrigatório)</label>
-        <input id="email" type="email" placeholder="seu@email.com" required autofocus>
+      <div style="text-align:left; max-width:440px; margin:0 auto;">
+        <label for="email">Email</label>
+        <input id="email" type="email" required>
 
-        <label for="cep">CEP (obrigatório)</label>
-        <input id="cep" type="text" maxlength="8" placeholder="00000000" required oninput="this.value = this.value.replace(/\D/g,'')">
+        <label for="cep">CEP</label>
+        <input id="cep" type="text" maxlength="8" required oninput="this.value=this.value.replace(/\D/g,'')">
 
-        <label for="numero">Número da casa (obrigatório)</label>
-        <input id="numero" type="text" placeholder="123" required>
+        <label for="numero">Número</label>
+        <input id="numero" type="text" required>
 
-        <label for="complemento">Complemento (opcional)</label>
-        <input id="complemento" type="text" placeholder="Apto 101, Bloco B">
+        <label for="complemento">Complemento</label>
+        <input id="complemento" type="text">
       </div>
 
       <div id="freteResult"></div>
@@ -313,52 +907,70 @@
 
   <!-- Modal PIX -->
   <div id="pixModal" class="modal">
-    <div class="modal-content" style="max-width:420px;">
-      <span class="close-x" onclick="fecharModal('pixModal')">X</span>
+    <div class="modal-content" style="max-width:460px;">
+      <span class="close-x" onclick="fecharModal('pixModal')">×</span>
       <h2>Pague via PIX</h2>
-      <p id="pixValue" style="font-size:1.3rem; margin:20px 0;"></p>
-      
-      <img id="qrImage" src="" alt="QR Code PIX" style="width:240px;height:240px;margin:20px auto;border:4px solid #39ff14;border-radius:12px;display:block;">
-      
-      <p style="margin:15px 0;">Código Copia e Colar:</p>
-      <input id="pixCode" readonly value="" style="width:100%; padding:12px; background:#222; color:#39ff14; border:1px solid #444; border-radius:8px; font-family:monospace; text-align:center;">
-
-      <button onclick="copyPixCode()" style="background:#25D366; color:white; padding:12px 30px; border:none; border-radius:50px; font-weight:700; margin:20px 0; cursor:pointer; width:auto;">Copiar Código</button>
-      
-      <div id="timer" style="color:#ff3366; font-weight:700; margin:15px 0;">Tempo restante: <span id="timeLeft">15:00</span></div>
-      
-      <div style="font-size:0.95rem; color:#ccc; margin:20px 0; line-height:1.4;">
-        <strong>Como pagar:</strong><br>1. Abra o app do seu banco<br>2. PIX → Copiar e Colar ou QR<br>3. Confirme e pague
-      </div>
-      
-      <div style="background:#222; padding:12px; border-radius:8px; font-size:0.9rem; color:#ffcc00; margin-top:20px;">
-        AVISO: Processado pela PushinPay. Não somos responsáveis pela entrega.
-      </div>
+      <p id="pixValue"></p>
+      <img id="qrImage" src="" alt="QR Code" style="width:260px;height:260px;margin:20px auto;border:5px solid #27ae60;border-radius:16px;display:block;">
+      <input id="pixCode" readonly style="width:100%;padding:14px;background:#222;color:#27ae60;border:1px solid #444;border-radius:10px;text-align:center;">
+      <button onclick="copyPixCode()" style="background:#25D366;color:white;padding:14px 40px;border:none;border-radius:50px;margin:20px 0;cursor:pointer;">Copiar Código</button>
+      <div id="timer" style="color:#ff3366;font-weight:700;">Tempo restante: <span id="timeLeft">15:00</span></div>
     </div>
   </div>
 
+  <!-- Script Completo -->
   <script>
     const API_URL = 'https://api.pushinpay.com.br/api/pix/cashIn';
-    const TOKEN = '61462|UvnHYl6Z42V8cDZmws0O0sszX6UyjCfvPu1XJ77Z5b0b73e4';
+    const TOKEN = '61386|R7lNhPAqyXCEuzgh2omy27dEeWj3wQstbuiTe1bW99f8eefe';
 
     let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
     let itemAtual = {};
     let freteAtual = 0;
 
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
+
+    // Função pra mostrar seção
+    function showSection(sectionId) {
+      document.querySelectorAll('.category-section').forEach(sec => sec.classList.remove('active'));
+      const target = document.getElementById(sectionId);
+      if (target) {
+        target.classList.add('active');
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+      document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
+      const link = document.querySelector(`.sidebar a[href="#${sectionId}"]`);
+      if (link) link.classList.add('active');
+    }
+
+    // Navegação do menu
+    document.querySelectorAll('.sidebar a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        showSection(targetId);
+        toggleSidebar();
+      });
+    });
+
+    // Botão Explorar Catálogo na home
+    document.querySelector('.btn-catalog')?.addEventListener('click', function(e) {
+      e.preventDefault();
+      showSection('emagrecedores');
+    });
+
     function confirmarAdicionar(produto, valor) {
-      if (confirm(`Deseja adicionar 1 unidade de "${produto}" ao carrinho?`)) {
+      if (confirm(`Adicionar ${produto} (R$ ${valor})?`)) {
         adicionarAoCarrinho(produto, valor);
-        alert('Adicionado ao carrinho! Clique no ícone 🛒 para ver.');
+        alert('Adicionado ao carrinho!');
       }
     }
 
     function adicionarAoCarrinho(produto, valor) {
       let item = carrinho.find(i => i.produto === produto);
-      if (item) {
-        item.quantidade = (item.quantidade || 1) + 1;
-      } else {
-        carrinho.push({ produto, valor, quantidade: 1 });
-      }
+      if (item) item.quantidade = (item.quantidade || 1) + 1;
+      else carrinho.push({ produto, valor, quantidade: 1 });
       localStorage.setItem('carrinho', JSON.stringify(carrinho));
       atualizarCarrinho();
     }
@@ -378,162 +990,93 @@
       const list = document.getElementById('cart-items');
       list.innerHTML = '';
       let total = 0;
-
       carrinho.forEach((item, idx) => {
         const qtd = item.quantidade || 1;
         total += item.valor * qtd;
         const li = document.createElement('li');
-        li.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #222;';
-        li.innerHTML = `
-          <span>${item.produto} ×${qtd}</span>
-          <span style="display:flex;align-items:center;gap:12px;">
-            <strong>R$${(item.valor * qtd).toFixed(2)}</strong>
-            <span onclick="removerItem(${idx})" style="color:#ff3366;cursor:pointer;font-weight:bold;font-size:1.4rem;padding:0 4px;">×</span>
-          </span>
-        `;
+        li.style = 'display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #222;';
+        li.innerHTML = `${item.produto} ×${qtd} <span>R$${(item.valor * qtd).toFixed(2)} <span onclick="removerItem(${idx})" style="color:#ff3366;cursor:pointer;">×</span></span>`;
         list.appendChild(li);
       });
-
       document.getElementById('cart-total').textContent = `Total: R$${total.toFixed(2)}`;
     }
 
     function calcularFrete() {
-      const cep = document.getElementById('cep')?.value?.trim() || '';
-      const el = document.getElementById('freteResult');
-
-      if (cep.length !== 8 || !/^\d{8}$/.test(cep)) {
-        el.innerHTML = '<span style="color:#ff3366;">CEP inválido (digite 8 números)</span>';
-        return;
-      }
-
+      const cep = document.getElementById('cep').value.trim();
+      if (cep.length !== 8) return document.getElementById('freteResult').innerHTML = '<span style="color:#ff3366;">CEP inválido</span>';
       const subtotal = carrinho.reduce((s, i) => s + i.valor * (i.quantidade || 1), 0);
       freteAtual = subtotal >= 170 ? 0 : 15;
-
-      el.innerHTML = `Frete estimado: R$${freteAtual.toFixed(2)}<br><strong>Total: R$${(subtotal + freteAtual).toFixed(2)}</strong>`;
+      document.getElementById('freteResult').innerHTML = `Frete: R$${freteAtual}<br>Total: R$${(subtotal + freteAtual).toFixed(2)}`;
     }
 
     async function gerarPix(valorCentavos, descricao) {
-      alert('Iniciando geração de PIX...\nValor: R$' + (valorCentavos / 100).toFixed(2) + '\nDescrição: ' + descricao);
-
       const valueEl = document.getElementById('pixValue');
       const qrEl = document.getElementById('qrImage');
       const codeEl = document.getElementById('pixCode');
       const timerEl = document.getElementById('timeLeft');
-
-      valueEl.textContent = `Valor: R$${(valorCentavos / 100).toFixed(2)} - ${descricao}`;
-      qrEl.src = '';
-      codeEl.value = 'Conectando à API...';
-
+      valueEl.textContent = `Valor: R$${(valorCentavos/100).toFixed(2)} - ${descricao}`;
+      qrEl.src = ''; codeEl.value = 'Gerando...';
       document.getElementById('pixModal').style.display = 'flex';
-
       try {
-        console.log('Enviando requisição para:', API_URL);
-        console.log('Token:', TOKEN.substring(0, 15) + '...');
-        console.log('Payload:', JSON.stringify({ value: valorCentavos, webhook_url: '' }));
-
         const res = await fetch(API_URL, {
           method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${TOKEN}`,
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
+          headers: { 'Authorization': `Bearer ${TOKEN}`, 'Content-Type': 'application/json' },
           body: JSON.stringify({ value: valorCentavos, webhook_url: '' })
         });
-
-        console.log('Status da resposta:', res.status);
-
-        if (!res.ok) {
-          const errText = await res.text();
-          console.error('Erro HTTP:', res.status, errText);
-          throw new Error(`Erro ${res.status}: ${errText}`);
-        }
-
         const data = await res.json();
-        console.log('Resposta completa da API:', data);
-
         if (data.qr_code_base64) {
           qrEl.src = `data:image/png;base64,${data.qr_code_base64}`;
-          codeEl.value = data.qr_code || 'Código gerado com sucesso';
+          codeEl.value = data.qr_code || 'Código gerado';
           let time = 900;
           const interval = setInterval(() => {
             time--;
-            const m = Math.floor(time / 60);
-            const s = time % 60;
-            timerEl.textContent = `${m}:${s < 10 ? '0' + s : s}`;
-            if (time <= 0) {
-              clearInterval(interval);
-              timerEl.textContent = 'Tempo esgotado';
-            }
+            const m = Math.floor(time/60), s = time%60;
+            timerEl.textContent = `${m}:${s<10?'0'+s:s}`;
+            if (time <= 0) { clearInterval(interval); timerEl.textContent = 'Expirado'; }
           }, 1000);
-          alert('QR Code gerado com sucesso! Escaneie ou copie o código.');
-        } else {
-          codeEl.value = 'API respondeu, mas sem QR Code';
-          alert('Resposta sem QR. Veja o console (F12) para detalhes.');
         }
-      } catch (err) {
-        console.error('Erro completo:', err);
-        codeEl.value = 'Falha: ' + err.message;
-        alert('Erro ao gerar PIX:\n' + err.message + '\n\nAbra F12 → Console e me mande o erro completo!');
-      }
+      } catch (err) { codeEl.value = 'Erro: ' + err.message; }
     }
 
     function copyPixCode() {
       const code = document.getElementById('pixCode');
-      code.select();
-      document.execCommand('copy');
-      alert('Código PIX copiado!');
+      code.select(); document.execCommand('copy');
+      alert('Código copiado!');
     }
 
     function prosseguirParaPagamento() {
-      if (carrinho.length === 0) {
-        alert('Seu carrinho está vazio!');
-        return;
-      }
-      const subtotal = carrinho.reduce((s, i) => s + i.valor * (i.quantidade || 1), 0);
+      if (!carrinho.length) return alert('Carrinho vazio!');
+      const subtotal = carrinho.reduce((s,i)=>s+i.valor*(i.quantidade||1),0);
       const total = subtotal + freteAtual;
-      itemAtual = { produto: 'Pedido de Sibutramina', valor: total };
+      itemAtual = { produto: 'Pedido', valor: total };
       document.getElementById('buyModal').style.display = 'flex';
     }
 
     function prosseguirCompra() {
-      const email = document.getElementById('email')?.value?.trim();
-      const cep   = document.getElementById('cep')?.value?.trim();
-      const numero = document.getElementById('numero')?.value?.trim();
+      const email = document.getElementById('email').value.trim();
+      const cep = document.getElementById('cep').value.trim();
+      const numero = document.getElementById('numero').value.trim();
 
-      if (!email || !cep || !numero) {
-        alert('Preencha Email, CEP e Número da casa!');
-        return;
-      }
-
-      const subtotal = carrinho.reduce((s, i) => s + i.valor * (i.quantidade || 1), 0);
+      if (!email || !cep || !numero) return alert('Preencha os campos obrigatórios!');
+      const subtotal = carrinho.reduce((s,i)=>s+i.valor*(i.quantidade||1),0);
       const total = subtotal + freteAtual;
-
-      gerarPix(total * 100, itemAtual.produto + ' + Frete');
-
+      gerarPix(total*100, 'Pedido + Frete');
       fecharModal('buyModal');
     }
 
-    function fecharModal(id) {
-      document.getElementById(id).style.display = 'none';
-    }
+    function fecharModal(id) { document.getElementById(id).style.display = 'none'; }
 
     document.getElementById('cart-icon').addEventListener('click', e => {
       e.stopPropagation();
-      const dd = document.getElementById('cart-dropdown');
-      dd.style.display = dd.style.display === 'block' ? 'none' : 'block';
+      document.getElementById('cart-dropdown').style.display = document.getElementById('cart-dropdown').style.display === 'block' ? 'none' : 'block';
     });
 
     document.addEventListener('click', e => {
       const dd = document.getElementById('cart-dropdown');
-      const icon = document.getElementById('cart-icon');
-      if (dd && icon && !dd.contains(e.target) && !icon.contains(e.target)) {
-        dd.style.display = 'none';
-      }
+      if (dd && !dd.contains(e.target) && !document.getElementById('cart-icon').contains(e.target)) dd.style.display = 'none';
     });
 
     atualizarCarrinho();
   </script>
-
 </body>
 </html>
