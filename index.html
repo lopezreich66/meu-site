@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <!-- ==================================================
-       META TAGS E CONFIGURAÇÕES BÁSICAS - LINHAS 1-40
-  ================================================== -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Loja especializada em medicamentos controlados: emagrecedores (Sibutramina), concentração (Ritalina, Venvanse), opioides, benzodiazepínicos, antipsicóticos, ansiolíticos. Entrega discreta e segura em todo o Brasil." />
@@ -14,19 +11,13 @@
   
   <title>MELHOR PHARMACY DO ANO | Entrega Discreta e Segura</title>
   
-  <!-- Google Fonts - Poppins para visual clean e moderno -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- Favicon (opcional - substitua pelo seu) -->
   <link rel="icon" href="https://via.placeholder.com/32/27ae60/000?text=L" type="image/x-icon">
   
-  <!-- ==================================================
-       ESTILOS - EXPANDIDOS PARA BATER 1200+ LINHAS - LINHAS 50-500
-  ================================================== -->
   <style>
-    /* RESET GLOBAL E BASE - LINHAS 50-70 */
     * {
       margin: 0;
       padding: 0;
@@ -49,7 +40,6 @@
       position: relative;
     }
     
-    /* Hamburger Menu - discreto e centralizado na entrada - LINHAS 75-100 */
     .hamburger {
       position: fixed;
       top: 25px;
@@ -75,7 +65,6 @@
       background: #1a1a1a;
     }
     
-    /* Sidebar Lateral - clean, organizada e com sombra suave - LINHAS 105-150 */
     .sidebar {
       position: fixed;
       left: 0;
@@ -126,12 +115,10 @@
       transform: translateX(12px);
     }
     
-    /* Shift de conteúdo quando sidebar aberta - melhora UX */
     .content-shift {
       transition: margin-left 0.45s cubic-bezier(0.77, 0, 0.175, 1);
     }
     
-    /* Header - centralizado e clean - LINHAS 155-180 */
     header {
       background: linear-gradient(135deg, #111111 0%, #0a0a0a 100%);
       padding: 7rem 6% 5rem;
@@ -157,7 +144,6 @@
       opacity: 0.95;
     }
     
-    /* Main Content - estrutura principal - LINHAS 185-220 */
     main {
       flex: 1;
       max-width: 1700px;
@@ -281,7 +267,6 @@
       color: white;
     }
     
-    /* Carrinho Icon e Dropdown - LINHAS 300-350 */
     #cart-icon {
       position: fixed;
       top: 25px;
@@ -331,7 +316,6 @@
       z-index: 2900;
     }
     
-    /* Modais - clean e profissional - LINHAS 355-420 */
     .modal {
       display: none;
       position: fixed;
@@ -435,7 +419,6 @@
       cursor: pointer;
     }
     
-    /* Footer - LINHAS 425-440 */
     footer {
       text-align: center;
       padding: 6rem 6%;
@@ -448,7 +431,6 @@
       z-index: 10;
     }
     
-    /* Responsividade - múltiplos breakpoints para mobile e tablet - LINHAS 445-480 */
     @media (max-width: 1200px) {
       .sidebar { width: 290px; }
       .promos { gap: 2.8rem; }
@@ -458,7 +440,6 @@
     @media (max-width: 992px) {
       header { padding: 6rem 6% 4rem; }
       .promo-card { padding: 2.8rem 2rem; }
-      .welcome h2 { font-size: 3.2rem; }
     }
     
     @media (max-width: 768px) {
@@ -466,9 +447,6 @@
       header { padding: 5rem 6% 3.5rem; }
       .hamburger { top: 18px; left: 18px; font-size: 2.2rem; }
       .sidebar { padding-top: 100px; width: 280px; }
-      .welcome { padding: 4rem 2rem 3rem; }
-      .welcome h2 { font-size: 2.8rem; }
-      .btn-catalog { padding: 1.2rem 3rem; font-size: 1.3rem; }
     }
     
     @media (max-width: 576px) {
@@ -479,7 +457,6 @@
       .sidebar a { font-size: 1.3rem; padding: 14px 20px; }
     }
     
-    /* Welcome page - limpa e centralizada - LINHAS 485-520 */
     .welcome {
       max-width: 900px;
       margin: 0 auto;
@@ -532,7 +509,6 @@
       font-weight: 500;
     }
     
-    /* Referências textuais - credibilidade sem imagens */
     .references {
       max-width: 900px;
       margin: 5rem auto 0;
@@ -559,17 +535,51 @@
       color: #ccc;
     }
     
-    /* Seções do catálogo - escondidas na entrada */
     .category-section { display:none; }
     .category-section.active { display:block; }
+
+    /* Estilo para os selos de confiança */
+    .trust-badges {
+      margin: 4rem auto;
+      text-align: center;
+      max-width: 900px;
+    }
+    
+    .trust-badges h3 {
+      color: #27ae60;
+      margin-bottom: 1.8rem;
+      font-size: 1.8rem;
+    }
+    
+    .trust-badges .badges-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    
+    .trust-badges img {
+      height: 90px;
+      width: auto;
+      max-height: 110px;
+    }
+    
+    .trust-badges .card-icons img {
+      height: 60px;
+    }
+    
+    .trust-badges p {
+      margin-top: 1.5rem;
+      color: #bbbbbb;
+      font-size: 1.1rem;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Hamburger Menu -->
   <button class="hamburger" onclick="toggleSidebar()">☰</button>
 
-  <!-- Sidebar com todas as categorias -->
   <nav class="sidebar" id="sidebar">
     <ul>
       <li><a href="#inicio" class="active">INÍCIO</a></li>
@@ -582,7 +592,6 @@
     </ul>
   </nav>
 
-  <!-- Ícone Carrinho -->
   <div id="cart-icon">
     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2">
       <circle cx="9" cy="21" r="1"></circle>
@@ -592,7 +601,6 @@
     <span id="cart-badge">0</span>
   </div>
 
-  <!-- Dropdown Carrinho -->
   <div id="cart-dropdown">
     <h4 style="color:#27ae60; margin-bottom:20px; text-align:center; font-size:1.5rem;">Seu Carrinho</h4>
     <ul id="cart-items" style="list-style:none; margin-bottom:20px; padding:0;"></ul>
@@ -600,13 +608,11 @@
     <button class="btn" onclick="prosseguirParaPagamento()" style="width:100%; font-size:1.2rem; padding:16px 0;">Ir para Compra</button>
   </div>
 
-  <!-- Conteúdo Principal -->
   <main>
-    <!-- Página Inicial - limpa -->
     <section id="inicio" class="welcome category-section active">
       <h2>Seja bem vindo a minha loja.</h2>
-      <p>Somos especializados em genericos e originais, com entrega discreta e segura em todo o Brasil
-        Para compras acima de 150 reais, me chame no whatssap, só clicar no link da direita xD .</p>
+      <p>Somos especializados em genéricos e originais, com entrega discreta e segura em todo o Brasil.<br>
+         Para compras acima de R$ 150, me chame no WhatsApp – é só clicar no botão da direita :)</p>
       <p style="margin:2.5rem 0; font-size:1.4rem;">Clique no menu lateral (☰) ou no botão abaixo para explorar nossos catálogos completos e encontrar o que você precisa.</p>
       
       <a href="#emagrecedores" class="btn-catalog" onclick="showSection('emagrecedores')">Explorar Catálogo</a>
@@ -615,10 +621,24 @@
         <strong>AVISO IMPORTANTE</strong><br><br>
         • Todos os produtos são controlados e exigem uso responsável.<br>
         • Frete grátis acima de R$ 200 em qualquer pedido.<br>
-        • Entrega rápida e 100% discreta.
+        • Entrega rápida e 100% discreta e segura.
       </div>
 
-      <!-- Referências textuais -->
+      <!-- Selos de confiança -->
+      <div class="trust-badges">
+        <h3>Site 100% Seguro e Confiável</h3>
+        <div class="badges-container">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/SSL_Secure.svg/512px-SSL_Secure.svg.png" alt="Site Seguro - SSL Verificado" loading="lazy">
+          <img src="https://logopng.com.br/wp-content/uploads/2021/04/pix-logo-768x432.png" alt="Aceitamos PIX" loading="lazy">
+          <div class="card-icons" style="display:flex; gap:1.5rem;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Visa.svg/512px-Visa.svg.png" alt="Visa" loading="lazy">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/512px-Mastercard-logo.svg.png" alt="Mastercard" loading="lazy">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Elo_logo.svg/512px-Elo_logo.svg.png" alt="Elo" loading="lazy">
+          </div>
+        </div>
+        <p>Pagamentos seguros via PIX e Cartão de Crédito • Dados criptografados • Entrega 100% discreta</p>
+      </div>
+
       <div class="references">
         <h3>O que estão dizendo</h3>
         <blockquote>"Comprei Sibutramina e chegou em 4 dias, tudo discreto e perfeito. Recomendo!" – Maria S., RJ</blockquote>
@@ -629,7 +649,6 @@
       </div>
     </section>
 
-    <!-- EMAGRECEDORES - só Sibutramina -->
     <section id="emagrecedores" class="category-section">
       <h2>EMAGRECEDORES</h2>
       <div class="promos">
@@ -665,7 +684,6 @@
       </div>
     </section>
 
-    <!-- OPIÓIDES -->
     <section id="opioides" class="category-section">
       <h2>OPIÓIDES</h2>
       <div class="promos">
@@ -699,7 +717,6 @@
       </div>
     </section>
 
-    <!-- BENZODIAZEPÍNICOS -->
     <section id="benzodiazepinicos" class="category-section">
       <h2>BENZODIAZEPÍNICOS</h2>
       <div class="promos">
@@ -733,7 +750,6 @@
       </div>
     </section>
 
-    <!-- ANTIPSICOTICOS -->
     <section id="antipsicoticos" class="category-section">
       <h2>ANTIPSICOTICOS</h2>
       <div class="promos">
@@ -767,7 +783,6 @@
       </div>
     </section>
 
-    <!-- ANSIOLÍTICO - só não-benzos -->
     <section id="ansiolitico" class="category-section">
       <h2>ANSIOLÍTICO</h2>
       <div class="promos">
@@ -801,7 +816,6 @@
       </div>
     </section>
 
-    <!-- CONCENTRAÇÃO -->
     <section id="concentracao" class="category-section">
       <h2>CONCENTRAÇÃO</h2>
       <div class="promos">
@@ -873,11 +887,10 @@
   </main>
 
   <footer>
-    © 2026 - Bernardo Steinbrenner s<br>
+    © 2026 - Bernardo Steinbrenner<br>
     Contato: +55 16 98876-7617 
   </footer>
 
-  <!-- Modal de Preenchimento de Dados -->
   <div id="buyModal" class="modal">
     <div class="modal-content">
       <span class="close-x" onclick="fecharModal('buyModal')">×</span>
@@ -906,7 +919,6 @@
     </div>
   </div>
 
-  <!-- Modal PIX -->
   <div id="pixModal" class="modal">
     <div class="modal-content" style="max-width:460px;">
       <span class="close-x" onclick="fecharModal('pixModal')">×</span>
@@ -919,7 +931,6 @@
     </div>
   </div>
 
-  <!-- Script Completo -->
   <script>
     const API_URL = 'https://api.pushinpay.com.br/api/pix/cashIn';
     const TOKEN = '61386|R7lNhPAqyXCEuzgh2omy27dEeWj3wQstbuiTe1bW99f8eefe';
@@ -932,7 +943,6 @@
       document.getElementById('sidebar').classList.toggle('open');
     }
 
-    // Função pra mostrar seção
     function showSection(sectionId) {
       document.querySelectorAll('.category-section').forEach(sec => sec.classList.remove('active'));
       const target = document.getElementById(sectionId);
@@ -945,7 +955,6 @@
       if (link) link.classList.add('active');
     }
 
-    // Navegação do menu
     document.querySelectorAll('.sidebar a').forEach(link => {
       link.addEventListener('click', function(e) {
         e.preventDefault();
@@ -955,7 +964,6 @@
       });
     });
 
-    // Botão Explorar Catálogo na home
     document.querySelector('.btn-catalog')?.addEventListener('click', function(e) {
       e.preventDefault();
       showSection('emagrecedores');
@@ -1081,5 +1089,3 @@
   </script>
 </body>
 </html>
-
-
