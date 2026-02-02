@@ -41,16 +41,41 @@
     .btn:hover { background:#219653; transform:translateY(-4px) scale(1.08); box-shadow:0 12px 30px rgba(39,174,96,0.45); }
     .whatsapp-btn { background:#25D366; color:white; }
     
-    #cart-icon { position:fixed; top:25px; right:25px; background:#111; color:#27ae60; padding:16px 20px; border-radius:50%; font-size:2rem; cursor:pointer; box-shadow:0 8px 25px rgba(39,174,96,0.3); z-index:3000; transition:all 0.3s; }
-    #cart-icon:hover { transform:scale(1.15); }
-    #cart-badge { position:absolute; top:-12px; right:-12px; background:#ff3366; color:white; font-size:1rem; font-weight:bold; padding:5px 10px; border-radius:50%; min-width:25px; text-align:center; }
-    
-    #cart-dropdown { 
-      display:none; position:fixed; top:100px; right:25px; background:#0f0f0f; 
-      border:1px solid #333; border-radius:16px; padding:24px; width:380px; 
-      max-height:80vh; overflow-y:auto; box-shadow:0 20px 60px rgba(0,0,0,0.9); z-index:2900; 
+    /* CARRINHO DIFERENTE - menor, discreto e clean */
+    #cart-icon { position:fixed; top:20px; right:20px; z-index:3000; cursor:pointer; transition:all 0.3s; }
+    #cart-icon > div { 
+      background:#111; color:#27ae60; width:48px; height:48px; border-radius:50%; 
+      display:flex; align-items:center; justify-content:center; 
+      box-shadow:0 6px 20px rgba(39,174,96,0.18); border:1px solid #222; 
+      transition:all 0.25s;
     }
-    
+    #cart-icon:hover > div { transform:scale(1.08); box-shadow:0 10px 30px rgba(39,174,96,0.35); border-color:#27ae60; }
+    #cart-badge { 
+      position:absolute; top:-6px; right:-6px; background:#ff3366; color:white; 
+      font-size:0.82rem; font-weight:700; min-width:20px; height:20px; border-radius:50%; 
+      display:flex; align-items:center; justify-content:center; 
+      box-shadow:0 2px 6px rgba(255,51,102,0.4);
+    }
+
+    #cart-dropdown { 
+      display:none; position:fixed; top:80px; right:20px; background:#0d0d0d; 
+      border:1px solid #222; border-radius:16px; width:340px; max-height:70vh; 
+      overflow-y:auto; box-shadow:0 16px 50px rgba(0,0,0,0.85); z-index:2900; 
+      padding:1.4rem;
+    }
+    #cart-dropdown li { 
+      display:flex; justify-content:space-between; align-items:center; 
+      padding:0.9rem 0; border-bottom:1px solid #1a1a1a; font-size:1.02rem; color:#ddd;
+    }
+    #cart-dropdown li:last-child { border-bottom:none; }
+    #cart-dropdown .product-info { flex:1; padding-right:1rem; }
+    #cart-dropdown .price-qtd { color:#27ae60; font-weight:600; min-width:110px; text-align:right; }
+    #cart-dropdown .remove-btn { 
+      color:#e74c3c; font-size:1.4rem; cursor:pointer; padding:0 8px; 
+      line-height:1; transition:color 0.2s;
+    }
+    #cart-dropdown .remove-btn:hover { color:#c0392b; }
+
     .modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.96); z-index:5000; justify-content:center; align-items:center; padding:25px; overflow-y:auto; }
     .modal-content { background:#0f0f0f; padding:45px 35px; border-radius:28px; border:4px solid #27ae60; max-width:520px; width:96%; text-align:center; box-shadow:0 25px 70px rgba(39,174,96,0.3); position:relative; max-height:94vh; overflow-y:auto; }
     .close-x { position:absolute; top:20px; right:30px; color:#ff3366; font-size:4.2rem; font-weight:bold; cursor:pointer; line-height:1; transition:all 0.3s; }
@@ -93,27 +118,32 @@
     </ul>
   </nav>
 
+  <!-- CARRINHO DIFERENTE -->
   <div id="cart-icon">
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2">
-      <circle cx="9" cy="21" r="1"></circle>
-      <circle cx="20" cy="21" r="1"></circle>
-      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-    </svg>
+    <div>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <circle cx="9" cy="21" r="1.5"/>
+        <circle cx="20" cy="21" r="1.5"/>
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+      </svg>
+    </div>
     <span id="cart-badge">0</span>
   </div>
 
   <div id="cart-dropdown">
-    <h4 style="color:#e0e0e0; margin-bottom:1.5rem; text-align:center; font-size:1.4rem; font-weight:600;">
-      Carrinho de Compras
-    </h4>
-    <ul id="cart-items"></ul>
-    <div style="margin:1.8rem 0; padding-top:1rem; border-top:1px solid #333; text-align:right;">
-      <span style="font-size:1.25rem; color:#bbb;">Total:</span>
-      <span id="cart-total" style="font-size:1.55rem; font-weight:700; color:#27ae60; margin-left:0.6rem;">
-        R$0,00
-      </span>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.2rem; padding-bottom:0.8rem; border-bottom:1px solid #222;">
+      <h4 style="color:#e0e0e0; font-size:1.25rem; font-weight:600; margin:0;">Seu Carrinho</h4>
+      <span id="cart-total-items" style="color:#999; font-size:0.95rem;">0 itens</span>
     </div>
-    <button class="btn" onclick="prosseguirParaPagamento()" style="width:100%; margin-top:1.2rem;">
+
+    <ul id="cart-items" style="list-style:none; padding:0; margin:0;"></ul>
+
+    <div style="margin-top:1.4rem; padding-top:1rem; border-top:1px solid #222; text-align:right;">
+      <span style="color:#bbb; font-size:1.1rem;">Total:</span>
+      <span id="cart-total" style="color:#27ae60; font-size:1.4rem; font-weight:700; margin-left:0.5rem;">R$ 0,00</span>
+    </div>
+
+    <button class="btn" onclick="prosseguirParaPagamento()" style="width:100%; margin-top:1.3rem; padding:0.9rem; font-size:1.05rem;">
       Finalizar Pedido
     </button>
   </div>
@@ -215,47 +245,47 @@
     </section>
 
     <section id="benzodiazepinicos" class="category-section">
-  <h2>BENZODIAZEPÍNICOS</h2>
-  <div class="promos">
-    <div class="promo-card">
-      <img src="https://via.placeholder.com/400x320/0f0f0f/27ae60?text=Alprazolam+2mg" loading="lazy" alt="">
-      <h3>Alprazolam 2mg</h3>
-      <div class="price">R$ 120</div>
-      <div class="btn-wrapper">
-        <button class="btn" onclick="adicionarAoCarrinhoSilent('Alprazolam 2mg',120)">Comprar Agora</button>
-        <a href="https://wa.me/+5516988767617?text=Quero+Alprazolam" class="btn whatsapp-btn">WhatsApp</a>
+      <h2>BENZODIAZEPÍNICOS</h2>
+      <div class="promos">
+        <div class="promo-card">
+          <img src="https://via.placeholder.com/400x320/0f0f0f/27ae60?text=Alprazolam+2mg" loading="lazy" alt="">
+          <h3>Alprazolam 2mg</h3>
+          <div class="price">R$ 120</div>
+          <div class="btn-wrapper">
+            <button class="btn" onclick="adicionarAoCarrinhoSilent('Alprazolam 2mg',120)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+Alprazolam" class="btn whatsapp-btn">WhatsApp</a>
+          </div>
+        </div>
+        <div class="promo-card">
+          <img src="https://via.placeholder.com/400x320/0f0f0f/27ae60?text=Diazepam+10mg" loading="lazy" alt="">
+          <h3>Diazepam 10mg</h3>
+          <div class="price">R$ 130</div>
+          <div class="btn-wrapper">
+            <button class="btn" onclick="adicionarAoCarrinhoSilent('Diazepam 10mg',130)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+Diazepam" class="btn whatsapp-btn">WhatsApp</a>
+          </div>
+        </div>
+        <div class="promo-card">
+          <img src="https://via.placeholder.com/400x320/0f0f0f/27ae60?text=Lorazepam+2mg" loading="lazy" alt="">
+          <h3>Lorazepam 2mg</h3>
+          <div class="price">R$ 130</div>
+          <div class="btn-wrapper">
+            <button class="btn" onclick="adicionarAoCarrinhoSilent('Lorazepam 2mg',130)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+Lorazepam" class="btn whatsapp-btn">WhatsApp</a>
+          </div>
+        </div>
+        <div class="promo-card">
+          <img src="https://via.placeholder.com/400x320/0f0f0f/27ae60?text=Clonazepam+2mg" loading="lazy" alt="">
+          <h3>CLONAZEPAM 2mg</h3>
+          <div class="price">R$ 120</div>
+          <div class="btn-wrapper">
+            <button class="btn" onclick="adicionarAoCarrinhoSilent('Clonazepam 2mg',120)">Comprar Agora</button>
+            <a href="https://wa.me/+5516988767617?text=Quero+Clonazepam+2mg" class="btn whatsapp-btn">WhatsApp</a>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="promo-card">
-      <img src="https://via.placeholder.com/400x320/0f0f0f/27ae60?text=Diazepam+10mg" loading="lazy" alt="">
-      <h3>Diazepam 10mg</h3>
-      <div class="price">R$ 130</div>
-      <div class="btn-wrapper">
-        <button class="btn" onclick="adicionarAoCarrinhoSilent('Diazepam 10mg',130)">Comprar Agora</button>
-        <a href="https://wa.me/+5516988767617?text=Quero+Diazepam" class="btn whatsapp-btn">WhatsApp</a>
-      </div>
-    </div>
-    <div class="promo-card">
-      <img src="https://via.placeholder.com/400x320/0f0f0f/27ae60?text=Lorazepam+2mg" loading="lazy" alt="">
-      <h3>Lorazepam 2mg</h3>
-      <div class="price">R$ 130</div>
-      <div class="btn-wrapper">
-        <button class="btn" onclick="adicionarAoCarrinhoSilent('Lorazepam 2mg',130)">Comprar Agora</button>
-        <a href="https://wa.me/+5516988767617?text=Quero+Lorazepam" class="btn whatsapp-btn">WhatsApp</a>
-      </div>
-    </div>
-    <!-- NOVO CARD ADICIONADO -->
-    <div class="promo-card">
-      <img src="https://via.placeholder.com/400x320/0f0f0f/27ae60?text=Clonazepam+2mg" loading="lazy" alt="">
-      <h3>CLONAZEPAM 2mg</h3>
-      <div class="price">R$ 120</div>
-      <div class="btn-wrapper">
-        <button class="btn" onclick="adicionarAoCarrinhoSilent('Clonazepam 2mg',120)">Comprar Agora</button>
-        <a href="https://wa.me/+5516988767617?text=Quero+Clonazepam+2mg" class="btn whatsapp-btn">WhatsApp</a>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
+
     <section id="antipsicoticos" class="category-section">
       <h2>ANTIPSICOTICOS</h2>
       <div class="promos">
@@ -486,7 +516,6 @@
       localStorage.setItem('carrinho', JSON.stringify(carrinho));
       atualizarCarrinho();
 
-      // Feedback visual sutil no badge
       const badge = document.getElementById('cart-badge');
       badge.style.transform = 'scale(1.3)';
       setTimeout(() => { badge.style.transform = 'scale(1)'; }, 160);
@@ -501,8 +530,9 @@
     function atualizarCarrinho() {
       const badge = document.getElementById('cart-badge');
       const totalItens = carrinho.reduce((acc, i) => acc + (i.quantidade || 1), 0);
-      badge.textContent = totalItens || '';
-      badge.style.display = totalItens > 0 ? 'inline-block' : 'none';
+      
+      badge.textContent = totalItens || '0';
+      badge.style.display = totalItens > 0 ? 'flex' : 'none';
 
       const list = document.getElementById('cart-items');
       list.innerHTML = '';
@@ -513,25 +543,23 @@
         total += item.valor * qtd;
 
         const li = document.createElement('li');
-        li.style = 'display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid #2a2a2a;font-size:1.05rem;color:#ddd;';
         li.innerHTML = `
-          <div style="flex:1; padding-right:12px;">
+          <div class="product-info">
             <div style="font-weight:500;">${item.produto}</div>
-            <div style="font-size:0.92rem;color:#999;margin-top:4px;">
+            <div style="font-size:0.9rem; color:#888; margin-top:3px;">
               R$ ${item.valor.toFixed(2)} × ${qtd}
             </div>
           </div>
-          <div style="display:flex;align-items:center;gap:16px;white-space:nowrap;">
-            <strong style="color:#27ae60;min-width:80px;text-align:right;">
-              R$ ${(item.valor * qtd).toFixed(2)}
-            </strong>
-            <span onclick="removerItem(${idx})" style="color:#e74c3c;cursor:pointer;font-size:1.6rem;font-weight:bold;padding:0 6px;line-height:1;">×</span>
+          <div style="display:flex; align-items:center; gap:1rem;">
+            <span class="price-qtd">R$ ${(item.valor * qtd).toFixed(2)}</span>
+            <span class="remove-btn" onclick="removerItem(${idx})">×</span>
           </div>
         `;
         list.appendChild(li);
       });
 
       document.getElementById('cart-total').textContent = `R$ ${total.toFixed(2)}`;
+      document.getElementById('cart-total-items').textContent = `${totalItens} item${totalItens !== 1 ? 's' : ''}`;
     }
 
     function calcularFrete() {
@@ -657,4 +685,3 @@
   </script>
 </body>
 </html>
-
